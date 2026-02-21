@@ -725,3 +725,439 @@ textarea:focus {
 /* ================================= */
 /* END */
 /* ================================= */
+
+/* ================================= */
+/* PREMIUM SILICON VALLEY ENHANCEMENTS */
+/* ================================= */
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Global transition system - premium fluid animations */
+* {
+  transition:
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* GPU acceleration */
+*, *::before, *::after {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Card hover animation - lift effect */
+.card, .card-white, .card-flat, [role="dialog"] {
+  will-change: transform, box-shadow;
+}
+
+.card:hover, .card-white:hover, .card-flat:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Button animations - press effect */
+button {
+  transition:
+    transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.2s ease;
+  will-change: transform;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+button:hover:not(:disabled) {
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Modal/Dialog popup animation */
+[role="dialog"] {
+  animation: popupEnter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popupEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Popup exit animation */
+[role="dialog"].exit {
+  animation: popupExit 0.2s ease forwards;
+}
+
+@keyframes popupExit {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92) translateY(-10px);
+  }
+}
+
+/* Page transition animations */
+main {
+  animation: pageEnter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth input focus with scale */
+input, textarea, select {
+  transition:
+    all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, textarea:focus, select:focus {
+  transform: scale(1.02);
+  transition:
+    all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Link hover animations */
+a {
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a:hover {
+  text-shadow: 0 0 12px rgba(247, 244, 213, 0.3);
+}
+
+/* Smooth sidebar transitions */
+.sidebar-link {
+  transition:
+    all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-link:hover {
+  transform: translateX(4px);
+}
+
+.sidebar-link.active {
+  animation: activateLink 0.3s ease;
+}
+
+@keyframes activateLink {
+  from {
+    transform: translateX(-4px);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Smooth badge animations */
+.badge {
+  animation: badgeAppear 0.3s ease;
+}
+
+@keyframes badgeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hover glow effect for interactive elements */
+button:hover:not(:disabled),
+a:hover,
+.interactive:hover {
+  filter: drop-shadow(0 0 8px rgba(211, 150, 140, 0.2));
+}
+
+/* Smooth loading state transitions */
+.loading {
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Stagger animation for list items */
+.list-item {
+  animation: listItemSlide 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.list-item:nth-child(1) { animation-delay: 0.05s; }
+.list-item:nth-child(2) { animation-delay: 0.1s; }
+.list-item:nth-child(3) { animation-delay: 0.15s; }
+.list-item:nth-child(4) { animation-delay: 0.2s; }
+.list-item:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes listItemSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px) translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Smooth scroll indicator animation */
+.scroll-indicator {
+  animation: scrollBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+/* Smooth color transitions */
+.color-transition {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Micro-interaction for checkboxes */
+input[type="checkbox"],
+input[type="radio"] {
+  transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  transform: scale(1.1);
+  animation: checkmarkPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes checkmarkPop {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+/* Smooth overlay animations */
+.overlay {
+  animation: overlayFade 0.3s ease;
+}
+
+@keyframes overlayFade {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Smooth toast/notification animations */
+.toast, .notification, [role="status"] {
+  animation: toastSlide 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes toastSlide {
+  from {
+    opacity: 0;
+    transform: translateX(24px) rotateZ(2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateZ(0deg);
+  }
+}
+
+/* Toast exit animation */
+.toast.exit, .notification.exit {
+  animation: toastSlideOut 0.25s ease forwards;
+}
+
+@keyframes toastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0) rotateZ(0deg);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(24px) rotateZ(2deg);
+  }
+}
+
+/* Smooth dropdown menu animations */
+[role="menu"], select {
+  animation: dropdownFade 0.2s ease;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth tab animations */
+[role="tablist"] button {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[role="tablist"] button[aria-selected="true"] {
+  animation: tabActive 0.3s ease;
+}
+
+@keyframes tabActive {
+  from {
+    transform: scaleX(0.9);
+    opacity: 0.7;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Smooth progress animations */
+[role="progressbar"] {
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Smooth range input animations */
+input[type="range"] {
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px rgba(211, 150, 140, 0.4);
+}
+
+/* Icon rotation animations */
+.icon-spin {
+  animation: iconSpin 2s linear infinite;
+}
+
+@keyframes iconSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.icon-pulse {
+  animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+}
+}
+
+/* Smooth text animations */
+.text-animate {
+  animation: textFade 0.6s ease;
+}
+
+@keyframes textFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth focus ring animations */
+:focus-visible {
+  outline: 2px solid #D3968C;
+  outline-offset: 2px;
+  animation: focusRing 0.25s ease;
+}
+
+@keyframes focusRing {
+  from {
+    outline-width: 0px;
+  }
+  to {
+    outline-width: 2px;
+  }
+}
+
+/* Momentum scrolling for better mobile experience */
+.scrollable {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ================================= */
+/* END PREMIUM ENHANCEMENTS */
+/* ================================= */
