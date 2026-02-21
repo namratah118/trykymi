@@ -1,3 +1,4 @@
+import { askKimi } from "../../lib/grok";
 import { Brain } from 'lucide-react';
 import { useConsciousMode } from '../hooks/useConsciousMode';
 
