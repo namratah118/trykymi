@@ -6,12 +6,11 @@ import Logo from '../ui/Logo';
 
 const NAV_ITEMS = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/plan', icon: CalendarDays, label: 'Plan' },
+  { path: '/plans', icon: CalendarDays, label: 'Plan' },
   { path: '/habits', icon: Target, label: 'Habits' },
   { path: '/tasks', icon: CheckSquare, label: 'Tasks' },
   { path: '/reminders', icon: Bell, label: 'Reminders' },
   { path: '/insights', icon: BarChart2, label: 'Insights' },
-  { path: '/debrief', icon: Moon, label: 'Debrief' },
   { path: '/assistant', icon: MessageSquare, label: 'AI' },
 ];
 
