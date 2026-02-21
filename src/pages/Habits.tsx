@@ -93,15 +93,15 @@ export default function Habits() {
 
   return (
     <AppLayout title="Habits">
-      <div className="space-y-4 sm:space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
           {habits.length > 0 && (
-            <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted">
+            <p className="text-sm font-body text-text-muted">
               <span className="font-semibold text-text-primary">{completedToday}</span> of <span className="font-semibold text-text-primary">{habits.length}</span> habits done today
             </p>
           )}
           <div className="ml-auto">
-            <button onClick={() => { setForm(EMPTY_FORM); setModalOpen(true); }} className="btn-primary w-full sm:w-auto">
+            <button onClick={() => { setForm(EMPTY_FORM); setModalOpen(true); }} className="btn-primary">
               <Plus className="w-4 h-4" />
               New Habit
             </button>
@@ -109,22 +109,22 @@ export default function Habits() {
         </div>
 
         {habits.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             <div className="card text-center py-4">
-              <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold text-text-primary" style={{ letterSpacing: '-0.03em' }}>{habits.length}</p>
-              <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted mt-0.5">Total habits</p>
+              <p className="font-heading text-2xl font-semibold text-text-primary" style={{ letterSpacing: '-0.03em' }}>{habits.length}</p>
+              <p className="text-xs font-body text-text-muted mt-0.5">Total habits</p>
             </div>
             <div className="card text-center py-4">
-              <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold text-text-primary" style={{ letterSpacing: '-0.03em', color: '#D3968C' }}>{completedToday}</p>
-              <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted mt-0.5">Done today</p>
+              <p className="font-heading text-2xl font-semibold text-text-primary" style={{ letterSpacing: '-0.03em', color: '#D3968C' }}>{completedToday}</p>
+              <p className="text-xs font-body text-text-muted mt-0.5">Done today</p>
             </div>
             <div className="card text-center py-4">
-              <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#D3968C' }}>{bestStreak}</p>
-              <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted mt-0.5">Best streak</p>
+              <p className="font-heading text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#D3968C' }}>{bestStreak}</p>
+              <p className="text-xs font-body text-text-muted mt-0.5">Best streak</p>
             </div>
             <div className="card text-center py-4">
-              <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#D3968C' }}>{completionRate}%</p>
-              <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted mt-0.5">Today's rate</p>
+              <p className="font-heading text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#D3968C' }}>{completionRate}%</p>
+              <p className="text-xs font-body text-text-muted mt-0.5">Today's rate</p>
             </div>
           </div>
         )}
@@ -183,7 +183,7 @@ export default function Habits() {
                     </div>
                   </div>
 
-                  <h3 className="font-body font-semibold text-text-primary text-xs sm:text-sm lg:text-base mb-0.5">{habit.name}</h3>
+                  <h3 className="font-body font-semibold text-text-primary text-sm mb-0.5">{habit.name}</h3>
                   {habit.description && (
                     <p className="text-xs font-body text-text-muted mb-3 truncate">{habit.description}</p>
                   )}

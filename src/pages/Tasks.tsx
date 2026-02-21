@@ -90,14 +90,14 @@ export default function Tasks() {
 
   return (
     <AppLayout title="Tasks">
-      <div className="space-y-4 sm:space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div className="flex items-center gap-1 rounded-xl p-1 overflow-x-auto" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
+      <div className="space-y-5">
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-1 rounded-xl p-1" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
             {(['all', 'pending', 'completed'] as const).map(f => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-body font-medium transition-all whitespace-nowrap"
+                className="px-3 py-1.5 rounded-lg text-sm font-body font-medium transition-all"
                 style={filter === f
                   ? { background: '#D3968C', color: '#F7F4D5' }
                   : { color: 'rgba(247,244,213,0.60)' }
@@ -115,25 +115,25 @@ export default function Tasks() {
               </button>
             ))}
           </div>
-          <button onClick={() => { setForm(EMPTY_FORM); setModalOpen(true); }} className="btn-primary w-full sm:w-auto">
+          <button onClick={() => { setForm(EMPTY_FORM); setModalOpen(true); }} className="btn-primary">
             <Plus className="w-4 h-4" />
             Add Task
           </button>
         </div>
 
         {tasks.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-3">
             <div className="card text-center">
-              <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ color: '#F7F4D5' }}>{tasks.length}</p>
-              <p className="text-xs sm:text-sm lg:text-base font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Total</p>
+              <p className="font-heading text-2xl font-semibold" style={{ color: '#F7F4D5' }}>{tasks.length}</p>
+              <p className="text-xs font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Total</p>
             </div>
             <div className="card text-center">
-              <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ color: '#D3968C' }}>{pending}</p>
-              <p className="text-xs sm:text-sm lg:text-base font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Pending</p>
+              <p className="font-heading text-2xl font-semibold" style={{ color: '#D3968C' }}>{pending}</p>
+              <p className="text-xs font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Pending</p>
             </div>
             <div className="card text-center">
-              <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ color: '#D3968C' }}>{completed}</p>
-              <p className="text-xs sm:text-sm lg:text-base font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Done</p>
+              <p className="font-heading text-2xl font-semibold" style={{ color: '#D3968C' }}>{completed}</p>
+              <p className="text-xs font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Done</p>
             </div>
           </div>
         )}

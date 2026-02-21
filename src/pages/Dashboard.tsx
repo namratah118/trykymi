@@ -166,26 +166,26 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         <DailyCheckin onClose={() => setShowCheckin(false)} onComplete={() => setShowCheckin(false)} />
       )}
 
-      <div className="space-y-4 sm:space-y-5">
+      <div className="space-y-5">
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-2 p-5 sm:p-7 relative overflow-hidden" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
+          <div className="lg:col-span-2 p-7 relative overflow-hidden" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
             <div className="relative z-10">
-              <p className="text-xs sm:text-sm lg:text-base font-body font-medium mb-2 sm:mb-3 lg:mb-4" style={{ color: 'rgba(247,244,213,0.45)' }}>{getGreeting()} · {todayFormatted}</p>
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold mb-3 sm:mb-4 lg:mb-5" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{firstName}</h2>
+              <p className="text-sm font-body font-medium mb-1" style={{ color: 'rgba(247,244,213,0.45)' }}>{getGreeting()} · {todayFormatted}</p>
+              <h2 className="font-heading text-4xl font-semibold mb-4" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{firstName}</h2>
 
-              <div className="min-h-[2.5rem] mb-4 sm:mb-5 lg:mb-6">
+              <div className="min-h-[2.5rem] mb-5">
                 {aiLoading ? (
                   <div className="flex items-center gap-2">
                     <Loader className="w-3.5 h-3.5 animate-spin" style={{ color: 'rgba(247,244,213,0.40)' }} />
-                    <span className="text-xs sm:text-sm lg:text-base font-body" style={{ color: 'rgba(247,244,213,0.40)' }}>trykymi is thinking...</span>
+                    <span className="text-sm font-body" style={{ color: 'rgba(247,244,213,0.40)' }}>trykymi is thinking...</span>
                   </div>
                 ) : aiMessage ? (
-                  <p className="text-sm sm:text-base lg:text-lg font-body leading-relaxed" style={{ color: 'rgba(247,244,213,0.78)', fontStyle: 'italic' }}>
+                  <p className="text-base font-body leading-relaxed" style={{ color: 'rgba(247,244,213,0.78)', fontStyle: 'italic' }}>
                     "{aiMessage}"
                   </p>
                 ) : (
-                  <p className="text-sm sm:text-base lg:text-lg font-body leading-relaxed" style={{ color: 'rgba(247,244,213,0.60)' }}>
+                  <p className="text-base font-body leading-relaxed" style={{ color: 'rgba(247,244,213,0.60)' }}>
                     {stats.todayPlans > 0
                       ? `${stats.completedPlans} of ${stats.todayPlans} plans done today. Let's keep going.`
                       : 'A fresh start awaits. Let trykymi help you design your ideal day.'}
@@ -194,11 +194,11 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <Link to="/assistant" className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm lg:text-base font-body font-semibold transition-all hover:opacity-90 active:scale-95" style={{ background: '#D3968C', color: '#0A3323' }}>
+                <Link to="/assistant" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-body font-semibold transition-all hover:opacity-90 active:scale-95" style={{ background: '#D3968C', color: '#0A3323' }}>
                   <Sparkles className="w-3.5 h-3.5" />
                   Ask trykymi
                 </Link>
-                <Link to="/debrief" className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm lg:text-base font-body font-semibold transition-all active:scale-95" style={{ background: 'transparent', color: '#F7F4D5', border: '1px solid #839958' }}
+                <Link to="/debrief" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-body font-semibold transition-all active:scale-95" style={{ background: 'transparent', color: '#F7F4D5', border: '1px solid #839958' }}
                   onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(131,153,88,0.08)'}
                   onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}
                 >
@@ -209,7 +209,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
             </div>
           </div>
 
-          <div className="rounded-3xl flex flex-col items-center justify-center text-center p-5 sm:p-7 gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
+          <div className="rounded-3xl flex flex-col items-center justify-center text-center p-7 gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
             <p className="text-xs font-body font-semibold uppercase tracking-widest" style={{ color: 'rgba(247,244,213,0.45)' }}>Today's score</p>
             <div className="relative w-32 h-32">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -217,12 +217,12 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
                 <circle cx="50" cy="50" r="38" fill="none" stroke="#D3968C" strokeWidth="8" strokeDasharray={strokeDash} strokeLinecap="round" style={{ transition: 'stroke-dasharray 1.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }} />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold" style={{ letterSpacing: '-0.04em', color: '#F7F4D5' }}>{lifeScore}</span>
+                <span className="font-heading text-4xl font-semibold" style={{ letterSpacing: '-0.04em', color: '#F7F4D5' }}>{lifeScore}</span>
               </div>
             </div>
             <div>
-              <p className="text-xs sm:text-sm lg:text-base font-body font-semibold" style={{ color: '#F7F4D5' }}>{scoreLabel}</p>
-              <p className="text-xs font-body mt-0.5 lg:mt-1" style={{ color: 'rgba(247,244,213,0.45)' }}>Based on today's activity</p>
+              <p className="text-sm font-body font-semibold" style={{ color: '#F7F4D5' }}>{scoreLabel}</p>
+              <p className="text-xs font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.45)' }}>Based on today's activity</p>
             </div>
           </div>
         </div>
@@ -232,7 +232,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
             <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.25)' }}>
               <Zap className="w-4 h-4" style={{ color: '#D3968C' }} />
             </div>
-            <p className="text-xs sm:text-sm lg:text-base font-body flex-1" style={{ color: '#F7F4D5' }}>
+            <p className="text-sm font-body flex-1" style={{ color: '#F7F4D5' }}>
               <span className="font-semibold">You saved {Math.floor(timeWon / 60)}h {timeWon % 60}m today.</span>{' '}
               <span style={{ color: 'rgba(247,244,213,0.60)' }}>Keep building that momentum.</span>
             </p>
@@ -242,7 +242,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
           </div>
         )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             { icon: CalendarDays, label: "Today's Plans", value: `${stats.completedPlans}/${stats.todayPlans}`, link: '/plan' },
             { icon: Target, label: 'Habits Done', value: `${stats.completedHabitsToday}/${stats.totalHabits}`, link: '/habits' },
@@ -252,45 +252,45 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
             <Link
               key={i}
               to={stat.link}
-              className="rounded-3xl p-4 sm:p-5 md:p-7 transition-all duration-200"
+              className="rounded-3xl p-7 transition-all duration-200"
               style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(247,244,213,0.08)'; el.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(247,244,213,0.05)'; el.style.transform = 'none'; }}
             >
-              <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-2xl flex items-center justify-center mb-2 sm:mb-4" style={{ background: 'rgba(211,150,140,0.18)' }}>
-                <stat.icon style={{ color: '#D3968C', width: '16px', height: '16px' }} />
+              <div className="w-10 h-10 rounded-2xl flex items-center justify-center mb-4" style={{ background: 'rgba(211,150,140,0.18)' }}>
+                <stat.icon style={{ color: '#D3968C', width: '18px', height: '18px' }} />
               </div>
-              <p className="font-heading text-xl sm:text-2xl lg:text-3xl font-semibold text-center" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{stat.value}</p>
-              <p className="text-xs sm:text-sm lg:text-base font-body mt-1 sm:mt-2 text-center" style={{ color: 'rgba(247,244,213,0.60)' }}>{stat.label}</p>
+              <p className="font-heading text-3xl font-semibold text-center" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{stat.value}</p>
+              <p className="text-sm font-body mt-2 text-center" style={{ color: 'rgba(247,244,213,0.60)' }}>{stat.label}</p>
             </Link>
           ))}
         </div>
 
         {(timeLost > 0 || timeWon > 0) && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div className="rounded-3xl p-4 sm:p-5 md:p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
-              <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
+            <div className="rounded-3xl p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
                 <TrendingDown className="w-5 h-5" style={{ color: '#D3968C' }} />
               </div>
               <div>
-                <p className="text-xs sm:text-sm lg:text-base font-body mb-1" style={{ color: 'rgba(247,244,213,0.60)' }}>Time lost today</p>
-                <p className="font-heading text-lg sm:text-xl lg:text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{Math.floor(timeLost / 60)}h {timeLost % 60}m</p>
+                <p className="text-sm font-body mb-1" style={{ color: 'rgba(247,244,213,0.60)' }}>Time lost today</p>
+                <p className="font-heading text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{Math.floor(timeLost / 60)}h {timeLost % 60}m</p>
               </div>
             </div>
-            <div className="rounded-3xl p-4 sm:p-5 md:p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
-              <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
+            <div className="rounded-3xl p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
                 <TrendingUp className="w-5 h-5" style={{ color: '#D3968C' }} />
               </div>
               <div>
-                <p className="text-xs sm:text-sm lg:text-base font-body mb-1" style={{ color: 'rgba(247,244,213,0.60)' }}>Time won today</p>
-                <p className="font-heading text-lg sm:text-xl lg:text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{Math.floor(timeWon / 60)}h {timeWon % 60}m</p>
+                <p className="text-sm font-body mb-1" style={{ color: 'rgba(247,244,213,0.60)' }}>Time won today</p>
+                <p className="font-heading text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{Math.floor(timeWon / 60)}h {timeWon % 60}m</p>
               </div>
             </div>
           </div>
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <GlassSectionCard title="Today&apos;s Plan" linkTo="/plan" icon={<CalendarDays className="w-4 h-4" />}>
+          <GlassSectionCard title="Today's Plan" linkTo="/plan" icon={<CalendarDays className="w-4 h-4" />}>
             {plans.length === 0 ? (
               <GlassEmptyState text="No plans yet. Start your day with intention." linkTo="/plan" linkText="Create a plan" illustration={<PlanIllustration className="w-12 h-12" opacity={0.4} />} />
             ) : (
@@ -299,7 +299,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
                   <div key={plan.id} className="flex items-start gap-3 px-3 py-2.5 rounded-xl" style={{ background: 'rgba(247,244,213,0.04)', opacity: plan.completed ? 0.45 : 1 }}>
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ background: '#D3968C' }} />
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs sm:text-sm lg:text-base font-body font-medium" style={{ color: 'rgba(247,244,213,0.85)', textDecoration: plan.completed ? 'line-through' : 'none' }}>{plan.title}</p>
+                      <p className="text-sm font-body font-medium" style={{ color: 'rgba(247,244,213,0.85)', textDecoration: plan.completed ? 'line-through' : 'none' }}>{plan.title}</p>
                       {plan.start_time && (
                         <p className="text-xs font-body flex items-center gap-1 mt-0.5" style={{ color: 'rgba(247,244,213,0.40)' }}>
                           <Clock className="w-3 h-3" />
@@ -322,7 +322,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
                   <div key={reminder.id} className="flex items-start gap-3 px-3 py-2.5 rounded-xl" style={{ background: 'rgba(247,244,213,0.04)' }}>
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ background: '#D3968C' }} />
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs sm:text-sm lg:text-base font-body font-medium" style={{ color: 'rgba(247,244,213,0.85)' }}>{reminder.title}</p>
+                      <p className="text-sm font-body font-medium" style={{ color: 'rgba(247,244,213,0.85)' }}>{reminder.title}</p>
                       <p className="text-xs font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.40)' }}>
                         {new Date(reminder.reminder_date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                         {reminder.reminder_time ? ` · ${reminder.reminder_time.slice(0, 5)}` : ''}
@@ -399,14 +399,14 @@ function GlassSectionCard({ title, linkTo, icon, children }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-4 sm:p-5 md:p-7" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
-      <div className="flex items-center justify-between mb-4 sm:mb-5 px-1 gap-2">
+    <div className="p-7" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
+      <div className="flex items-center justify-between mb-5 px-1">
         <div className="flex items-center gap-2">
           <span style={{ color: '#D3968C' }}>{icon}</span>
-          <h3 className="font-heading text-base sm:text-lg lg:text-xl font-semibold" style={{ color: '#F7F4D5' }}>{title}</h3>
+          <h3 className="font-heading text-lg font-semibold" style={{ color: '#F7F4D5' }}>{title}</h3>
         </div>
-        <Link to={linkTo} className="inline-flex items-center gap-1 text-xs font-body font-semibold transition-colors hover:opacity-70 whitespace-nowrap" style={{ color: '#D3968C' }}>
-          <span className="hidden sm:inline">View all</span> <ArrowRight className="w-3 h-3" />
+        <Link to={linkTo} className="inline-flex items-center gap-1 text-xs font-body font-semibold transition-colors hover:opacity-70" style={{ color: '#D3968C' }}>
+          View all <ArrowRight className="w-3 h-3" />
         </Link>
       </div>
       {children}
