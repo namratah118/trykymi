@@ -154,7 +154,7 @@ export default function TodaysPlan() {
 
   return (
     <AppLayout title="Today's Plan" subtitle={todayFormatted}>
-      <div className="space-y-6 sm:space-y-8">
+      <div className="space-y-6 sm:space-y-8 opacity-0 animate-fadeIn">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 lg:gap-8">
           <div>
             {plans.length > 0 && (

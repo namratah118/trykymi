@@ -108,7 +108,7 @@ export default function Settings() {
 
   return (
     <AppLayout title="Settings">
-      <div className="max-w-2xl space-y-6 w-full">
+      <div className="max-w-2xl space-y-6 w-full opacity-0 animate-fadeIn">
         <div className="card w-full">
           <div className="flex items-center gap-4 mb-6">
             <div

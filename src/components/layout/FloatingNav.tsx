@@ -6,11 +6,12 @@ import Logo from '../ui/Logo';
 
 const NAV_ITEMS = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/plans', icon: CalendarDays, label: 'Plan' },
+  { path: '/plan', icon: CalendarDays, label: 'Plan' },
   { path: '/habits', icon: Target, label: 'Habits' },
   { path: '/tasks', icon: CheckSquare, label: 'Tasks' },
   { path: '/reminders', icon: Bell, label: 'Reminders' },
   { path: '/insights', icon: BarChart2, label: 'Insights' },
+  { path: '/debrief', icon: Moon, label: 'Debrief' },
   { path: '/assistant', icon: MessageSquare, label: 'AI' },
 ];
 
@@ -23,7 +24,7 @@ export default function FloatingNav() {
 
   return (
     <header
-      className="fixed top-2 sm:top-4 left-1/2 z-50 w-full px-4 sm:px-6 lg:px-8"
+      className="fixed top-2 sm:top-4 left-1/2 z-50 animate-slide-down w-full px-4 sm:px-6 lg:px-8"
       style={{ transform: 'translateX(-50%)' }}
     >
       <div className="flex items-center h-16 sm:h-20 gap-3 sm:gap-6 max-w-7xl mx-auto">
@@ -91,12 +92,11 @@ export default function FloatingNav() {
               <>
                 <div className="fixed inset-0 z-10" onClick={() => setDropdownOpen(false)} />
                 <div
-                  className="absolute right-0 top-full mt-1.5 w-44 rounded-lg py-1 z-20"
+                  className="absolute right-0 top-full mt-1.5 w-44 rounded-lg py-1 z-20 animate-scale-in"
                   style={{
                     background: 'rgba(10,51,35,0.90)',
                     border: '1px solid rgba(247,244,213,0.08)',
                     boxShadow: '0 4px 12px rgba(0,0,0,0.20)',
-                    animation: 'modalScale 0.15s ease-out',
                   }}
                 >
                   <div className="px-3 py-2.5" style={{ borderBottom: '1px solid rgba(247,244,213,0.08)' }}>

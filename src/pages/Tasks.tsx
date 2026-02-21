@@ -90,7 +90,7 @@ export default function Tasks() {
 
   return (
     <AppLayout title="Tasks">
-      <div className="space-y-4 sm:space-y-5">
+      <div className="space-y-4 sm:space-y-5 opacity-0 animate-fadeIn">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-center gap-1 rounded-xl p-1 overflow-x-auto" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
             {(['all', 'pending', 'completed'] as const).map(f => (

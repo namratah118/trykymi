@@ -91,7 +91,7 @@ export default function Profile() {
 
   return (
     <AppLayout title="Profile">
-      <div className="max-w-2xl mx-auto space-y-6">
+      <div className="max-w-2xl mx-auto space-y-6 opacity-0 animate-fadeIn">
 
         <div className="card w-full">
           <div className="flex items-center gap-4">

@@ -1,25 +1,16 @@
-import React from 'react';
+import type { CSSProperties } from 'react';
 
-interface PriorityBadgeProps {
-  priority: 'low' | 'medium' | 'high';
-}
+type Priority = 'low' | 'medium' | 'high';
 
-export default function PriorityBadge({ priority }: PriorityBadgeProps) {
-  const colors = {
-    low: { bg: 'rgba(247,244,213,0.08)', text: 'rgba(247,244,213,0.50)' },
-    medium: { bg: '#D3968C20', text: '#D3968C' },
-    high: { bg: '#D3968C40', text: '#D3968C' },
-  };
+const STYLES: Record<Priority, CSSProperties> = {
+  low: { background: 'rgba(131,153,88,0.18)', color: '#839958', border: '1px solid rgba(131,153,88,0.28)' },
+  medium: { background: 'rgba(211,150,140,0.15)', color: '#D3968C', border: '1px solid rgba(211,150,140,0.25)' },
+  high: { background: 'rgba(211,150,140,0.15)', color: '#D3968C', border: '1px solid rgba(211,150,140,0.25)' },
+};
 
-  const color = colors[priority];
-  const label = priority.charAt(0).toUpperCase() + priority.slice(1);
-
+export default function PriorityBadge({ priority }: { priority: Priority }) {
+  const labels: Record<Priority, string> = { low: 'Low', medium: 'Medium', high: 'High' };
   return (
-    <span
-      className="inline-block px-2 py-0.5 rounded-md text-xs font-body font-semibold"
-      style={{ background: color.bg, color: color.text }}
-    >
-      {label}
-    </span>
+    <span className="badge" style={STYLES[priority]}>{labels[priority]}</span>
   );
 }

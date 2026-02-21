@@ -28,27 +28,15 @@ export default function Modal({ open, onClose, title, children, size = 'md' }: M
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{
-        animation: open ? 'overlayIn 0.2s ease-out' : 'none',
-      }}
-    >
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={onClose}
-        style={{
-          animation: open ? 'overlayIn 0.2s ease-out' : 'none',
-        }}
-      />
-      <div
-        className={`relative w-full ${sizeClasses[size]} rounded-2xl sm:rounded-3xl shadow-xl`}
+        className={`relative w-full ${sizeClasses[size]} animate-slide-up rounded-2xl sm:rounded-3xl shadow-xl`}
         style={{
           background: 'rgba(10,51,35,0.97)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           border: '1px solid rgba(247,244,213,0.14)',
-          animation: open ? 'modalIn 0.2s ease-out' : 'none',
         }}
       >
         <div

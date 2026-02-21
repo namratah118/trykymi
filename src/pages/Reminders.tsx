@@ -115,7 +115,7 @@ export default function Reminders() {
 
   return (
     <AppLayout title="Reminders">
-      <div className="space-y-6 sm:space-y-8">
+      <div className="space-y-6 sm:space-y-8 opacity-0 animate-fadeIn">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 lg:gap-8">
           <div className="flex items-center gap-1 rounded-xl p-1 overflow-x-auto" style={{ background: 'rgba(131,153,88,0.12)' }}>
             {(['upcoming', 'all', 'completed'] as const).map(f => (
