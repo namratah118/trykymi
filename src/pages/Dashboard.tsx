@@ -166,7 +166,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         <DailyCheckin onClose={() => setShowCheckin(false)} onComplete={() => setShowCheckin(false)} />
       )}
 
-      <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8 opacity-0 animate-fadeIn">
+      <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           <div className="lg:col-span-2 p-4 sm:p-6 lg:p-8 relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] w-full" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>

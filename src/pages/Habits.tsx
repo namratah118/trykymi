@@ -93,7 +93,7 @@ export default function Habits() {
 
   return (
     <AppLayout title="Habits">
-      <div className="space-y-6 sm:space-y-8 opacity-0 animate-fadeIn">
+      <div className="space-y-6 sm:space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 lg:gap-8">
           {habits.length > 0 && (
             <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted">

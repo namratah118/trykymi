@@ -211,7 +211,7 @@ export default function Homepage() {
   }, []);
 
   return (
-    <div style={{ background: '#0A3323', minHeight: '100vh' }} className="opacity-0 animate-fadeIn">
+    <div style={{ background: '#0A3323', minHeight: '100vh' }}>
 
       {showPopup && (
         <WelcomePopup

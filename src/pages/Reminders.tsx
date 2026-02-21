@@ -115,14 +115,14 @@ export default function Reminders() {
 
   return (
     <AppLayout title="Reminders">
-      <div className="space-y-6 sm:space-y-8 opacity-0 animate-fadeIn">
+      <div className="space-y-6 sm:space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 lg:gap-8">
           <div className="flex items-center gap-1 rounded-xl p-1 overflow-x-auto" style={{ background: 'rgba(131,153,88,0.12)' }}>
             {(['upcoming', 'all', 'completed'] as const).map(f => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-body font-medium transition-all duration-300 ease-out whitespace-nowrap"
+                className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-body font-medium transition-all whitespace-nowrap"
                 style={filter === f
                   ? { background: 'rgba(211,150,140,0.20)', color: '#D3968C' }
                   : { color: 'rgba(247,244,213,0.60)' }

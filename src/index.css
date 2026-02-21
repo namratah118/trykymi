@@ -421,7 +421,7 @@
   }
 
   .sidebar-link {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition-all duration-200 ease-out hover:opacity-80 hover:scale-105;
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition-all duration-200;
     font-size: 16px;
     color: rgba(247,244,213,0.60);
   }
@@ -430,7 +430,6 @@
     color: #F7F4D5;
   }
   .sidebar-link.active {
-    @apply transition-all duration-300 ease-out;
     background: #D3968C;
     color: #0A3323;
   }
@@ -448,8 +447,7 @@
     border-radius: 2px;
   }
 
-  .animate-fade-in { animation: fadeIn 0.4s ease-out; }
-  .animate-fadeIn { animation: fadeIn 0.4s ease-out; }
+  .animate-fade-in { animation: fadeOnly 0.15s ease-out; }
   .animate-slide-up { animation: none; }
   .animate-slide-down { animation: none; }
   .animate-scale-in { animation: none; }
@@ -475,16 +473,7 @@
   .text-balance { text-wrap: balance; }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes slideDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes scaleIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }

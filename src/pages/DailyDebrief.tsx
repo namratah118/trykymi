@@ -111,7 +111,7 @@ export default function DailyDebrief() {
 
   return (
     <AppLayout title="Daily Debrief" subtitle={todayFormatted}>
-      <div className="max-w-2xl mx-auto space-y-5 opacity-0 animate-fadeIn">
+      <div className="max-w-2xl mx-auto space-y-5">
 
         <div className="card relative overflow-hidden w-full">
           <div className="absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl" style={{ background: 'rgba(211,150,140,0.10)' }} />

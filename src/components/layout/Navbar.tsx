@@ -23,14 +23,14 @@ export default function Navbar({ title, subtitle }: NavbarProps) {
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3 ml-2">
-        <button className="relative w-8 sm:w-9 h-8 sm:h-9 rounded-lg flex items-center justify-center transition-all duration-200 flex-shrink-0 hover:opacity-80 hover:scale-105" style={{ color: 'rgba(247,244,213,0.60)' }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F7F4D5'} onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(247,244,213,0.60)'}>
+        <button className="relative w-8 sm:w-9 h-8 sm:h-9 rounded-lg flex items-center justify-center transition-colors flex-shrink-0" style={{ color: 'rgba(247,244,213,0.60)' }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F7F4D5'} onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(247,244,213,0.60)'}>
           <Bell style={{ width: '16px', height: '16px' }} />
         </button>
 
         <div className="relative">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="flex items-center gap-1 sm:gap-2 px-2 py-1.5 rounded-lg transition-all duration-200 flex-shrink-0 hover:opacity-80 hover:scale-105"
+            className="flex items-center gap-1 sm:gap-2 px-2 py-1.5 rounded-lg transition-colors flex-shrink-0"
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(247,244,213,0.06)'}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}
           >
@@ -51,7 +51,7 @@ export default function Navbar({ title, subtitle }: NavbarProps) {
                 <Link
                   to="/profile"
                   onClick={() => setShowDropdown(false)}
-                  className="flex items-center gap-2.5 px-4 py-2.5 text-xs sm:text-sm lg:text-base transition-all duration-200 hover:opacity-80 hover:scale-105"
+                  className="flex items-center gap-2.5 px-4 py-2.5 text-xs sm:text-sm lg:text-base transition-colors"
                   style={{ color: 'rgba(247,244,213,0.70)', fontWeight: 500 }}
                   onMouseEnter={e => {
                     (e.currentTarget as HTMLElement).style.background = 'rgba(247,244,213,0.08)';
@@ -68,7 +68,7 @@ export default function Navbar({ title, subtitle }: NavbarProps) {
                 <Link
                   to="/settings"
                   onClick={() => setShowDropdown(false)}
-                  className="flex items-center gap-2.5 px-4 py-2.5 text-xs sm:text-sm lg:text-base transition-all duration-200 hover:opacity-80 hover:scale-105"
+                  className="flex items-center gap-2.5 px-4 py-2.5 text-xs sm:text-sm lg:text-base transition-colors"
                   style={{ color: 'rgba(247,244,213,0.70)', fontWeight: 500 }}
                   onMouseEnter={e => {
                     (e.currentTarget as HTMLElement).style.background = 'rgba(247,244,213,0.08)';
@@ -85,7 +85,7 @@ export default function Navbar({ title, subtitle }: NavbarProps) {
                 <div className="my-1" style={{ borderTop: '1px solid rgba(247,244,213,0.08)' }} />
                 <button
                   onClick={() => { setShowDropdown(false); signOut(); }}
-                  className="flex items-center gap-2.5 px-4 py-2.5 text-xs sm:text-sm lg:text-base transition-all duration-200 w-full hover:opacity-80 hover:scale-105"
+                  className="flex items-center gap-2.5 px-4 py-2.5 text-xs sm:text-sm lg:text-base transition-colors w-full"
                   style={{ color: '#D3968C', fontWeight: 500 }}
                   onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(211,150,140,0.08)'}
                   onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}

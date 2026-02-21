@@ -135,7 +135,7 @@ export default function Insights() {
 
   return (
     <AppLayout title="Time Analytics" subtitle="Your productivity at a glance">
-      <div className="space-y-6 opacity-0 animate-fadeIn">
+      <div className="space-y-6">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
           <div className="card w-full">

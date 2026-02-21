@@ -90,14 +90,14 @@ export default function Tasks() {
 
   return (
     <AppLayout title="Tasks">
-      <div className="space-y-4 sm:space-y-5 opacity-0 animate-fadeIn">
+      <div className="space-y-4 sm:space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-center gap-1 rounded-xl p-1 overflow-x-auto" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
             {(['all', 'pending', 'completed'] as const).map(f => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-body font-medium transition-all duration-300 ease-out whitespace-nowrap"
+                className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-body font-medium transition-all whitespace-nowrap"
                 style={filter === f
                   ? { background: '#D3968C', color: '#F7F4D5' }
                   : { color: 'rgba(247,244,213,0.60)' }
