@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { MessageSquare } from 'lucide-react';
 import FloatingNav from './FloatingNav';
+import PageHeader from '../ui/PageHeader';
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -11,10 +12,11 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children }: AppLayoutProps) {
   return (
-    <div className="min-h-screen w-full overflow-x-hidden" style={{ background: '#0A3323' }}>
+    <div className="min-h-screen w-full overflow-x-hidden flex flex-col" style={{ background: '#0A3323' }}>
+      <PageHeader />
       <FloatingNav />
 
-      <main className="pt-20 sm:pt-28 md:pt-32 pb-24 px-4 sm:px-6 lg:px-8 w-full">
+      <main className="pt-20 sm:pt-28 md:pt-32 pb-24 px-4 sm:px-6 lg:px-8 w-full flex-1">
         <div className="max-w-7xl mx-auto w-full">
           {children}
         </div>
