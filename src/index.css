@@ -243,7 +243,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 transition-transform duration-200 ease-out hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -257,7 +257,7 @@
   }
 
   .btn-sage {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 transition-transform duration-200 ease-out hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -278,7 +278,7 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 transition-transform duration-200 ease-out hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -293,7 +293,7 @@
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-3 py-2 font-medium transition-all duration-200 active:scale-95;
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 font-medium transition-transform duration-200 ease-out hover:scale-105 active:scale-95;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     color: rgba(247,244,213,0.70);
@@ -305,7 +305,7 @@
   }
 
   .btn-danger {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold transition-all duration-200 active:scale-95;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold transition-transform duration-200 ease-out hover:scale-105 active:scale-95;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     background: rgba(211,150,140,0.12);
@@ -428,12 +428,16 @@
     border-radius: 2px;
   }
 
-  .animate-fade-in { animation: none; }
+  .animate-fade-in { animation: fadeOnly 0.15s ease-out; }
   .animate-slide-up { animation: none; }
   .animate-slide-down { animation: none; }
   .animate-scale-in { animation: none; }
   .animate-float { animation: none; }
   .animate-pulse-gentle { animation: none; }
+  .animate-shimmer { animation: shimmer 0.8s infinite; }
+
+  .page-exit { animation: fadeOut 0.15s ease-out forwards; }
+  .page-enter { animation: fadeOnly 0.15s ease-out; }
 
   .gradient-text {
     color: #F7F4D5;
@@ -500,6 +504,29 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }
 

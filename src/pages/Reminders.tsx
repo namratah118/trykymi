@@ -3,6 +3,7 @@ import { Plus, Edit2, Trash2, Bell, CheckCircle2, Calendar } from 'lucide-react'
 import AppLayout from '../components/layout/AppLayout';
 import Modal from '../components/ui/Modal';
 import EmptyState from '../components/ui/EmptyState';
+import { ReminderIllustration } from '../components/ui/Illustrations';
 import { PageLoader } from '../components/ui/LoadingSpinner';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -114,14 +115,14 @@ export default function Reminders() {
 
   return (
     <AppLayout title="Reminders">
-      <div className="space-y-5">
-        <div className="flex items-center justify-between flex-wrap gap-3">
-          <div className="flex items-center gap-1 rounded-xl p-1" style={{ background: 'rgba(131,153,88,0.12)' }}>
+      <div className="space-y-4 sm:space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="flex items-center gap-1 rounded-xl p-1 overflow-x-auto" style={{ background: 'rgba(131,153,88,0.12)' }}>
             {(['upcoming', 'all', 'completed'] as const).map(f => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className="px-3 py-1.5 rounded-lg text-sm font-body font-medium transition-all"
+                className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-body font-medium transition-all whitespace-nowrap"
                 style={filter === f
                   ? { background: 'rgba(211,150,140,0.20)', color: '#D3968C' }
                   : { color: 'rgba(247,244,213,0.60)' }
@@ -131,7 +132,7 @@ export default function Reminders() {
               </button>
             ))}
           </div>
-          <button onClick={openAdd} className="btn-primary">
+          <button onClick={openAdd} className="btn-primary w-full sm:w-auto">
             <Plus className="w-4 h-4" />
             Add Reminder
           </button>
@@ -141,7 +142,7 @@ export default function Reminders() {
           <PageLoader />
         ) : filtered.length === 0 ? (
           <EmptyState
-            icon={<Bell className="w-7 h-7" />}
+            illustration={<ReminderIllustration className="w-20 h-20" opacity={0.5} />}
             title="No reminders"
             description="Stay on top of important dates and tasks by adding reminders."
             action={
@@ -177,7 +178,7 @@ export default function Reminders() {
 
                 <div className="flex-1 min-w-0">
                   <p
-                    className="text-sm font-body font-semibold"
+                    className="text-xs sm:text-sm lg:text-base font-body font-semibold"
                     style={reminder.completed
                       ? { textDecoration: 'line-through', color: 'rgba(247,244,213,0.40)' }
                       : { color: '#F7F4D5' }

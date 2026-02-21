@@ -3,6 +3,7 @@ import { Plus, Edit2, Trash2, CheckCircle2, Circle, Sparkles, Clock } from 'luci
 import AppLayout from '../components/layout/AppLayout';
 import Modal from '../components/ui/Modal';
 import EmptyState from '../components/ui/EmptyState';
+import { PlanIllustration } from '../components/ui/Illustrations';
 import PriorityBadge from '../components/ui/PriorityBadge';
 import { PageLoader } from '../components/ui/LoadingSpinner';
 import { supabase } from '../lib/supabase';
@@ -153,8 +154,8 @@ export default function TodaysPlan() {
 
   return (
     <AppLayout title="Today's Plan" subtitle={todayFormatted}>
-      <div className="space-y-5">
-        <div className="flex items-center justify-between">
+      <div className="space-y-4 sm:space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
             {plans.length > 0 && (
               <p className="text-sm font-body" style={{ color: 'rgba(247,244,213,0.65)' }}>
@@ -162,11 +163,11 @@ export default function TodaysPlan() {
               </p>
             )}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <button
               onClick={generateAIPlan}
               disabled={aiLoading}
-              className="btn-secondary"
+              className="btn-secondary flex-1 sm:flex-none"
             >
               {aiLoading ? (
                 <span
@@ -182,11 +183,13 @@ export default function TodaysPlan() {
               ) : (
                 <Sparkles className="w-4 h-4" style={{ color: '#D3968C' }} />
               )}
-              {aiLoading ? 'Generating...' : 'AI Plan'}
+              <span className="hidden sm:inline">{aiLoading ? 'Generating...' : 'AI Plan'}</span>
+              <span className="sm:hidden">{aiLoading ? '...' : 'AI'}</span>
             </button>
-            <button onClick={openAdd} className="btn-primary">
+            <button onClick={openAdd} className="btn-primary flex-1 sm:flex-none">
               <Plus className="w-4 h-4" />
-              Add Plan
+              <span className="hidden sm:inline">Add Plan</span>
+              <span className="sm:hidden">Add</span>
             </button>
           </div>
         </div>
@@ -195,7 +198,7 @@ export default function TodaysPlan() {
           <PageLoader />
         ) : plans.length === 0 ? (
           <EmptyState
-            icon={<Plus className="w-7 h-7" />}
+            illustration={<PlanIllustration className="w-20 h-20" opacity={0.5} />}
             title="No plans yet"
             description="Add your first plan for today or let AI generate one for you."
             action={
@@ -230,7 +233,7 @@ export default function TodaysPlan() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <p
-                      className="text-sm font-body font-semibold"
+                      className="text-xs sm:text-sm lg:text-base font-body font-semibold"
                       style={plan.completed
                         ? { textDecoration: 'line-through', color: 'rgba(247,244,213,0.40)' }
                         : { color: '#F7F4D5' }

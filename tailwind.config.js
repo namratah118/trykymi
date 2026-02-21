@@ -128,6 +128,10 @@ export default {
         'hero-gradient': 'none',
         'card-gradient': 'none',
       },
+      scale: {
+        '95': '0.95',
+        '105': '1.05',
+      },
     },
   },
   plugins: [],
