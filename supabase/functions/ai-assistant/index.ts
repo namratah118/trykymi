@@ -1,5 +1,4 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import OpenAI from "npm:openai@4";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -37,49 +36,58 @@ Important rules:
 
 Respond like a calm, wise friend who sees you clearly and wants the best for you.`;
 
+async function callGrokAPI(messages: Array<{ role: string; content: string }>) {
+  const grokApiKey = Deno.env.get("VITE_GROK_API_KEY");
+
+  if (!grokApiKey) {
+    throw new Error("VITE_GROK_API_KEY is not set");
+  }
+
+  const response = await fetch("https://api.x.ai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${grokApiKey}`,
+    },
+    body: JSON.stringify({
+      model: "grok-beta",
+      messages,
+      temperature: 0.8,
+      max_tokens: 1500,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.text();
+    throw new Error(`Grok API error: ${response.status} - ${errorData}`);
+  }
+
+  const data = await response.json();
+  return data.choices[0]?.message?.content || "";
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   try {
-    const openaiApiKey = Deno.env.get("OPENAI_API_KEY");
-
-    if (!openaiApiKey) {
-      console.error("OPENAI_API_KEY is not set");
-      return new Response(
-        JSON.stringify({ error: "OpenAI API key not configured. Please add OPENAI_API_KEY to your edge function secrets." }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    const openai = new OpenAI({ apiKey: openaiApiKey });
-
     const body = await req.json();
     const { action, message, history } = body;
 
     console.log("Received action:", action, "message:", message?.slice(0, 80));
 
     if (action === "chat") {
-      const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+      const messages = [
         { role: "system", content: SYSTEM_PROMPT },
-        ...((history || []).slice(-10) as { role: string; content: string }[]).map(
-          (m) => ({ role: m.role as "user" | "assistant", content: m.content })
-        ),
+        ...((history || []).slice(-10) as { role: string; content: string }[]),
       ];
 
       if (!messages.some((m) => m.role === "user" && m.content === message)) {
         messages.push({ role: "user", content: message });
       }
 
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages,
-        temperature: 0.8,
-        max_tokens: 800,
-      });
-
-      const responseMessage = completion.choices[0]?.message?.content || "I couldn't generate a response. Please try again.";
+      const responseMessage = await callGrokAPI(messages);
       console.log("Chat response generated, length:", responseMessage.length);
 
       return new Response(
@@ -89,20 +97,15 @@ Deno.serve(async (req: Request) => {
     }
 
     if (action === "generate_plan") {
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          {
-            role: "user",
-            content: `${message} Return ONLY a valid JSON array (no markdown, no explanation) with objects having these exact fields: title (string), description (string), start_time (HH:MM 24h format), end_time (HH:MM 24h format), priority (exactly "low", "medium", or "high").`,
-          },
-        ],
-        temperature: 0.7,
-        max_tokens: 1500,
-      });
+      const messages = [
+        { role: "system", content: SYSTEM_PROMPT },
+        {
+          role: "user",
+          content: `${message} Return ONLY a valid JSON array (no markdown, no explanation) with objects having these exact fields: title (string), description (string), start_time (HH:MM 24h format), end_time (HH:MM 24h format), priority (exactly "low", "medium", or "high").`,
+        },
+      ];
 
-      const content = completion.choices[0]?.message?.content || "[]";
+      const content = await callGrokAPI(messages);
       let plan = [];
       try {
         const cleaned = content.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
@@ -118,12 +121,10 @@ Deno.serve(async (req: Request) => {
     }
 
     if (action === "debrief") {
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content: `You are Kymi, an AI that analyzes daily debrief text and extracts time intelligence data.
+      const messages = [
+        {
+          role: "system",
+          content: `You are Kymi, an AI that analyzes daily debrief text and extracts time intelligence data.
 Extract activities from the user's day and classify them as "won" (productive, healthy, intentional) or "lost" (unproductive, distracting, wasteful).
 Return ONLY valid JSON (no markdown) in this exact format:
 {
@@ -133,14 +134,11 @@ Return ONLY valid JSON (no markdown) in this exact format:
   ]
 }
 Be generous in estimation if exact times aren't given. Convert hours to minutes.`,
-          },
-          { role: "user", content: message },
-        ],
-        temperature: 0.5,
-        max_tokens: 1200,
-      });
+        },
+        { role: "user", content: message },
+      ];
 
-      const content = completion.choices[0]?.message?.content || "{}";
+      const content = await callGrokAPI(messages);
       let debrief = null;
       try {
         const cleaned = content.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();

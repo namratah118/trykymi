@@ -104,9 +104,7 @@ export default function AIAssistant() {
         const errorText = data?.error || `Request failed (${response.status})`;
         console.error('AI error:', errorText);
 
-        const errorContent = errorText.includes('API key')
-          ? 'trykymi AI needs an OpenAI API key to work. Please configure the OPENAI_API_KEY secret in your Supabase edge function settings.'
-          : `Sorry, something went wrong: ${errorText}`;
+        const errorContent = 'Kimi is reconnecting. Please try again.';
 
         const errRecord = await supabase.from('chat_messages').insert({
           user_id: user!.id,
