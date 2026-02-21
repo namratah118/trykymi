@@ -1,10 +1,7 @@
-import { askKymi } from "./lib/gork";
+import { askKimi } from "../lib/grok";
 import { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, X } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { askKymi } from "../lib/grok";
-
-const reply = await askKimi(message);
 
 interface Message {
   id: string;
@@ -34,44 +31,30 @@ export function AISidePanel() {
 
   const loadChatHistory = async () => {
     if (!user) return;
-    const { data } = await supabase
-      .from('chat_messages')
-      .select('*')
-      .eq('user_id', user.id)
-      .order('created_at', { ascending: true })
-      .limit(20);
-
-    if (data && data.length > 0) {
-      const historyMessages = data.map(msg => ({
-        id: msg.id,
-        type: msg.role as 'user' | 'assistant',
-        text: msg.content
-      }));
-      setMessages(historyMessages);
-    }
   };
 
-  const handleSend = async () => {
+  const handleSendMessage = async () => {
+    if (!inputValue.trim() || isTyping) return;
 
-if (!input) return;
+    const userMessage = inputValue;
 
-const userMessage = input;
+    setMessages(prev => [
+      ...prev,
+      { id: crypto.randomUUID(), type: 'user', text: userMessage }
+    ]);
 
-setMessages(prev => [
-...prev,
-{ role: "user", content: userMessage }
-]);
+    setInputValue("");
+    setIsTyping(true);
 
-setInput("");
+    const reply = await askKimi(userMessage);
 
-const reply = await askKymi(userMessage);
+    setMessages(prev => [
+      ...prev,
+      { id: crypto.randomUUID(), type: 'assistant', text: reply }
+    ]);
 
-setMessages(prev => [
-...prev,
-{ role: "assistant", content: reply }
-]);
-
-}
+    setIsTyping(false);
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
