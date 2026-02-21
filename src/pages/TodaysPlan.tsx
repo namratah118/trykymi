@@ -213,7 +213,7 @@ export default function TodaysPlan() {
             {plans.map((plan) => (
               <div
                 key={plan.id}
-                className="group flex items-start gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02]"
+                className="group flex items-start gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300"
                 style={plan.completed
                   ? { background: 'rgba(131,153,88,0.08)', border: '1px solid rgba(247,244,213,0.08)' }
                   : { background: 'rgba(131,153,88,0.12)', border: '1px solid rgba(247,244,213,0.10)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }

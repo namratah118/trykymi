@@ -252,7 +252,7 @@
 
 @layer components {
   .btn-primary {
-    @apply w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 transition-all duration-200 ease-out hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-lg;
+    @apply w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 transition-all duration-200 ease-out hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -261,14 +261,13 @@
     border-radius: 8px;
     border: none;
     min-height: 44px;
-    box-shadow: 0 2px 8px rgba(211,150,140,0.15);
   }
   .btn-primary:hover:not(:disabled) {
     background: #c9886e;
   }
 
   .btn-sage {
-    @apply w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 transition-all duration-200 ease-out hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-lg;
+    @apply w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 transition-all duration-200 ease-out hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -277,7 +276,6 @@
     border-radius: 8px;
     border: none;
     min-height: 44px;
-    box-shadow: 0 2px 8px rgba(211,150,140,0.15);
   }
   .btn-sage:hover:not(:disabled) {
     background: #c5867a;
@@ -291,7 +289,7 @@
   }
 
   .btn-secondary {
-    @apply w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 transition-all duration-200 ease-out hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-lg;
+    @apply w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 transition-all duration-200 ease-out hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -300,7 +298,6 @@
     color: #F7F4D5;
     border-radius: 8px;
     min-height: 44px;
-    box-shadow: 0 2px 4px rgba(131,153,88,0.08);
   }
   .btn-secondary:hover:not(:disabled) {
     background: rgba(131,153,88,0.08);
@@ -308,13 +305,12 @@
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-3 py-2 font-medium transition-all duration-200 ease-out hover:scale-105 active:scale-95 hover:shadow-lg;
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 font-medium transition-all duration-200 ease-out hover:scale-105 active:scale-95;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     color: rgba(247,244,213,0.70);
     border-radius: 8px;
     min-height: 40px;
-    box-shadow: 0 2px 4px rgba(247,244,213,0.04);
   }
   .btn-ghost:hover {
     background: rgba(247,244,213,0.08);
@@ -322,7 +318,7 @@
   }
 
   .btn-danger {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold transition-all duration-200 ease-out hover:scale-105 active:scale-95 hover:shadow-lg;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold transition-all duration-200 ease-out hover:scale-105 active:scale-95;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     background: rgba(211,150,140,0.12);
@@ -330,7 +326,6 @@
     border: 1px solid rgba(211,150,140,0.20);
     border-radius: 8px;
     min-height: 40px;
-    box-shadow: 0 2px 4px rgba(211,150,140,0.08);
   }
   .btn-danger:hover {
     background: rgba(211,150,140,0.18);
@@ -361,7 +356,7 @@
   }
 
   .card {
-    @apply rounded-2xl sm:rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02];
+    @apply rounded-2xl sm:rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300;
     background: rgba(247,244,213,0.05);
     border: 1px solid rgba(247,244,213,0.10);
   }
@@ -370,13 +365,13 @@
   }
 
   .card-white {
-    @apply rounded-2xl sm:rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02];
+    @apply rounded-2xl sm:rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300;
     background: rgba(247,244,213,0.05);
     border: 1px solid rgba(247,244,213,0.10);
   }
 
   .card-flat {
-    @apply rounded-2xl sm:rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02];
+    @apply rounded-2xl sm:rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300;
     background: rgba(247,244,213,0.05);
     border: 1px solid rgba(247,244,213,0.10);
   }

@@ -150,7 +150,7 @@ export default function Habits() {
               return (
                 <div
                   key={habit.id}
-                  className="group relative border rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] cursor-pointer overflow-hidden p-4 sm:p-6 w-full"
+                  className="group relative border rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden p-4 sm:p-6 w-full"
                   style={isDone
                     ? { backgroundColor: 'rgba(247,244,213,0.07)', borderColor: 'rgba(247,244,213,0.12)' }
                     : { backgroundColor: 'rgba(247,244,213,0.04)', borderColor: 'rgba(247,244,213,0.08)' }

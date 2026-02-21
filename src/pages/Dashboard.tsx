@@ -169,7 +169,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
       <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          <div className="lg:col-span-2 p-4 sm:p-6 lg:p-8 relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] w-full" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
+          <div className="lg:col-span-2 p-4 sm:p-6 lg:p-8 relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 w-full" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
             <div className="relative z-10">
               <p className="text-xs sm:text-sm lg:text-base font-body font-medium mb-2 sm:mb-3 lg:mb-4" style={{ color: 'rgba(247,244,213,0.45)' }}>{getGreeting()} · {todayFormatted}</p>
               <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold mb-3 sm:mb-4 lg:mb-5" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{firstName}</h2>
@@ -194,21 +194,13 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <Link to="/assistant" className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm lg:text-base font-body font-semibold transition-all duration-200 ease-out hover:scale-105 active:scale-95 hover:shadow-lg" style={{ background: '#D3968C', color: '#0A3323', boxShadow: '0 2px 8px rgba(211,150,140,0.15)' }}>
+                <Link to="/assistant" className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm lg:text-base font-body font-semibold transition-all hover:opacity-90 active:scale-95" style={{ background: '#D3968C', color: '#0A3323' }}>
                   <Sparkles className="w-3.5 h-3.5" />
                   Ask trykymi
                 </Link>
-                <Link to="/debrief" className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm lg:text-base font-body font-semibold transition-all duration-200 ease-out hover:scale-105 active:scale-95 hover:shadow-lg" style={{ background: 'transparent', color: '#F7F4D5', border: '1px solid #839958', boxShadow: '0 2px 4px rgba(131,153,88,0.08)' }}
-                  onMouseEnter={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.background = 'rgba(131,153,88,0.08)';
-                    el.style.boxShadow = '0 8px 16px rgba(131,153,88,0.12)';
-                  }}
-                  onMouseLeave={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.background = 'transparent';
-                    el.style.boxShadow = '0 2px 4px rgba(131,153,88,0.08)';
-                  }}
+                <Link to="/debrief" className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm lg:text-base font-body font-semibold transition-all active:scale-95" style={{ background: 'transparent', color: '#F7F4D5', border: '1px solid #839958' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(131,153,88,0.08)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}
                 >
                   <Moon className="w-3.5 h-3.5" />
                   Daily debrief
@@ -217,7 +209,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
             </div>
           </div>
 
-          <div className="rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center text-center p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-8 shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] w-full" style={GLASS}>
+          <div className="rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center text-center p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-8 shadow-md hover:shadow-xl transition-all duration-300 w-full" style={GLASS}>
             <p className="text-xs font-body font-semibold uppercase tracking-widest" style={{ color: 'rgba(247,244,213,0.45)' }}>Today's score</p>
             <div className="relative w-32 h-32">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">

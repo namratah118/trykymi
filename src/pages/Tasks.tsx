@@ -157,7 +157,7 @@ export default function Tasks() {
             {filtered.map((task) => (
               <div
                 key={task.id}
-                className="group flex items-start gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] w-full"
+                className="group flex items-start gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 w-full"
                 style={task.completed
                   ? { background: 'rgba(247,244,213,0.03)', border: '1px solid rgba(247,244,213,0.08)' }
                   : { background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }
