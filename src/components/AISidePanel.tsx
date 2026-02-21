@@ -1,4 +1,4 @@
-import { askKimi } from "../../lib/grok";
+import { askKymi } from "../../lib/grok";
 import { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, X } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
@@ -49,68 +49,27 @@ export function AISidePanel() {
     }
   };
 
-  const handleSendMessage = async () => {
-    if (!inputValue.trim() || !user) return;
+  const handleSend = async () => {
 
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      type: 'user',
-      text: inputValue,
-    };
+if (!input) return;
 
-    setMessages(prev => [...prev, userMessage]);
-    setInputValue('');
-    setIsTyping(true);
+const userMessage = input;
 
-    await supabase.from('chat_messages').insert({
-      user_id: user.id,
-      role: 'user',
-      content: inputValue
-    });
+setMessages(prev => [
+...prev,
+{ role: "user", content: userMessage }
+]);
 
-    try {
-      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-assistant`;
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'chat',
-          message: inputValue,
-          history: messages
-        })
-      });
+setInput("");
 
-      const data = await response.json();
-      const aiText = data.message || 'I couldn\'t process that. Please try again.';
+const reply = await askKimi(userMessage);
 
-      const aiMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        type: 'assistant',
-        text: aiText,
-      };
+setMessages(prev => [
+...prev,
+{ role: "assistant", content: reply }
+]);
 
-      setMessages(prev => [...prev, aiMessage]);
-
-      await supabase.from('chat_messages').insert({
-        user_id: user.id,
-        role: 'assistant',
-        content: aiText
-      });
-    } catch (error) {
-      console.error('Error calling AI:', error);
-      const errorMessage: Message = {
-        id: (Date.now() + 2).toString(),
-        type: 'assistant',
-        text: 'Sorry, I encountered an error. Please try again later.',
-      };
-      setMessages(prev => [...prev, errorMessage]);
-    }
-
-    setIsTyping(false);
-  };
+}
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
