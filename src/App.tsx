@@ -7,6 +7,8 @@ import { FloatingParticles } from './components/FloatingParticles';
 import { AISidePanel } from './components/AISidePanel';
 import { AmbientLight } from './components/AmbientLight';
 import { WelcomeAnimation } from './components/WelcomeAnimation';
+import ReminderAlert from './components/ReminderAlert';
+import { useReminders } from './hooks/useReminders';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Homepage from './pages/Homepage';
@@ -55,6 +57,9 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 }
 
 function AppRoutes() {
+  const { user } = useAuth();
+  useReminders(user?.id);
+
   return (
     <PageTransition>
       <Routes>
@@ -90,6 +95,7 @@ export default function App() {
         <AIAssistantBubble />
         <AISidePanel />
         <WelcomeAnimation />
+        <ReminderAlert />
       </AuthProvider>
     </BrowserRouter>
   );
