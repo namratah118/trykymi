@@ -165,16 +165,12 @@ export default function Reminders() {
                   : { background: 'rgba(131,153,88,0.12)', border: '1px solid rgba(247,244,213,0.10)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: '14px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }
                 }
               >
-                <button
-                  onClick={() => toggleComplete(reminder)}
-                  className="mt-0.5 flex-shrink-0 transition-colors"
-                  style={{ color: reminder.completed ? '#839958' : isOverdue(reminder) ? '#D3968C' : 'rgba(247,244,213,0.40)' }}
-                >
+                <div className="mt-0.5 flex-shrink-0 transition-colors" style={{ color: reminder.completed ? '#839958' : isOverdue(reminder) ? '#D3968C' : 'rgba(247,244,213,0.40)' }}>
                   {reminder.completed
                     ? <CheckCircle2 className="w-5 h-5" />
                     : <Bell className="w-5 h-5" />
                   }
-                </button>
+                </div>
 
                 <div className="flex-1 min-w-0">
                   <p
@@ -203,6 +199,11 @@ export default function Reminders() {
                 </div>
 
                 <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {!reminder.completed && (
+                    <button onClick={() => toggleComplete(reminder)} className="btn-ghost p-2" style={{ color: '#839958' }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = '0.8'} onMouseLeave={e => (e.currentTarget as HTMLElement).style.opacity = '1'}>
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                    </button>
+                  )}
                   <button onClick={() => openEdit(reminder)} className="btn-ghost p-2">
                     <Edit2 className="w-3.5 h-3.5" />
                   </button>
