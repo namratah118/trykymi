@@ -1,4 +1,4 @@
-import { askKimi } from "../../lib/grok";
+import { askKymi } from "./lib/gork";
 import { Brain } from 'lucide-react';
 import { useConsciousMode } from '../hooks/useConsciousMode';
 

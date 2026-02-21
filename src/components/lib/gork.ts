@@ -1,4 +1,4 @@
-export async function askKimi(message: string) {
+export async function askKymi(message: string) {
 
   try {
 
@@ -24,7 +24,7 @@ export async function askKimi(message: string) {
 
             role: "system",
 
-            content: "You are Kimi, a personal AI productivity assistant. Help manage plans, habits, reminders and tasks."
+            content: "You are Kymi, a personal AI productivity assistant. Help manage plans, habits, reminders and tasks."
 
           },
 
@@ -52,7 +52,7 @@ export async function askKimi(message: string) {
 
     console.error(error);
 
-    return "Error connecting to Kimi AI";
+    return "Error connecting to Kymi AI";
 
   }
 
