@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { MessageSquare } from 'lucide-react';
 import FloatingNav from './FloatingNav';
 import PageHeader from '../ui/PageHeader';
+import { useAuth } from '../../contexts/AuthContext';
+import { useDailyBrain } from '../../hooks/useDailyBrain';
+import BrainSuggestion from '../BrainSuggestion';
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -11,10 +14,14 @@ interface AppLayoutProps {
 }
 
 export default function AppLayout({ children }: AppLayoutProps) {
+  const { user } = useAuth();
+  const { suggestion, setSuggestion } = useDailyBrain(user?.id);
+
   return (
     <div className="min-h-screen w-full overflow-x-hidden flex flex-col" style={{ background: '#0A3323' }}>
       <PageHeader />
       <FloatingNav />
+      <BrainSuggestion suggestion={suggestion} onDismiss={() => setSuggestion(null)} />
 
       <main className="pt-20 sm:pt-28 md:pt-32 pb-24 px-4 sm:px-6 lg:px-8 w-full flex-1">
         <div className="max-w-7xl mx-auto w-full">
