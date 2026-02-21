@@ -811,3 +811,191 @@ main {
 /* ================================= */
 /* END CRISP FLAT PREMIUM */
 /* ================================= */
+
+/* ================================= */
+/* ULTRA CLEAN GLOBAL OVERRIDES */
+/* ================================= */
+
+/* Remove all backdrop blur globally */
+* {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Premium smooth background */
+html, body {
+  background: linear-gradient(180deg, #0f3d2e 0%, #0b2e22 100%) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Remove borders from all containers */
+div, section, main, aside, header, footer {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Clean premium cards - no borders, subtle shadow */
+.card,
+.container,
+.panel,
+.glass,
+.box,
+.modal,
+.widget,
+[role="dialog"],
+.card-white,
+.card-flat,
+.dashboard-card {
+  border: none !important;
+  outline: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 16px !important;
+}
+
+/* Clean text rendering */
+h1, h2, h3, h4, h5, h6, p, span, label {
+  color: rgba(255, 255, 255, 0.92) !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Remove box-shadow from all divs */
+div {
+  box-shadow: none !important;
+}
+
+/* Clean button styling */
+button {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+button:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Input fields - clean, no blur */
+input, textarea, select {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Badge styling - clean */
+.badge {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Overlay - clean, no blur */
+.overlay {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Modal overlay - clean */
+.modal-overlay,
+[role="dialog"]::backdrop {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Glass effect removal */
+.glass {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: none !important;
+}
+
+/* Remove any text shadows or glows */
+.text-glow,
+.glow,
+.shadow-lg,
+.shadow-xl {
+  text-shadow: none !important;
+  filter: none !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Sidebar - clean */
+.sidebar,
+.sidebar-container {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Header - clean, no blur */
+header {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Navigation - clean */
+nav {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+}
+
+/* Forms - clean */
+form {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Section containers - clean */
+section {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Main content area - clean */
+main {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Remove filter effects */
+* {
+  filter: none !important;
+}
+
+/* Clean scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(211, 150, 140, 0.25);
+  border-radius: 3px;
+}
+
+/* Remove all gradients with blur */
+.blur-0,
+.blur-none {
+  filter: none !important;
+}
+
+/* ================================= */
+/* END ULTRA CLEAN GLOBAL OVERRIDES */
+/* ================================= */
