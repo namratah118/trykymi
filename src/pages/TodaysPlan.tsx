@@ -3,7 +3,6 @@ import { Plus, Edit2, Trash2, CheckCircle2, Circle, Sparkles, Clock } from 'luci
 import AppLayout from '../components/layout/AppLayout';
 import Modal from '../components/ui/Modal';
 import EmptyState from '../components/ui/EmptyState';
-import { PlanIllustration } from '../components/ui/Illustrations';
 import PriorityBadge from '../components/ui/PriorityBadge';
 import { PageLoader } from '../components/ui/LoadingSpinner';
 import { supabase } from '../lib/supabase';
@@ -154,8 +153,8 @@ export default function TodaysPlan() {
 
   return (
     <AppLayout title="Today's Plan" subtitle={todayFormatted}>
-      <div className="space-y-4 sm:space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div className="space-y-5">
+        <div className="flex items-center justify-between">
           <div>
             {plans.length > 0 && (
               <p className="text-sm font-body" style={{ color: 'rgba(247,244,213,0.65)' }}>
@@ -163,11 +162,11 @@ export default function TodaysPlan() {
               </p>
             )}
           </div>
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2">
             <button
               onClick={generateAIPlan}
               disabled={aiLoading}
-              className="btn-secondary flex-1 sm:flex-none"
+              className="btn-secondary"
             >
               {aiLoading ? (
                 <span
@@ -183,13 +182,11 @@ export default function TodaysPlan() {
               ) : (
                 <Sparkles className="w-4 h-4" style={{ color: '#D3968C' }} />
               )}
-              <span className="hidden sm:inline">{aiLoading ? 'Generating...' : 'AI Plan'}</span>
-              <span className="sm:hidden">{aiLoading ? '...' : 'AI'}</span>
+              {aiLoading ? 'Generating...' : 'AI Plan'}
             </button>
-            <button onClick={openAdd} className="btn-primary flex-1 sm:flex-none">
+            <button onClick={openAdd} className="btn-primary">
               <Plus className="w-4 h-4" />
-              <span className="hidden sm:inline">Add Plan</span>
-              <span className="sm:hidden">Add</span>
+              Add Plan
             </button>
           </div>
         </div>
@@ -198,7 +195,7 @@ export default function TodaysPlan() {
           <PageLoader />
         ) : plans.length === 0 ? (
           <EmptyState
-            illustration={<PlanIllustration className="w-20 h-20" opacity={0.5} />}
+            icon={<Plus className="w-7 h-7" />}
             title="No plans yet"
             description="Add your first plan for today or let AI generate one for you."
             action={

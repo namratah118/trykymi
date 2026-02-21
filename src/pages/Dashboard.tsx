@@ -7,7 +7,6 @@ import {
 import AppLayout from '../components/layout/AppLayout';
 import { PageLoader } from '../components/ui/LoadingSpinner';
 import DailyCheckin from '../components/ui/DailyCheckin';
-import { PlanIllustration, ReminderIllustration, ChecklistIllustration, HabitIllustration } from '../components/ui/Illustrations';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import type { Plan, Reminder, Task, Habit, TimeEntry } from '../types/database';
@@ -166,10 +165,10 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         <DailyCheckin onClose={() => setShowCheckin(false)} onComplete={() => setShowCheckin(false)} />
       )}
 
-      <div className="space-y-4 sm:space-y-5">
+      <div className="space-y-5">
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-2 p-5 sm:p-7 relative overflow-hidden" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
+          <div className="lg:col-span-2 p-7 relative overflow-hidden" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
             <div className="relative z-10">
               <p className="text-sm font-body font-medium mb-1" style={{ color: 'rgba(247,244,213,0.45)' }}>{getGreeting()} · {todayFormatted}</p>
               <h2 className="font-heading text-4xl font-semibold mb-4" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{firstName}</h2>
@@ -209,7 +208,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
             </div>
           </div>
 
-          <div className="rounded-3xl flex flex-col items-center justify-center text-center p-5 sm:p-7 gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
+          <div className="rounded-3xl flex flex-col items-center justify-center text-center p-7 gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
             <p className="text-xs font-body font-semibold uppercase tracking-widest" style={{ color: 'rgba(247,244,213,0.45)' }}>Today's score</p>
             <div className="relative w-32 h-32">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -242,7 +241,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
           </div>
         )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             { icon: CalendarDays, label: "Today's Plans", value: `${stats.completedPlans}/${stats.todayPlans}`, link: '/plan' },
             { icon: Target, label: 'Habits Done', value: `${stats.completedHabitsToday}/${stats.totalHabits}`, link: '/habits' },
@@ -252,38 +251,38 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
             <Link
               key={i}
               to={stat.link}
-              className="rounded-3xl p-4 sm:p-5 md:p-7 transition-all duration-200"
+              className="rounded-3xl p-7 transition-all duration-200"
               style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(247,244,213,0.08)'; el.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(247,244,213,0.05)'; el.style.transform = 'none'; }}
             >
-              <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-2xl flex items-center justify-center mb-2 sm:mb-4" style={{ background: 'rgba(211,150,140,0.18)' }}>
-                <stat.icon style={{ color: '#D3968C', width: '16px', height: '16px' }} />
+              <div className="w-10 h-10 rounded-2xl flex items-center justify-center mb-4" style={{ background: 'rgba(211,150,140,0.18)' }}>
+                <stat.icon style={{ color: '#D3968C', width: '18px', height: '18px' }} />
               </div>
-              <p className="font-heading text-2xl sm:text-3xl font-semibold text-center" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{stat.value}</p>
-              <p className="text-xs sm:text-sm font-body mt-1 sm:mt-2 text-center" style={{ color: 'rgba(247,244,213,0.60)' }}>{stat.label}</p>
+              <p className="font-heading text-3xl font-semibold text-center" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{stat.value}</p>
+              <p className="text-sm font-body mt-2 text-center" style={{ color: 'rgba(247,244,213,0.60)' }}>{stat.label}</p>
             </Link>
           ))}
         </div>
 
         {(timeLost > 0 || timeWon > 0) && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div className="rounded-3xl p-4 sm:p-5 md:p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
-              <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
+            <div className="rounded-3xl p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
                 <TrendingDown className="w-5 h-5" style={{ color: '#D3968C' }} />
               </div>
               <div>
-                <p className="text-xs sm:text-sm font-body mb-1" style={{ color: 'rgba(247,244,213,0.60)' }}>Time lost today</p>
-                <p className="font-heading text-xl sm:text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{Math.floor(timeLost / 60)}h {timeLost % 60}m</p>
+                <p className="text-sm font-body mb-1" style={{ color: 'rgba(247,244,213,0.60)' }}>Time lost today</p>
+                <p className="font-heading text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{Math.floor(timeLost / 60)}h {timeLost % 60}m</p>
               </div>
             </div>
-            <div className="rounded-3xl p-4 sm:p-5 md:p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
-              <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
+            <div className="rounded-3xl p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
                 <TrendingUp className="w-5 h-5" style={{ color: '#D3968C' }} />
               </div>
               <div>
-                <p className="text-xs sm:text-sm font-body mb-1" style={{ color: 'rgba(247,244,213,0.60)' }}>Time won today</p>
-                <p className="font-heading text-xl sm:text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{Math.floor(timeWon / 60)}h {timeWon % 60}m</p>
+                <p className="text-sm font-body mb-1" style={{ color: 'rgba(247,244,213,0.60)' }}>Time won today</p>
+                <p className="font-heading text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{Math.floor(timeWon / 60)}h {timeWon % 60}m</p>
               </div>
             </div>
           </div>
@@ -292,7 +291,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <GlassSectionCard title="Today's Plan" linkTo="/plan" icon={<CalendarDays className="w-4 h-4" />}>
             {plans.length === 0 ? (
-              <GlassEmptyState text="No plans yet. Start your day with intention." linkTo="/plan" linkText="Create a plan" illustration={<PlanIllustration className="w-12 h-12" opacity={0.4} />} />
+              <GlassEmptyState text="No plans yet. Start your day with intention." linkTo="/plan" linkText="Create a plan" />
             ) : (
               <div className="space-y-1.5">
                 {plans.slice(0, 5).map((plan) => (
@@ -315,7 +314,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
 
           <GlassSectionCard title="Upcoming Reminders" linkTo="/reminders" icon={<Bell className="w-4 h-4" />}>
             {reminders.length === 0 ? (
-              <GlassEmptyState text="No reminders set. Add what matters." linkTo="/reminders" linkText="Add reminder" illustration={<ReminderIllustration className="w-12 h-12" opacity={0.4} />} />
+              <GlassEmptyState text="No reminders set. Add what matters." linkTo="/reminders" linkText="Add reminder" />
             ) : (
               <div className="space-y-1.5">
                 {reminders.slice(0, 5).map((reminder) => (
@@ -336,7 +335,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
 
           <GlassSectionCard title="Habits" linkTo="/habits" icon={<Target className="w-4 h-4" />}>
             {habits.length === 0 ? (
-              <GlassEmptyState text="Your journey begins here." linkTo="/habits" linkText="Create first habit" illustration={<HabitIllustration className="w-12 h-12" opacity={0.4} />} />
+              <GlassEmptyState text="Your journey begins here." linkTo="/habits" linkText="Create first habit" />
             ) : (
               <div className="space-y-2">
                 {habits.slice(0, 4).map((habit) => {
@@ -366,7 +365,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
 
           <GlassSectionCard title="Recent Tasks" linkTo="/tasks" icon={<CheckSquare className="w-4 h-4" />}>
             {tasks.length === 0 ? (
-              <GlassEmptyState text="No tasks yet. Capture what needs doing." linkTo="/tasks" linkText="Add task" illustration={<ChecklistIllustration className="w-12 h-12" opacity={0.4} />} />
+              <GlassEmptyState text="No tasks yet. Capture what needs doing." linkTo="/tasks" linkText="Add task" />
             ) : (
               <div className="space-y-1.5">
                 {tasks.slice(0, 5).map((task) => (
@@ -399,14 +398,14 @@ function GlassSectionCard({ title, linkTo, icon, children }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-4 sm:p-5 md:p-7" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
-      <div className="flex items-center justify-between mb-4 sm:mb-5 px-1 gap-2">
+    <div className="p-7" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
+      <div className="flex items-center justify-between mb-5 px-1">
         <div className="flex items-center gap-2">
           <span style={{ color: '#D3968C' }}>{icon}</span>
           <h3 className="font-heading text-lg font-semibold" style={{ color: '#F7F4D5' }}>{title}</h3>
         </div>
-        <Link to={linkTo} className="inline-flex items-center gap-1 text-xs font-body font-semibold transition-colors hover:opacity-70 whitespace-nowrap" style={{ color: '#D3968C' }}>
-          <span className="hidden sm:inline">View all</span> <ArrowRight className="w-3 h-3" />
+        <Link to={linkTo} className="inline-flex items-center gap-1 text-xs font-body font-semibold transition-colors hover:opacity-70" style={{ color: '#D3968C' }}>
+          View all <ArrowRight className="w-3 h-3" />
         </Link>
       </div>
       {children}
@@ -414,10 +413,9 @@ function GlassSectionCard({ title, linkTo, icon, children }: {
   );
 }
 
-function GlassEmptyState({ text, linkTo, linkText, illustration }: { text: string; linkTo: string; linkText: string; illustration?: React.ReactNode }) {
+function GlassEmptyState({ text, linkTo, linkText }: { text: string; linkTo: string; linkText: string }) {
   return (
     <div className="flex flex-col items-center justify-center py-8 text-center">
-      {illustration && <div className="mb-3">{illustration}</div>}
       <p className="text-sm font-body mb-3 italic" style={{ color: 'rgba(247,244,213,0.42)' }}>{text}</p>
       <Link to={linkTo} className="text-xs font-body font-semibold transition-colors hover:opacity-70" style={{ color: '#D3968C' }}>{linkText} →</Link>
     </div>

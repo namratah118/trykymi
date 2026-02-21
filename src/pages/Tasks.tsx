@@ -5,7 +5,6 @@ import Modal from '../components/ui/Modal';
 import EmptyState from '../components/ui/EmptyState';
 import PriorityBadge from '../components/ui/PriorityBadge';
 import { PageLoader } from '../components/ui/LoadingSpinner';
-import { ChecklistIllustration } from '../components/ui/Illustrations';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import type { Task } from '../types/database';
@@ -90,14 +89,14 @@ export default function Tasks() {
 
   return (
     <AppLayout title="Tasks">
-      <div className="space-y-4 sm:space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div className="flex items-center gap-1 rounded-xl p-1 overflow-x-auto" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
+      <div className="space-y-5">
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-1 rounded-xl p-1" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
             {(['all', 'pending', 'completed'] as const).map(f => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-body font-medium transition-all whitespace-nowrap"
+                className="px-3 py-1.5 rounded-lg text-sm font-body font-medium transition-all"
                 style={filter === f
                   ? { background: '#D3968C', color: '#F7F4D5' }
                   : { color: 'rgba(247,244,213,0.60)' }
@@ -115,14 +114,14 @@ export default function Tasks() {
               </button>
             ))}
           </div>
-          <button onClick={() => { setForm(EMPTY_FORM); setModalOpen(true); }} className="btn-primary w-full sm:w-auto">
+          <button onClick={() => { setForm(EMPTY_FORM); setModalOpen(true); }} className="btn-primary">
             <Plus className="w-4 h-4" />
             Add Task
           </button>
         </div>
 
         {tasks.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-3">
             <div className="card text-center">
               <p className="font-heading text-2xl font-semibold" style={{ color: '#F7F4D5' }}>{tasks.length}</p>
               <p className="text-xs font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Total</p>
@@ -142,7 +141,7 @@ export default function Tasks() {
           <PageLoader />
         ) : filtered.length === 0 ? (
           <EmptyState
-            illustration={<ChecklistIllustration className="w-20 h-20" opacity={0.5} />}
+            icon={<CheckSquare className="w-7 h-7" />}
             title="No tasks"
             description={filter === 'completed' ? 'No completed tasks yet.' : 'Start adding tasks to stay organized.'}
             action={filter !== 'completed' ? (

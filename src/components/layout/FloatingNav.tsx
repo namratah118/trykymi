@@ -24,15 +24,16 @@ export default function FloatingNav() {
 
   return (
     <header
-      className="fixed top-2 sm:top-4 left-1/2 z-50 animate-slide-down w-full px-4 sm:px-6 lg:px-8"
-      style={{ transform: 'translateX(-50%)' }}
+      className="fixed top-4 left-1/2 z-50 animate-slide-down"
+      style={{ transform: 'translateX(-50%)', width: 'calc(100% - 2rem)', maxWidth: '1100px' }}
     >
-      <div className="flex items-center h-16 sm:h-20 gap-3 sm:gap-6 max-w-7xl mx-auto">
+      <div className="flex items-center h-20 gap-6">
         <Logo to="/dashboard" />
 
         <div
-          className="flex-1 flex items-center justify-between px-4 sm:px-6 py-0 rounded-lg h-16 sm:h-20"
+          className="flex-1 flex items-center justify-between px-6 py-0 rounded-lg"
           style={{
+            height: '64px',
             background: 'rgba(10,51,35,0.4)',
             border: '1px solid rgba(247,244,213,0.05)',
             boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
@@ -137,7 +138,7 @@ export default function FloatingNav() {
         </div>
       </div>
 
-      <nav className="md:hidden mt-2 w-full px-4 sm:px-6 lg:px-8 flex items-center gap-1 overflow-x-auto pb-1 scrollbar-thin max-w-7xl mx-auto">
+      <nav className="md:hidden mt-2 flex items-center gap-1 overflow-x-auto pb-1 scrollbar-thin">
         {NAV_ITEMS.map((item) => (
           <NavLink
             key={item.path}
