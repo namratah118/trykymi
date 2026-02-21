@@ -538,3 +538,23 @@
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#root {
+  min-height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-overflow-scrolling: touch;
+}
