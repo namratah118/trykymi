@@ -1,3 +1,4 @@
+import { askKimi } from "../../lib/grok";
 import { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, X } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
