@@ -15,15 +15,18 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
+    min-height: 100vh;
     line-height: 1.6;
     letter-spacing: 0;
     font-weight: 400;
+    overflow-x: hidden;
   }
 
   body {
     margin: 0;
     padding: 0;
     background: #0A3323;
+    min-height: 100vh;
     color: #F7F4D5;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-weight: 400;
@@ -37,8 +40,6 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 100%;
-    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -67,25 +68,24 @@
   input, textarea, select {
     background: #105666 !important;
     color: #F7F4D5 !important;
-    border: 1px solid rgba(131, 153, 88, 0.5) !important;
+    border: 1px solid #839958 !important;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     border-radius: 12px;
     padding: 10px 12px;
     font-size: 16px;
     font-weight: 500;
-    transition: all 0.2s ease-out !important;
+    transition: all 0.2s ease;
   }
 
   input::placeholder, textarea::placeholder {
-    color: rgba(131, 153, 88, 0.7) !important;
+    color: #839958 !important;
   }
 
   input:focus, textarea:focus, select:focus {
-    background: rgba(16, 86, 102, 0.95) !important;
-    border-color: rgba(211, 150, 140, 0.6) !important;
+    background: #105666 !important;
+    border-color: #D3968C !important;
     outline: none !important;
-    box-shadow: 0 4px 12px rgba(211, 150, 140, 0.1) !important;
-    transform: scale(1.01) !important;
+    box-shadow: 0 0 0 1px #D3968C !important;
   }
 
   input[type="date"], input[type="time"], input[type="datetime-local"] {
@@ -485,37 +485,9 @@
     transform: translateY(0);
   }
 }
-@keyframes slideUpFade {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes slideDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes scaleIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-@keyframes overlayIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
 @keyframes pulseGentle { 0%, 100% { opacity: 1; } 50% { opacity: 0.75; } }
 
