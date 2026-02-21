@@ -108,8 +108,8 @@ export default function Settings() {
 
   return (
     <AppLayout title="Settings">
-      <div className="max-w-2xl space-y-6 w-full">
-        <div className="card w-full">
+      <div className="max-w-2xl space-y-6">
+        <div className="card">
           <div className="flex items-center gap-4 mb-6">
             <div
               className="w-14 h-14 rounded-2xl flex items-center justify-center text-xl font-semibold font-heading"
@@ -266,7 +266,7 @@ export default function Settings() {
           </form>
         </div>
 
-        <div className="card w-full" style={{ borderColor: 'rgba(196,131,122,0.20)' }}>
+        <div className="card" style={{ borderColor: 'rgba(196,131,122,0.20)' }}>
           <h3 className="font-heading text-base font-semibold mb-3" style={{ color: '#F7F4D5' }}>Account Information</h3>
           <div className="space-y-2 text-sm font-body" style={{ color: 'rgba(247,244,213,0.65)' }}>
             <div className="flex justify-between py-2" style={{ borderBottom: '1px solid rgba(247,244,213,0.08)' }}>

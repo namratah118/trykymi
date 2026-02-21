@@ -122,16 +122,16 @@ export default function Tasks() {
         </div>
 
         {tasks.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full">
-            <div className="card text-center p-4 sm:p-6 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="card text-center">
               <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ color: '#F7F4D5' }}>{tasks.length}</p>
               <p className="text-xs sm:text-sm lg:text-base font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Total</p>
             </div>
-            <div className="card text-center p-4 sm:p-6 w-full">
+            <div className="card text-center">
               <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ color: '#D3968C' }}>{pending}</p>
               <p className="text-xs sm:text-sm lg:text-base font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Pending</p>
             </div>
-            <div className="card text-center p-4 sm:p-6 w-full">
+            <div className="card text-center">
               <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ color: '#D3968C' }}>{completed}</p>
               <p className="text-xs sm:text-sm lg:text-base font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.55)' }}>Done</p>
             </div>
@@ -153,14 +153,14 @@ export default function Tasks() {
             ) : undefined}
           />
         ) : (
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-2">
             {filtered.map((task) => (
               <div
                 key={task.id}
-                className="group flex items-start gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 w-full"
+                className="group flex items-start gap-4 p-4 transition-all duration-200"
                 style={task.completed
-                  ? { background: 'rgba(247,244,213,0.03)', border: '1px solid rgba(247,244,213,0.08)' }
-                  : { background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }
+                  ? { background: 'rgba(247,244,213,0.03)', border: '1px solid rgba(247,244,213,0.08)', borderRadius: '8px' }
+                  : { background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '8px' }
                 }
               >
                 <button

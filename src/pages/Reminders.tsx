@@ -115,8 +115,8 @@ export default function Reminders() {
 
   return (
     <AppLayout title="Reminders">
-      <div className="space-y-6 sm:space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 lg:gap-8">
+      <div className="space-y-4 sm:space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-center gap-1 rounded-xl p-1 overflow-x-auto" style={{ background: 'rgba(131,153,88,0.12)' }}>
             {(['upcoming', 'all', 'completed'] as const).map(f => (
               <button
@@ -153,16 +153,16 @@ export default function Reminders() {
             }
           />
         ) : (
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-2">
             {filtered.map((reminder) => (
               <div
                 key={reminder.id}
-                className="group flex items-start gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300"
+                className="group flex items-start gap-4 p-4 transition-all duration-200"
                 style={reminder.completed
-                  ? { background: 'rgba(131,153,88,0.08)', border: '1px solid rgba(247,244,213,0.08)' }
+                  ? { background: 'rgba(131,153,88,0.08)', border: '1px solid rgba(247,244,213,0.08)', borderRadius: '14px', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }
                   : isOverdue(reminder)
-                  ? { background: 'rgba(211,150,140,0.12)', border: '1px solid rgba(211,150,140,0.18)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }
-                  : { background: 'rgba(131,153,88,0.12)', border: '1px solid rgba(247,244,213,0.10)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }
+                  ? { background: 'rgba(211,150,140,0.12)', border: '1px solid rgba(211,150,140,0.18)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: '14px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }
+                  : { background: 'rgba(131,153,88,0.12)', border: '1px solid rgba(247,244,213,0.10)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: '14px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }
                 }
               >
                 <button

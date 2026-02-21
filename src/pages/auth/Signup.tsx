@@ -119,7 +119,7 @@ export default function Signup() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl font-body font-semibold text-base transition-all hover:scale-105 active:scale-95 mt-2 disabled:opacity-50 min-h-11"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl font-body font-semibold text-base transition-all hover:opacity-90 active:scale-95 mt-2 disabled:opacity-50"
                 style={{ background: '#D3968C', color: '#0A3323' }}
               >
                 {loading ? (

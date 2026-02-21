@@ -93,7 +93,7 @@ export default function Profile() {
     <AppLayout title="Profile">
       <div className="max-w-2xl mx-auto space-y-6">
 
-        <div className="card w-full">
+        <div className="card">
           <div className="flex items-center gap-4">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center font-heading text-xl font-semibold flex-shrink-0"
@@ -115,7 +115,7 @@ export default function Profile() {
 
         <form onSubmit={handleSubmit} className="space-y-5">
 
-          <div className="card w-full">
+          <div className="card">
             <div className="flex items-center gap-2 mb-4">
               <Target className="w-4 h-4" style={{ color: '#D3968C' }} />
               <h3 className="font-heading text-base font-semibold" style={{ color: '#F7F4D5' }}>Focus Areas</h3>
@@ -139,7 +139,7 @@ export default function Profile() {
             </div>
           </div>
 
-          <div className="card w-full">
+          <div className="card">
             <div className="flex items-center gap-2 mb-4">
               <Zap className="w-4 h-4" style={{ color: '#D3968C' }} />
               <h3 className="font-heading text-base font-semibold" style={{ color: '#F7F4D5' }}>Time Wasters</h3>
@@ -163,7 +163,7 @@ export default function Profile() {
             </div>
           </div>
 
-          <div className="card w-full">
+          <div className="card">
             <div className="flex items-center gap-2 mb-4">
               <Clock className="w-4 h-4" style={{ color: '#D3968C' }} />
               <h3 className="font-heading text-base font-semibold" style={{ color: '#F7F4D5' }}>Reminder Times</h3>
@@ -187,7 +187,7 @@ export default function Profile() {
             </div>
           </div>
 
-          <div className="card w-full">
+          <div className="card">
             <div className="flex items-center gap-2 mb-4">
               <User className="w-4 h-4" style={{ color: '#D3968C' }} />
               <h3 className="font-heading text-base font-semibold" style={{ color: '#F7F4D5' }}>Main Goal</h3>

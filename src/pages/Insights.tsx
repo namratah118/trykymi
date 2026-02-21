@@ -137,8 +137,8 @@ export default function Insights() {
     <AppLayout title="Time Analytics" subtitle="Your productivity at a glance">
       <div className="space-y-6">
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-          <div className="card w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="card">
             <div
               className="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
               style={{ background: 'rgba(211,150,140,0.15)', color: '#D3968C' }}
@@ -149,7 +149,7 @@ export default function Insights() {
             <p className="text-xs font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.65)' }}>Tasks Done</p>
             <p className="text-xs font-body" style={{ color: 'rgba(247,244,213,0.45)' }}>of {taskStats.total} total</p>
           </div>
-          <div className="card w-full">
+          <div className="card">
             <div
               className="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
               style={{ background: 'rgba(211,150,140,0.15)', color: '#D3968C' }}
@@ -160,7 +160,7 @@ export default function Insights() {
             <p className="text-xs font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.65)' }}>Active Habits</p>
             <p className="text-xs font-body" style={{ color: 'rgba(247,244,213,0.45)' }}>avg {habitStats.avgStreak}d streak</p>
           </div>
-          <div className="card w-full">
+          <div className="card">
             <div
               className="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
               style={{ background: 'rgba(211,150,140,0.15)', color: '#D3968C' }}
@@ -171,7 +171,7 @@ export default function Insights() {
             <p className="text-xs font-body mt-0.5" style={{ color: 'rgba(247,244,213,0.65)' }}>Time Lost (7d)</p>
             <p className="text-xs font-body" style={{ color: 'rgba(247,244,213,0.45)' }}>unproductive hours</p>
           </div>
-          <div className="card w-full">
+          <div className="card">
             <div
               className="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
               style={{ background: '#D3968C', color: '#F7F4D5' }}
@@ -212,8 +212,8 @@ export default function Insights() {
           </ResponsiveContainer>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
-          <div className="card w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div className="card">
             <h3 className="font-heading text-base font-semibold mb-5" style={{ color: '#F7F4D5' }}>Habits Completed (Last 7 Days)</h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={weekData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
@@ -225,7 +225,7 @@ export default function Insights() {
             </ResponsiveContainer>
           </div>
 
-          <div className="card w-full">
+          <div className="card">
             <h3 className="font-heading text-base font-semibold mb-5" style={{ color: '#F7F4D5' }}>Plans Completed (Last 7 Days)</h3>
             <ResponsiveContainer width="100%" height={200}>
               <LineChart data={weekData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
@@ -246,7 +246,7 @@ export default function Insights() {
           </div>
 
           {taskPieData.length > 0 && (
-            <div className="card w-full">
+            <div className="card">
               <h3 className="font-heading text-base font-semibold mb-5" style={{ color: '#F7F4D5' }}>Task Completion Rate</h3>
               <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
@@ -271,7 +271,7 @@ export default function Insights() {
           )}
 
           {habitData.length > 0 && (
-            <div className="card w-full">
+            <div className="card">
               <h3 className="font-heading text-base font-semibold mb-5" style={{ color: '#F7F4D5' }}>Habit Streaks</h3>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart

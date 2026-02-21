@@ -11,11 +11,11 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children }: AppLayoutProps) {
   return (
-    <div className="min-h-screen w-full flex flex-col overflow-x-hidden" style={{ background: '#0A3323' }}>
+    <div className="min-h-screen w-full overflow-x-hidden" style={{ background: '#0A3323' }}>
       <FloatingNav />
 
-      <main className="flex-1 pt-20 sm:pt-28 md:pt-32 pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <main className="pt-20 sm:pt-28 md:pt-32 pb-24 px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-7xl mx-auto w-full">
           {children}
         </div>
       </main>

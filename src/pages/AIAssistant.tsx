@@ -150,7 +150,7 @@ export default function AIAssistant() {
   return (
     <AppLayout title="AI Assistant" subtitle="Powered by GPT-4o mini">
       <div className="flex flex-col h-[calc(100vh-8rem)] lg:h-[calc(100vh-5rem)]">
-        <div className="flex items-center justify-between mb-4 sm:mb-6 lg:mb-8 flex-shrink-0">
+        <div className="flex items-center justify-between mb-4 flex-shrink-0">
           <div className="flex items-center gap-2">
             <div
               className="w-8 h-8 rounded-xl flex items-center justify-center"
@@ -172,7 +172,7 @@ export default function AIAssistant() {
         </div>
 
         <div
-          className="flex-1 overflow-y-auto scrollbar-thin p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6"
+          className="flex-1 overflow-y-auto scrollbar-thin p-4 space-y-4"
           style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}
         >
           {loading ? (

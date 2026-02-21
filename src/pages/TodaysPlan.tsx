@@ -154,8 +154,8 @@ export default function TodaysPlan() {
 
   return (
     <AppLayout title="Today's Plan" subtitle={todayFormatted}>
-      <div className="space-y-6 sm:space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 lg:gap-8">
+      <div className="space-y-4 sm:space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
             {plans.length > 0 && (
               <p className="text-sm font-body" style={{ color: 'rgba(247,244,213,0.65)' }}>
@@ -209,14 +209,14 @@ export default function TodaysPlan() {
             }
           />
         ) : (
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-2">
             {plans.map((plan) => (
               <div
                 key={plan.id}
-                className="group flex items-start gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300"
+                className="group flex items-start gap-4 p-4 transition-all duration-200"
                 style={plan.completed
-                  ? { background: 'rgba(131,153,88,0.08)', border: '1px solid rgba(247,244,213,0.08)' }
-                  : { background: 'rgba(131,153,88,0.12)', border: '1px solid rgba(247,244,213,0.10)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }
+                  ? { background: 'rgba(131,153,88,0.08)', border: '1px solid rgba(247,244,213,0.08)', borderRadius: '14px', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }
+                  : { background: 'rgba(131,153,88,0.12)', border: '1px solid rgba(247,244,213,0.10)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderRadius: '14px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }
                 }
               >
                 <button

@@ -166,10 +166,10 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         <DailyCheckin onClose={() => setShowCheckin(false)} onComplete={() => setShowCheckin(false)} />
       )}
 
-      <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
+      <div className="space-y-4 sm:space-y-5">
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          <div className="lg:col-span-2 p-4 sm:p-6 lg:p-8 relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 w-full" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 p-5 sm:p-7 relative overflow-hidden" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
             <div className="relative z-10">
               <p className="text-xs sm:text-sm lg:text-base font-body font-medium mb-2 sm:mb-3 lg:mb-4" style={{ color: 'rgba(247,244,213,0.45)' }}>{getGreeting()} · {todayFormatted}</p>
               <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold mb-3 sm:mb-4 lg:mb-5" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{firstName}</h2>
@@ -209,7 +209,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
             </div>
           </div>
 
-          <div className="rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center text-center p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-8 shadow-md hover:shadow-xl transition-all duration-300 w-full" style={GLASS}>
+          <div className="rounded-3xl flex flex-col items-center justify-center text-center p-5 sm:p-7 gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
             <p className="text-xs font-body font-semibold uppercase tracking-widest" style={{ color: 'rgba(247,244,213,0.45)' }}>Today's score</p>
             <div className="relative w-32 h-32">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -228,7 +228,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         </div>
 
         {!motivationDismissed && timeWon > 0 && (
-          <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300" style={{ background: 'rgba(211,150,140,0.15)', border: '1px solid rgba(211,150,140,0.25)' }}>
+          <div className="flex items-center gap-4 px-5 py-4 rounded-2xl" style={{ background: 'rgba(211,150,140,0.15)', border: '1px solid rgba(211,150,140,0.25)' }}>
             <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.25)' }}>
               <Zap className="w-4 h-4" style={{ color: '#D3968C' }} />
             </div>
@@ -242,7 +242,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
           </div>
         )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             { icon: CalendarDays, label: "Today's Plans", value: `${stats.completedPlans}/${stats.todayPlans}`, link: '/plan' },
             { icon: Target, label: 'Habits Done', value: `${stats.completedHabitsToday}/${stats.totalHabits}`, link: '/habits' },
@@ -252,8 +252,8 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
             <Link
               key={i}
               to={stat.link}
-              className="rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-7 shadow-md hover:shadow-xl transition-all duration-300 w-full"
-              style={GLASS}
+              className="rounded-3xl p-4 sm:p-5 md:p-7 transition-all duration-200"
+              style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(247,244,213,0.08)'; el.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(247,244,213,0.05)'; el.style.transform = 'none'; }}
             >
@@ -267,8 +267,8 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         </div>
 
         {(timeLost > 0 || timeWon > 0) && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-            <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 flex items-center gap-4 sm:gap-6 shadow-md hover:shadow-xl transition-all duration-300 w-full" style={GLASS}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="rounded-3xl p-4 sm:p-5 md:p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
               <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
                 <TrendingDown className="w-5 h-5" style={{ color: '#D3968C' }} />
               </div>
@@ -277,7 +277,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
                 <p className="font-heading text-lg sm:text-xl lg:text-2xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{Math.floor(timeLost / 60)}h {timeLost % 60}m</p>
               </div>
             </div>
-            <div className="rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 flex items-center gap-4 sm:gap-6 shadow-md hover:shadow-xl transition-all duration-300 w-full" style={GLASS}>
+            <div className="rounded-3xl p-4 sm:p-5 md:p-7 flex items-center gap-4" style={{ ...GLASS, boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}>
               <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,150,140,0.15)' }}>
                 <TrendingUp className="w-5 h-5" style={{ color: '#D3968C' }} />
               </div>
@@ -289,7 +289,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <GlassSectionCard title="Today&apos;s Plan" linkTo="/plan" icon={<CalendarDays className="w-4 h-4" />}>
             {plans.length === 0 ? (
               <GlassEmptyState text="No plans yet. Start your day with intention." linkTo="/plan" linkText="Create a plan" illustration={<PlanIllustration className="w-12 h-12" opacity={0.4} />} />
@@ -399,8 +399,8 @@ function GlassSectionCard({ title, linkTo, icon, children }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 w-full" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)' }}>
-      <div className="flex items-center justify-between mb-4 sm:mb-6 lg:mb-8 px-1 gap-2 sm:gap-4">
+    <div className="p-4 sm:p-5 md:p-7" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>
+      <div className="flex items-center justify-between mb-4 sm:mb-5 px-1 gap-2">
         <div className="flex items-center gap-2">
           <span style={{ color: '#D3968C' }}>{icon}</span>
           <h3 className="font-heading text-base sm:text-lg lg:text-xl font-semibold" style={{ color: '#F7F4D5' }}>{title}</h3>

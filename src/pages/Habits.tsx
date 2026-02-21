@@ -93,8 +93,8 @@ export default function Habits() {
 
   return (
     <AppLayout title="Habits">
-      <div className="space-y-6 sm:space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 lg:gap-8">
+      <div className="space-y-4 sm:space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           {habits.length > 0 && (
             <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted">
               <span className="font-semibold text-text-primary">{completedToday}</span> of <span className="font-semibold text-text-primary">{habits.length}</span> habits done today
@@ -109,20 +109,20 @@ export default function Habits() {
         </div>
 
         {habits.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full">
-            <div className="card text-center p-4 sm:p-6 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="card text-center py-4">
               <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold text-text-primary" style={{ letterSpacing: '-0.03em' }}>{habits.length}</p>
               <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted mt-0.5">Total habits</p>
             </div>
-            <div className="card text-center p-4 sm:p-6 w-full">
+            <div className="card text-center py-4">
               <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold text-text-primary" style={{ letterSpacing: '-0.03em', color: '#D3968C' }}>{completedToday}</p>
               <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted mt-0.5">Done today</p>
             </div>
-            <div className="card text-center p-4 sm:p-6 w-full">
+            <div className="card text-center py-4">
               <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#D3968C' }}>{bestStreak}</p>
               <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted mt-0.5">Best streak</p>
             </div>
-            <div className="card text-center p-4 sm:p-6 w-full">
+            <div className="card text-center py-4">
               <p className="font-heading text-lg sm:text-2xl lg:text-3xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#D3968C' }}>{completionRate}%</p>
               <p className="text-xs sm:text-sm lg:text-base font-body text-text-muted mt-0.5">Today's rate</p>
             </div>
@@ -144,16 +144,16 @@ export default function Habits() {
             }
           />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {habits.map((habit) => {
               const isDone = completions.has(habit.id);
               return (
                 <div
                   key={habit.id}
-                  className="group relative border rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden p-4 sm:p-6 w-full"
+                  className="group relative border transition-all duration-200 cursor-pointer overflow-hidden"
                   style={isDone
-                    ? { backgroundColor: 'rgba(247,244,213,0.07)', borderColor: 'rgba(247,244,213,0.12)' }
-                    : { backgroundColor: 'rgba(247,244,213,0.04)', borderColor: 'rgba(247,244,213,0.08)' }
+                    ? { backgroundColor: 'rgba(247,244,213,0.07)', borderColor: 'rgba(247,244,213,0.12)', padding: '20px', borderRadius: '14px' }
+                    : { backgroundColor: 'rgba(247,244,213,0.04)', borderColor: 'rgba(247,244,213,0.08)', padding: '20px', borderRadius: '14px' }
                   }
                   onClick={() => toggleHabit(habit)}
                   onMouseEnter={e => { if (!isDone) (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(247,244,213,0.07)'; }}

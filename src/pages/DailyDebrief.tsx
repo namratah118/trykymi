@@ -113,7 +113,7 @@ export default function DailyDebrief() {
     <AppLayout title="Daily Debrief" subtitle={todayFormatted}>
       <div className="max-w-2xl mx-auto space-y-5">
 
-        <div className="card relative overflow-hidden w-full">
+        <div className="card relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl" style={{ background: 'rgba(211,150,140,0.10)' }} />
           <div className="flex items-start gap-4 relative">
             <div
@@ -132,7 +132,7 @@ export default function DailyDebrief() {
         </div>
 
         {step === 'mood' && (
-          <div className="card animate-scale-in w-full">
+          <div className="card animate-scale-in">
             <h3 className="font-heading text-base font-semibold mb-4" style={{ color: '#F7F4D5' }}>How do you feel right now?</h3>
             <div className="grid grid-cols-5 gap-3 mb-6">
               {MOODS.map(m => (
@@ -177,7 +177,7 @@ export default function DailyDebrief() {
               </div>
             )}
 
-            <div className="card p-0 overflow-hidden w-full">
+            <div className="card p-0 overflow-hidden">
               <textarea
                 value={text}
                 onChange={e => setText(e.target.value)}
@@ -226,7 +226,7 @@ export default function DailyDebrief() {
               </div>
             </div>
 
-            <div className="card w-full">
+            <div className="card">
               <h3 className="font-heading text-sm font-semibold mb-3" style={{ color: '#F7F4D5' }}>Example prompts</h3>
               <div className="space-y-2">
                 {[
@@ -260,7 +260,7 @@ export default function DailyDebrief() {
         {step === 'result' && result && (
           <div className="space-y-4 animate-fade-in">
             <div
-              className="card relative overflow-hidden w-full"
+              className="card relative overflow-hidden"
               style={{ background: 'rgba(247,244,213,0.05)' }}
             >
               <div className="absolute right-0 top-0 w-32 h-32 rounded-full blur-2xl" style={{ background: 'rgba(247,244,213,0.05)' }} />
@@ -279,7 +279,7 @@ export default function DailyDebrief() {
             </div>
 
             {result.entries.length > 0 && (
-              <div className="card w-full">
+              <div className="card">
                 <h3 className="font-heading text-base font-semibold mb-4" style={{ color: '#F7F4D5' }}>Time Intelligence</h3>
                 <div className="space-y-2 mb-5">
                   {result.entries.map((entry, i) => (
