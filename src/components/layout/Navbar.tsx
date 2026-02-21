@@ -16,32 +16,32 @@ export default function Navbar({ title, subtitle }: NavbarProps) {
   const initials = displayName.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase();
 
   return (
-    <header className="h-20 flex items-center justify-between px-6 flex-shrink-0" style={{ backgroundColor: 'rgba(10,51,35,0.4)', border: '1px solid rgba(247,244,213,0.05)', borderRadius: '14px', margin: '12px 24px', padding: '12px 24px' }}>
-      <div className="flex flex-col justify-center">
-        <h1 className="font-heading text-xl font-semibold leading-tight" style={{ color: '#F7F4D5', fontWeight: 600 }}>{title}</h1>
-        {subtitle && <p className="text-xs" style={{ color: 'rgba(247,244,213,0.50)', fontWeight: 400 }}>{subtitle}</p>}
+    <header className="h-16 sm:h-20 flex items-center justify-between px-4 sm:px-6 flex-shrink-0" style={{ backgroundColor: 'rgba(10,51,35,0.4)', border: '1px solid rgba(247,244,213,0.05)', borderRadius: '14px', margin: '12px', padding: '12px' }}>
+      <div className="flex flex-col justify-center min-w-0">
+        <h1 className="font-heading text-lg sm:text-xl font-semibold leading-tight truncate" style={{ color: '#F7F4D5', fontWeight: 600 }}>{title}</h1>
+        {subtitle && <p className="text-xs truncate" style={{ color: 'rgba(247,244,213,0.50)', fontWeight: 400 }}>{subtitle}</p>}
       </div>
 
-      <div className="flex items-center gap-3">
-        <button className="relative w-9 h-9 rounded-lg flex items-center justify-center transition-colors" style={{ color: 'rgba(247,244,213,0.60)' }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F7F4D5'} onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(247,244,213,0.60)'}>
-          <Bell style={{ width: '18px', height: '18px' }} />
+      <div className="flex items-center gap-2 sm:gap-3 ml-2">
+        <button className="relative w-8 sm:w-9 h-8 sm:h-9 rounded-lg flex items-center justify-center transition-colors flex-shrink-0" style={{ color: 'rgba(247,244,213,0.60)' }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F7F4D5'} onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(247,244,213,0.60)'}>
+          <Bell style={{ width: '16px', height: '16px' }} />
         </button>
 
         <div className="relative">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="flex items-center gap-2 px-2 py-1.5 rounded-lg transition-colors"
+            className="flex items-center gap-1 sm:gap-2 px-2 py-1.5 rounded-lg transition-colors flex-shrink-0"
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(247,244,213,0.06)'}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}
           >
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold"
+            <div className="w-7 sm:w-8 h-7 sm:h-8 rounded-lg flex items-center justify-center text-xs font-semibold flex-shrink-0"
               style={{ background: '#839958', color: '#0A3323', fontWeight: 600 }}>
               {initials}
             </div>
-            <span className="text-sm font-medium hidden sm:block max-w-[120px] truncate" style={{ color: '#F7F4D5', fontWeight: 500 }}>
+            <span className="text-xs sm:text-sm font-medium hidden sm:block max-w-[100px] truncate" style={{ color: '#F7F4D5', fontWeight: 500 }}>
               {displayName}
             </span>
-            <ChevronDown className="w-3.5 h-3.5" style={{ color: 'rgba(247,244,213,0.60)' }} />
+            <ChevronDown className="w-3 sm:w-3.5 h-3 sm:h-3.5 hidden sm:block flex-shrink-0" style={{ color: 'rgba(247,244,213,0.60)' }} />
           </button>
 
           {showDropdown && (
