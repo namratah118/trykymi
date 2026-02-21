@@ -2,7 +2,9 @@ import { askKymi } from "./lib/gork";
 import { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, X } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { supabase } from '../lib/supabase';
+import { askKimi } from "../lib/grok";
+
+const reply = await askKimi(message);
 
 interface Message {
   id: string;
