@@ -8,6 +8,7 @@
   * { box-sizing: border-box; }
 
   html {
+    height: 100%;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     background: #0A3323;
@@ -15,31 +16,38 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
-    min-height: 100vh;
     line-height: 1.6;
     letter-spacing: 0;
     font-weight: 400;
     overflow-x: hidden;
+    overflow-y: auto;
+    isolation: isolate;
   }
 
   body {
+    height: 100%;
     margin: 0;
     padding: 0;
     background: #0A3323;
-    min-height: 100vh;
     color: #F7F4D5;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-weight: 400;
     font-size: 16px;
     overflow-x: hidden;
+    overflow-y: auto;
     -webkit-user-select: none;
     user-select: none;
+    isolation: isolate;
   }
 
   #root {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    isolation: isolate;
   }
 
   h1, h2, h3, h4, h5, h6 {
