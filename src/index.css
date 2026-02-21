@@ -999,3 +999,312 @@ main {
 /* ================================= */
 /* END ULTRA CLEAN GLOBAL OVERRIDES */
 /* ================================= */
+
+/* ================================= */
+/* PREMIUM SAAS ANIMATIONS */
+/* ================================= */
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatingParticles {
+  0% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.03;
+  }
+  50% {
+    opacity: 0.05;
+  }
+  100% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.02;
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Global smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Card hover animation */
+.card,
+.card-white,
+.card-flat,
+.dashboard-card,
+[role="dialog"],
+.widget,
+.panel,
+.box,
+.container {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+  cursor: pointer;
+}
+
+.card:hover,
+.card-white:hover,
+.card-flat:hover,
+.dashboard-card:hover,
+.widget:hover,
+.panel:hover,
+.box:hover,
+.container:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Button click animation */
+button {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.15s ease;
+  position: relative;
+}
+
+button:active {
+  transform: scale(0.96);
+  animation: buttonPress 0.15s ease-out;
+}
+
+button:hover {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease;
+}
+
+/* Fade in on page load */
+.fade-in {
+  animation: fadeInUp 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.fade-in-1 { animation-delay: 0.05s; }
+.fade-in-2 { animation-delay: 0.1s; }
+.fade-in-3 { animation-delay: 0.15s; }
+.fade-in-4 { animation-delay: 0.2s; }
+.fade-in-5 { animation-delay: 0.25s; }
+.fade-in-6 { animation-delay: 0.3s; }
+.fade-in-7 { animation-delay: 0.35s; }
+.fade-in-8 { animation-delay: 0.4s; }
+
+/* Modal/Popup animation */
+[role="dialog"] {
+  animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.modal-overlay,
+[role="dialog"]::backdrop {
+  animation: fadeInUp 0.2s ease-out forwards;
+  opacity: 0;
+}
+
+/* Input focus animation */
+input:focus,
+textarea:focus,
+select:focus {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Sidebar menu item hover */
+.sidebar li,
+.sidebar a,
+.menu-item,
+nav a,
+nav li {
+  transition: opacity 0.2s ease,
+              background-color 0.2s ease,
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar li:hover,
+.sidebar a:hover,
+.menu-item:hover,
+nav a:hover,
+nav li:hover {
+  opacity: 0.8;
+  transform: translateX(2px);
+}
+
+/* Floating particle effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+    radial-gradient(2px 2px at 60px 70px, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+    radial-gradient(1px 1px at 50px 50px, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+    radial-gradient(2px 2px at 90px 10px, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: floatingParticles 20s ease-in-out infinite;
+  opacity: 0.03;
+}
+
+/* Subtle floating effect on specific elements */
+.floating {
+  animation: subtleFloat 3s ease-in-out infinite;
+}
+
+/* Link hover effect */
+a {
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+/* Badge animation on hover */
+.badge {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              opacity 0.2s ease;
+}
+
+.badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Smooth transitions for all state changes */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Disable transition for certain properties to prevent jank */
+*:not(button):not(a):not(.card):not(.widget):not(.panel) {
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+/* Form animation */
+form {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Section stagger animation */
+section {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+section:nth-child(1) { animation-delay: 0.05s; }
+section:nth-child(2) { animation-delay: 0.1s; }
+section:nth-child(3) { animation-delay: 0.15s; }
+section:nth-child(4) { animation-delay: 0.2s; }
+section:nth-child(5) { animation-delay: 0.25s; }
+
+/* Smooth page transitions */
+main {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Ripple effect for interactive elements */
+button,
+a,
+.clickable {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Loader/spinner smooth animation */
+.spinner,
+.loader {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Checkbox/Radio smooth toggle */
+input[type="checkbox"],
+input[type="radio"] {
+  transition: transform 0.15s ease;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  transform: scale(1.1);
+}
+
+/* Dropdown smooth open/close */
+select {
+  transition: all 0.2s ease;
+}
+
+/* Text input placeholder fade */
+input::placeholder,
+textarea::placeholder {
+  transition: opacity 0.2s ease;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  opacity: 0.4;
+}
+
+/* Smooth color transitions on disabled state */
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transition: opacity 0.2s ease;
+}
+
+/* ================================= */
+/* END PREMIUM SAAS ANIMATIONS */
+/* ================================= */
