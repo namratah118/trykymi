@@ -1,59 +1,52 @@
 export async function askKymi(message: string) {
 
-  try {
+const apiKey = import.meta.env.VITE_GROK_API_KEY;
 
-    const response = await fetch("https://api.x.ai/v1/chat/completions", {
+if (!apiKey) {
+return "Grok API key missing.";
+}
 
-      method: "POST",
+try {
 
-      headers: {
+const response = await fetch("https://api.x.ai/v1/chat/completions", {
 
-        "Content-Type": "application/json",
+method: "POST",
 
-        "Authorization": `Bearer ${import.meta.env.VITE_GROK_API_KEY}`
+headers: {
+"Content-Type": "application/json",
+"Authorization": `Bearer ${apiKey}`
+},
 
-      },
+body: JSON.stringify({
 
-      body: JSON.stringify({
+model: "grok-beta",
 
-        model: "grok-beta",
+messages: [
 
-        messages: [
+{
+role: "system",
+content: "You are TryKimi, a calm AI assistant helping plan productivity, habits, and daily life."
+},
 
-          {
+{
+role: "user",
+content: message
+}
 
-            role: "system",
+]
 
-            content: "You are Kymi, a personal AI productivity assistant. Help manage plans, habits, reminders and tasks."
+})
 
-          },
+});
 
-          {
+const data = await response.json();
 
-            role: "user",
+return data.choices?.[0]?.message?.content || "No reply.";
 
-            content: message
+} catch (error) {
 
-          }
+return "Connection error.";
 
-        ]
-
-      })
-
-    });
-
-    const data = await response.json();
-
-    return data.choices[0].message.content;
-
-  }
-
-  catch (error) {
-
-    console.error(error);
-
-    return "Error connecting to Kymi AI";
-
-  }
+}
 
 }
