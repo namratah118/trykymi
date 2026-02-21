@@ -2,7 +2,7 @@ import { askKymi } from "./lib/gork";
 import { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, X } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { askKimi } from "../lib/grok";
+import { askKymi } from "../lib/grok";
 
 const reply = await askKimi(message);
 
