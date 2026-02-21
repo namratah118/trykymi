@@ -8,7 +8,10 @@ import { AISidePanel } from './components/AISidePanel';
 import { AmbientLight } from './components/AmbientLight';
 import { WelcomeAnimation } from './components/WelcomeAnimation';
 import ReminderAlert from './components/ReminderAlert';
+import BrainSuggestion from './components/BrainSuggestion';
+import DailyReflection from './components/DailyReflection';
 import { useReminders } from './hooks/useReminders';
+import { useDailyBrain } from './hooks/useDailyBrain';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Homepage from './pages/Homepage';
@@ -59,9 +62,13 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 function AppRoutes() {
   const { user } = useAuth();
   useReminders(user?.id);
+  const { suggestion, setSuggestion, showReflection, setShowReflection } = useDailyBrain(user?.id);
 
   return (
-    <PageTransition>
+    <>
+      <BrainSuggestion suggestion={suggestion} onDismiss={() => setSuggestion(null)} />
+      <DailyReflection isOpen={showReflection} userId={user?.id || ''} onClose={() => setShowReflection(false)} />
+      <PageTransition>
       <Routes>
         <Route path="/" element={<PublicRoute><Homepage /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
@@ -80,7 +87,8 @@ function AppRoutes() {
         <Route path="/timeline" element={<ProtectedRoute><Timeline /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
-    </PageTransition>
+      </PageTransition>
+    </>
   );
 }
 
