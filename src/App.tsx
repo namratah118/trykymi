@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { PageTransition } from './components/PageTransition';
 import { KymiGlobal } from './components/KymiGlobal';
+import { LuxuryDesignSystem } from './components/LuxuryDesignSystem';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Homepage from './pages/Homepage';
@@ -76,6 +77,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <LuxuryDesignSystem />
         <KymiGlobal />
         <AppRoutes />
       </AuthProvider>

@@ -8,15 +8,15 @@
   * { box-sizing: border-box; }
 
   html {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Inter', 'SF Pro Display', 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
-    background: #0A3323;
-    color: #F7F4D5;
+    background: #F7F4D5;
+    color: #0A3323;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     line-height: 1.6;
-    letter-spacing: 0;
+    letter-spacing: -0.005em;
     font-weight: 400;
     overflow-x: hidden;
   }
@@ -24,69 +24,87 @@
   body {
     margin: 0;
     padding: 0;
-    background: #0A3323;
+    background: #F7F4D5;
     min-height: 100vh;
-    color: #F7F4D5;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: #0A3323;
+    font-family: 'Inter', 'SF Pro Display', 'Plus Jakarta Sans', system-ui, sans-serif;
     font-weight: 400;
     font-size: 16px;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    letter-spacing: 0;
-    color: #F7F4D5;
-    line-height: 1.25;
-    font-weight: 600;
+    font-family: 'Inter', 'SF Pro Display', 'Plus Jakarta Sans', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+    color: #0A3323;
+    line-height: 1.2;
+    font-weight: 700;
   }
 
-  h1 { font-size: 48px; font-weight: 600; }
-  h2 { font-size: 2.25rem; font-weight: 600; }
-  h3 { font-size: 1.5rem; font-weight: 600; }
-  h4 { font-size: 1.25rem; font-weight: 600; }
+  h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.025em; }
+  h3 { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  h4 { font-size: 18px; font-weight: 600; letter-spacing: -0.015em; }
 
   p, span, label, input, textarea, select, button {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Inter', 'SF Pro Display', 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
+    color: #0A3323;
   }
 
   button {
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 999px !important;
+    background: #0A3323 !important;
+    color: #F7F4D5 !important;
+    padding: 12px 24px !important;
+    border: none !important;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  button:hover:not(:disabled) {
+    background: #105666 !important;
+    box-shadow: 0 8px 16px rgba(10, 51, 35, 0.2);
+    transform: translateY(-2px);
+  }
+
+  button:active {
+    transform: scale(0.96);
   }
 
   input, textarea, select {
-    background: #105666 !important;
-    color: #F7F4D5 !important;
-    border: 1px solid #839958 !important;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background: #F7F4D5 !important;
+    color: #0A3323 !important;
+    border: 1.5px solid #839958 !important;
+    font-family: 'Inter', 'SF Pro Display', 'Plus Jakarta Sans', system-ui, sans-serif;
     border-radius: 12px;
-    padding: 10px 12px;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   input::placeholder, textarea::placeholder {
-    color: #839958 !important;
+    color: rgba(10, 51, 35, 0.5) !important;
   }
 
   input:focus, textarea:focus, select:focus {
-    background: #105666 !important;
+    background: #F7F4D5 !important;
     border-color: #D3968C !important;
     outline: none !important;
-    box-shadow: 0 0 0 1px #D3968C !important;
+    box-shadow: 0 0 0 3px rgba(211, 150, 140, 0.15) !important;
   }
 
   input[type="date"], input[type="time"], input[type="datetime-local"] {
-    background: #105666 !important;
-    color: #F7F4D5 !important;
+    background: #F7F4D5 !important;
+    color: #0A3323 !important;
   }
 
   input[type="time"]::-webkit-calendar-picker-indicator,
   input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(0.8) brightness(1.2);
+    filter: none;
     cursor: pointer;
     opacity: 0.6;
   }
@@ -103,27 +121,27 @@
 
   input[type="time"]::-webkit-datetime-edit-fields-wrapper,
   input[type="date"]::-webkit-datetime-edit-fields-wrapper {
-    color: #F7F4D5;
+    color: #0A3323;
   }
 
   input[type="time"]::-webkit-datetime-edit-text,
   input[type="date"]::-webkit-datetime-edit-text {
-    color: rgba(247,244,213,0.60);
+    color: rgba(10, 51, 35, 0.60);
   }
 
   /* Datepicker and Calendar Popup Styling */
   ::-webkit-calendar-picker-indicator {
-    filter: invert(0.8) brightness(1.2);
+    filter: none;
   }
 
   /* Webkit Calendar Popup */
   ::-webkit-datetime-edit {
-    background: #105666;
-    color: #F7F4D5;
+    background: #F7F4D5;
+    color: #0A3323;
   }
 
   ::-webkit-calendar-picker-indicator {
-    filter: invert(0.8) brightness(1.2);
+    filter: none;
     cursor: pointer;
   }
 
@@ -132,13 +150,13 @@
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #105666 inset !important;
-    box-shadow: 0 0 0 30px #105666 inset !important;
-    -webkit-text-fill-color: #F7F4D5 !important;
+    -webkit-box-shadow: 0 0 0 30px #F7F4D5 inset !important;
+    box-shadow: 0 0 0 30px #F7F4D5 inset !important;
+    -webkit-text-fill-color: #0A3323 !important;
   }
 
   input:-webkit-autofill::first-line {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Inter', 'SF Pro Display', 'Plus Jakarta Sans', system-ui, sans-serif;
   }
 
   /* Select dropdown styling */
@@ -154,8 +172,8 @@
   }
 
   select option {
-    background: #0A3323 !important;
-    color: #F7F4D5 !important;
+    background: #F7F4D5 !important;
+    color: #0A3323 !important;
     padding: 8px 12px !important;
   }
 
@@ -165,18 +183,18 @@
   }
 
   select option:hover {
-    background: #105666 !important;
-    color: #F7F4D5 !important;
+    background: #F7F4D5 !important;
+    color: #0A3323 !important;
   }
 
   /* Datalist styling */
   datalist {
-    background: #0A3323 !important;
+    background: #F7F4D5 !important;
   }
 
   datalist option {
-    background: #105666 !important;
-    color: #F7F4D5 !important;
+    background: #F7F4D5 !important;
+    color: #0A3323 !important;
   }
 
   /* Range input styling */
@@ -185,7 +203,7 @@
   }
 
   input[type="range"]::-webkit-slider-track {
-    background: #105666 !important;
+    background: #F7F4D5 !important;
     border: 1px solid #839958 !important;
     border-radius: 8px !important;
   }
@@ -197,7 +215,7 @@
   }
 
   input[type="range"]::-moz-range-track {
-    background: #105666 !important;
+    background: #F7F4D5 !important;
     border: 1px solid #839958 !important;
     border-radius: 8px !important;
   }
