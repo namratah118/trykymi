@@ -15,11 +15,13 @@ export default function Navbar({ title, subtitle }: NavbarProps) {
   const displayName = (user?.user_metadata?.full_name as string) || user?.email?.split('@')[0] || 'User';
   const initials = displayName.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase();
 
+  const displaySubtitle = subtitle && typeof subtitle === "string" && !subtitle.toLowerCase().includes("invalid jwt") ? subtitle : "TryKymi is getting ready…";
+
   return (
     <header className="h-16 sm:h-20 flex items-center justify-between px-4 sm:px-6 flex-shrink-0" style={{ backgroundColor: 'rgba(10,51,35,0.4)', border: '1px solid rgba(247,244,213,0.05)', borderRadius: '14px', margin: '12px', padding: '12px' }}>
       <div className="flex flex-col justify-center min-w-0">
         <h1 className="font-heading text-base sm:text-lg lg:text-xl font-semibold leading-tight truncate" style={{ color: '#F7F4D5', fontWeight: 600 }}>{title}</h1>
-        {subtitle && <p className="text-xs sm:text-sm lg:text-base truncate" style={{ color: 'rgba(247,244,213,0.50)', fontWeight: 400 }}>{subtitle}</p>}
+        {subtitle && <p className="text-xs sm:text-sm lg:text-base truncate" style={{ color: 'rgba(247,244,213,0.50)', fontWeight: 400 }}>{displaySubtitle}</p>}
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3 ml-2">

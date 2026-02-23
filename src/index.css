@@ -8,6 +8,12 @@
   * {
     box-sizing: border-box;
     transition: all 0.2s ease;
+    caret-color: transparent !important;
+  }
+
+  input,
+  textarea {
+    caret-color: auto !important;
   }
 
   html {
@@ -24,6 +30,7 @@
     font-weight: 400;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    max-width: 100%;
   }
 
   body {
@@ -39,6 +46,7 @@
     font-size: 16px;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    max-width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -553,6 +561,11 @@
 /* TRYKYMI ULTRA SMOOTH SAFE SCROLL FIX */
 /* ========================= */
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 html {
   height: 100%;
   scroll-behavior: smooth;
@@ -582,12 +595,27 @@ body {
   overflow-x: hidden;
 }
 
+.container,
+.main,
+.dashboard {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Prevent scroll lag on mobile */
 
 @media (max-width: 768px) {
   html, body, #root {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
   }
 }
 
@@ -806,6 +834,14 @@ main {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(211, 150, 140, 0.4);
+}
+
+/* Floating chat button positioning */
+.floating-chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
 }
 
 /* ================================= */
