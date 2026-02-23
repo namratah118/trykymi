@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { PageTransition } from './components/PageTransition';
-import { AIAssistantBubble } from './components/AIAssistantBubble';
 import { CursorGlow } from './components/CursorGlow';
 import { FloatingParticles } from './components/FloatingParticles';
 import { AISidePanel } from './components/AISidePanel';
@@ -11,7 +10,6 @@ import ReminderAlert from './components/ReminderAlert';
 import BrainSuggestion from './components/BrainSuggestion';
 import DailyReflection from './components/DailyReflection';
 import ConsciousMode from './components/ConsciousMode';
-import VoiceMic from './components/VoiceMic';
 import { useReminders } from './hooks/useReminders';
 import { useDailyBrain } from './hooks/useDailyBrain';
 import Login from './pages/auth/Login';
@@ -71,7 +69,6 @@ function AppRoutes() {
       <BrainSuggestion suggestion={suggestion} onDismiss={() => setSuggestion(null)} />
       <DailyReflection isOpen={showReflection} userId={user?.id || ''} onClose={() => setShowReflection(false)} />
       <ConsciousMode userId={user?.id} />
-      <VoiceMic userId={user?.id} />
       <PageTransition>
       <Routes>
         <Route path="/" element={<PublicRoute><Homepage /></PublicRoute>} />
@@ -104,7 +101,6 @@ export default function App() {
         <AmbientLight />
         <CursorGlow />
         <AppRoutes />
-        <AIAssistantBubble />
         <AISidePanel />
         <WelcomeAnimation />
         <ReminderAlert />
