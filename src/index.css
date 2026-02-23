@@ -8,6 +8,37 @@
 /* GLOBAL PRODUCTION FIXES */
 /* ================================= */
 
+/* Base HTML/Body/Root setup */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Default cursor behavior */
+div {
+  cursor: default;
+}
+
+button,
+a,
+input,
+textarea,
+select,
+[role="button"],
+[role="link"] {
+  cursor: pointer;
+}
+
 /* Disable contenteditable globally */
 * {
   -webkit-user-select: auto !important;
@@ -142,9 +173,35 @@ main {
   pointer-events: auto;
 }
 
+/* Global layout click fix */
+.main-layout,
+.dashboard-container,
+nav,
+header,
+section,
+main {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
+
 /* ================================= */
 /* RESPONSIVE FIXES - MOBILE & TABLET */
 /* ================================= */
+
+/* Responsive container base rules */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* Global responsive container */
 .max-w-7xl {
