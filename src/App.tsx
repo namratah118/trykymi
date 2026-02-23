@@ -1,9 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { PageTransition } from './components/PageTransition';
-import { AIAssistantBubble } from './components/AIAssistantBubble';
-import { CursorGlow } from './components/CursorGlow';
-import { FloatingParticles } from './components/FloatingParticles';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Homepage from './pages/Homepage';
@@ -78,10 +75,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <FloatingParticles />
-        <CursorGlow />
         <AppRoutes />
-        <AIAssistantBubble />
       </AuthProvider>
     </BrowserRouter>
   );
