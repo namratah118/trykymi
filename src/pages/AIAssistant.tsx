@@ -147,14 +147,14 @@ export default function AIAssistant() {
         <div className="flex items-center justify-between mb-4 flex-shrink-0">
           <div className="flex items-center gap-2">
             <div
-              className="w-8 h-8 rounded-xl flex items-center justify-center"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center flex-shrink-0"
               style={{ background: 'rgba(211,150,140,0.15)' }}
             >
-              <Sparkles className="w-4 h-4" style={{ color: '#D3968C' }} />
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: '#D3968C' }} />
             </div>
-            <div>
-              <p className="text-sm font-body font-semibold" style={{ color: '#F7F4D5' }}>trykymi AI</p>
-              <p className="text-xs font-body" style={{ color: 'rgba(247,244,213,0.45)' }}>Your personal lifestyle assistant</p>
+            <div className="min-w-0">
+              <p className="text-xs sm:text-sm font-body font-semibold truncate" style={{ color: '#F7F4D5' }}>TryKymi</p>
+              <p className="text-xs font-body truncate" style={{ color: 'rgba(247,244,213,0.45)' }}>Your AI assistant</p>
             </div>
           </div>
           {messages.length > 0 && (
@@ -288,11 +288,11 @@ export default function AIAssistant() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="flex-shrink-0 flex gap-2 mt-2">
-          <div className="flex-1 relative">
+        <form onSubmit={handleSubmit} className="flex-shrink-0 flex gap-2 mt-2 w-full">
+          <div className="flex-1 relative min-w-0">
             <textarea
               ref={inputRef}
-              className="input-field resize-none pr-4 py-3 min-h-[46px] max-h-32"
+              className="input-field resize-none pr-4 py-3 min-h-[46px] max-h-32 w-full"
               placeholder="Ask anything..."
               value={input}
               onChange={e => setInput(e.target.value)}
@@ -304,13 +304,13 @@ export default function AIAssistant() {
           <button
             type="submit"
             disabled={!input.trim() || sending}
-            className="btn-primary px-4 self-end"
+            className="btn-primary px-3 sm:px-4 self-end flex-shrink-0"
           >
             <Send className="w-4 h-4" />
           </button>
         </form>
-        <p className="text-xs font-body text-center mt-2 flex-shrink-0" style={{ color: 'rgba(247,244,213,0.35)' }}>
-          Press Enter to send, Shift+Enter for new line
+        <p className="text-xs font-body text-center mt-2 flex-shrink-0 w-full" style={{ color: 'rgba(247,244,213,0.35)' }}>
+          Press Enter to send
         </p>
       </div>
     </AppLayout>

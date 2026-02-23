@@ -21,13 +21,13 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const { insight, isVisible, setIsVisible } = useMemoryInsights(user?.id);
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden flex flex-col" style={{ background: '#0A3323' }}>
+    <div className="min-h-screen w-screen overflow-x-hidden flex flex-col" style={{ background: '#0A3323' }}>
       <PageHeader />
       <FloatingNav />
       <BrainSuggestion suggestion={suggestion} onDismiss={() => setSuggestion(null)} />
       <MemoryInsight insight={insight} isVisible={isVisible} onDismiss={() => setIsVisible(false)} />
 
-      <main className="pt-20 sm:pt-28 md:pt-32 pb-24 px-4 sm:px-6 lg:px-8 w-full flex-1">
+      <main className="pt-20 sm:pt-28 md:pt-32 pb-24 px-3 sm:px-4 md:px-6 lg:px-8 w-full flex-1 overflow-x-hidden">
         <div className="max-w-7xl mx-auto w-full">
           {children}
         </div>
@@ -35,9 +35,16 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
       <Link
         to="/assistant"
-        className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-40 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 group hover:scale-110 active:scale-95"
-        style={{ background: '#D3968C', boxShadow: '0 4px 16px rgba(211,150,140,0.25)' }}
-        title="Ask Kymi"
+        className="fixed z-40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+        style={{
+          bottom: '16px',
+          right: '16px',
+          width: '48px',
+          height: '48px',
+          background: '#D3968C',
+          boxShadow: '0 4px 16px rgba(211,150,140,0.25)'
+        }}
+        title="Ask TryKymi"
         onMouseEnter={e => {
           const el = e.currentTarget as HTMLElement;
           el.style.background = '#c9886e';
@@ -49,7 +56,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
           el.style.boxShadow = '0 4px 16px rgba(211,150,140,0.25)';
         }}
       >
-        <MessageSquare className="w-6 h-6 transition-transform" style={{ color: '#0A3323' }} />
+        <MessageSquare className="w-5 h-5 transition-transform" style={{ color: '#0A3323' }} />
       </Link>
     </div>
   );
