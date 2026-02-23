@@ -1453,3 +1453,139 @@ textarea:disabled {
 /* ================================= */
 /* END MOBILE OPTIMIZATION */
 /* ================================= */
+
+/* ================================= */
+/* COMPREHENSIVE MOBILE RESPONSIVE */
+/* ================================= */
+
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .dashboard,
+  .dashboard-grid,
+  .grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    padding: 12px !important;
+  }
+
+  .card,
+  .widget,
+  .section,
+  .card-white,
+  .card-flat,
+  .dashboard-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 16px !important;
+  }
+
+  header,
+  .header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px;
+  }
+
+  button,
+  .btn {
+    width: auto !important;
+    max-width: 100%;
+    flex-shrink: 0;
+    font-size: 14px !important;
+    padding: 10px 14px !important;
+  }
+
+  .floating-chat {
+    position: fixed !important;
+    right: 16px !important;
+    bottom: 16px !important;
+    z-index: 999 !important;
+  }
+
+  .progress,
+  .score,
+  .circle {
+    width: 100% !important;
+    max-width: 220px !important;
+    margin: auto !important;
+  }
+
+  .text,
+  p,
+  h1,
+  h2,
+  h3 {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  main {
+    padding: 8px !important;
+  }
+
+  input, textarea, select {
+    font-size: 16px !important;
+    padding: 12px !important;
+  }
+
+  .badge {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+  }
+
+  section {
+    padding: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard,
+  .dashboard-grid,
+  .grid {
+    gap: 10px !important;
+    padding: 8px !important;
+  }
+
+  .card,
+  .widget,
+  .section {
+    padding: 12px !important;
+  }
+
+  button,
+  .btn {
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+    width: 100% !important;
+  }
+
+  h1 {
+    font-size: 28px !important;
+  }
+
+  h2 {
+    font-size: 22px !important;
+  }
+
+  h3 {
+    font-size: 18px !important;
+  }
+
+  .floating-chat {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+/* ================================= */
+/* END COMPREHENSIVE MOBILE RESPONSIVE */
+/* ================================= */

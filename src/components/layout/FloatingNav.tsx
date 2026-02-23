@@ -24,7 +24,7 @@ export default function FloatingNav() {
 
   return (
     <header
-      className="fixed top-2 sm:top-4 left-1/2 z-50 animate-slide-down w-full px-4 sm:px-6 lg:px-8"
+      className="header fixed top-2 sm:top-4 left-1/2 z-50 animate-slide-down w-full px-4 sm:px-6 lg:px-8"
       style={{ transform: 'translateX(-50%)' }}
     >
       <div className="flex items-center h-16 sm:h-20 gap-3 sm:gap-6 max-w-7xl mx-auto">

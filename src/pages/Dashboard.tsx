@@ -165,7 +165,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         <DailyCheckin onClose={() => setShowCheckin(false)} onComplete={() => setShowCheckin(false)} />
       )}
 
-      <div className="space-y-4 sm:space-y-5">
+      <div className="dashboard space-y-4 sm:space-y-5">
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="lg:col-span-2 p-5 sm:p-7 relative overflow-hidden" style={{ background: 'rgba(247,244,213,0.05)', border: '1px solid rgba(247,244,213,0.10)', borderRadius: '14px' }}>

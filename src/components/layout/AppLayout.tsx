@@ -12,8 +12,8 @@ export default function AppLayout({ children }: AppLayoutProps) {
     <div className="min-h-screen w-full overflow-x-hidden" style={{ background: '#0A3323' }}>
       <FloatingNav />
 
-      <main className="pt-20 sm:pt-28 md:pt-32 pb-24 px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-7xl mx-auto w-full">
+      <main className="main pt-20 sm:pt-28 md:pt-32 pb-24 px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-7xl mx-auto w-full dashboard-grid">
           {children}
         </div>
       </main>
