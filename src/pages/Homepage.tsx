@@ -222,6 +222,19 @@ export default function Homepage() {
 
       {demoOpen && <DemoModal onClose={() => setDemoOpen(false)} />}
 
+      <div
+        className="fixed top-5 right-5 sm:top-3.5 sm:right-3.5 z-9999 px-4 py-2 sm:px-3 sm:py-1.5 rounded-full text-xs sm:text-[11px] font-body font-medium animate-fade-in"
+        style={{
+          background: 'rgba(10,51,35,0.85)',
+          color: '#F7F4D5',
+          border: '1px solid rgba(247,244,213,0.25)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+        }}
+      >
+        Launching Soon
+      </div>
+
       <header className="fixed top-4 left-1/2 z-40 animate-slide-down" style={{ transform: 'translateX(-50%)', width: 'calc(100% - 2rem)', maxWidth: '900px' }}>
         <div
           className="flex items-center justify-between px-5 py-3 rounded-2xl"
