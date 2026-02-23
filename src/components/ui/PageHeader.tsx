@@ -56,11 +56,7 @@ export default function PageHeader() {
   };
 
   return (
-    <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 sm:py-5" style={{ background: '#0A3323', borderBottom: '1px solid rgba(247,244,213,0.08)' }}>
-      <div className="flex items-center gap-2">
-        <img src="/image.png" alt="trykymi" style={{ height: '24px', objectFit: 'contain' }} />
-        <span className="font-heading text-lg sm:text-xl font-semibold" style={{ color: '#F7F4D5', letterSpacing: '-0.02em' }}>trykymi</span>
-      </div>
+    <div className="flex items-center justify-end px-4 sm:px-6 lg:px-8 py-4 sm:py-5" style={{ background: '#0A3323', borderBottom: '1px solid rgba(247,244,213,0.08)' }}>
       <div className="text-sm sm:text-base font-body font-semibold" style={{ color: '#D3968C' }}>
         {loading ? 'Loading...' : `Score ${score}%`}
       </div>

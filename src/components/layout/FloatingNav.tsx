@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { LayoutDashboard, MessageSquare, User, LogOut, ChevronDown, CalendarDays, Target, Bell, CheckSquare, BarChart2, Moon } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import Logo from '../ui/Logo';
 
 const NAV_ITEMS = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -27,11 +26,9 @@ export default function FloatingNav() {
       className="fixed top-2 sm:top-4 left-1/2 z-50 animate-slide-down w-full px-4 sm:px-6 lg:px-8"
       style={{ transform: 'translateX(-50%)' }}
     >
-      <div className="flex items-center h-16 sm:h-20 gap-3 sm:gap-6 max-w-7xl mx-auto">
-        <Logo to="/dashboard" />
-
+      <div className="flex items-center h-16 sm:h-20 gap-3 sm:gap-6 max-w-7xl mx-auto w-full">
         <div
-          className="flex-1 flex items-center justify-between px-4 sm:px-6 py-0 rounded-lg h-16 sm:h-20"
+          className="w-full flex items-center justify-between px-4 sm:px-6 py-0 rounded-lg h-16 sm:h-20"
           style={{
             background: 'rgba(10,51,35,0.4)',
             border: '1px solid rgba(247,244,213,0.05)',

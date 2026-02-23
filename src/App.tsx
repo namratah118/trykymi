@@ -9,7 +9,6 @@ import { WelcomeAnimation } from './components/WelcomeAnimation';
 import ReminderAlert from './components/ReminderAlert';
 import BrainSuggestion from './components/BrainSuggestion';
 import DailyReflection from './components/DailyReflection';
-import ConsciousMode from './components/ConsciousMode';
 import { useReminders } from './hooks/useReminders';
 import { useDailyBrain } from './hooks/useDailyBrain';
 import Login from './pages/auth/Login';
@@ -68,7 +67,6 @@ function AppRoutes() {
     <>
       <BrainSuggestion suggestion={suggestion} onDismiss={() => setSuggestion(null)} />
       <DailyReflection isOpen={showReflection} userId={user?.id || ''} onClose={() => setShowReflection(false)} />
-      <ConsciousMode userId={user?.id} />
       <PageTransition>
       <Routes>
         <Route path="/" element={<PublicRoute><Homepage /></PublicRoute>} />
