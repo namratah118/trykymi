@@ -108,7 +108,7 @@ export default function AIAssistant() {
         if (errorText.includes('API key') || errorText.includes('OPENAI') || errorText.includes('401') || errorText.includes('403')) {
           errorContent = "trykymi is getting ready. Please check back in a moment.";
         } else if (errorText.toLowerCase().includes('invalid') || errorText.toLowerCase().includes('jwt') || errorText.toLowerCase().includes('auth')) {
-          errorContent = "trykymi is thinking...";
+          errorContent = "TryKymi is thinking…";
         } else {
           errorContent = "Let me think about that for a moment...";
         }

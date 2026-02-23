@@ -6,7 +6,6 @@ import {
 } from 'lucide-react';
 import Logo from '../components/ui/Logo';
 import HeroVisual from '../components/HeroVisual';
-import LandingPopup from '../components/LandingPopup';
 
 const FEATURES = [
   {
@@ -204,6 +203,7 @@ function DemoModal({ onClose }: { onClose: () => void }) {
 export default function Homepage() {
   const [showPopup, setShowPopup] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
+  const [showLaunchPopup, setShowLaunchPopup] = useState(true);
   const reveal = useScrollReveal();
 
   useEffect(() => {
@@ -211,9 +211,33 @@ export default function Homepage() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const t = setTimeout(() => setShowLaunchPopup(false), 5000);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <div style={{ background: '#0A3323', minHeight: '100vh' }}>
-      <LandingPopup />
+      {showLaunchPopup && (
+        <div style={{
+          position: "fixed",
+          bottom: "24px",
+          right: "24px",
+          background: "rgba(20,40,30,0.95)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          padding: "16px 22px",
+          borderRadius: "14px",
+          color: "#d6ffe9",
+          fontSize: "14px",
+          boxShadow: "0 8px 30px rgba(0,0,0,0.25)",
+          zIndex: 9999,
+          animation: "fadeUp 0.4s ease"
+        }}>
+          <div style={{ fontWeight: 600 }}>TryKymi is getting ready</div>
+          <div style={{ opacity: 0.7, fontSize: "12px" }}>Launching soon</div>
+        </div>
+      )}
 
       {showPopup && (
         <WelcomePopup
