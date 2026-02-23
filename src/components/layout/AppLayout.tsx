@@ -35,12 +35,10 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
       <Link
         to="/assistant"
-        className="fixed z-40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+        className="fixed z-40 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 sm:w-14 sm:h-14 w-12 h-12"
         style={{
           bottom: '16px',
           right: '16px',
-          width: '48px',
-          height: '48px',
           background: '#D3968C',
           boxShadow: '0 4px 16px rgba(211,150,140,0.25)'
         }}

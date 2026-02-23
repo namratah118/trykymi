@@ -140,7 +140,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
   };
 
   const getGreetingSubtext = () => {
-    return "Your AI life assistant is initializing.";
+    return "Your AI life assistant is preparing your day.";
   };
 
   if (loading) return <AppLayout><PageLoader /></AppLayout>;

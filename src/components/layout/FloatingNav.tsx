@@ -35,6 +35,14 @@ export default function FloatingNav() {
             boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
           }}
         >
+          <div className="flex items-center gap-3 md:gap-4 h-full">
+            <div className="flex items-center gap-1.5 flex-shrink-0">
+              <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#D3968C' }} />
+              <span className="text-xs md:text-sm font-semibold flex-shrink-0" style={{ color: '#F7F4D5', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}>trykymi</span>
+            </div>
+            <div className="w-px h-4 flex-shrink-0" style={{ background: 'rgba(247,244,213,0.15)' }} />
+          </div>
+
           <nav className="hidden md:flex items-center gap-0.5 h-full overflow-x-auto">
             {NAV_ITEMS.map((item) => (
               <NavLink
@@ -42,8 +50,8 @@ export default function FloatingNav() {
                 to={item.path}
                 className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-0 rounded-lg font-medium transition-all duration-200 h-full flex-shrink-0"
                 style={({ isActive }) => isActive
-                  ? { background: '#D3968C', color: '#0A3323', fontSize: '14px', md: '16px', fontWeight: 500, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
-                  : { color: 'rgba(247,244,213,0.70)', fontSize: '14px', md: '16px', fontWeight: 500, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
+                  ? { background: '#D3968C', color: '#0A3323', fontSize: '14px', fontWeight: 500, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
+                  : { color: 'rgba(247,244,213,0.70)', fontSize: '14px', fontWeight: 500, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
                 }
                 onMouseEnter={(e) => {
                   const link = e.currentTarget;

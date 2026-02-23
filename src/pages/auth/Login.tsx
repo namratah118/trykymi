@@ -27,10 +27,10 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex" style={{ background: '#0A3323' }}>
+    <div className="min-h-screen w-screen overflow-x-hidden flex" style={{ background: '#0A3323' }}>
       <div className="absolute inset-0 pointer-events-none overflow-hidden"></div>
 
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-12 relative z-10">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-12 relative z-10">
         <div className="w-full max-w-sm animate-slide-up">
           <div className="text-center mb-10">
             <div className="inline-flex flex-col items-center">
@@ -100,8 +100,16 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl font-body font-semibold text-base transition-all hover:opacity-90 active:scale-95 mt-2 disabled:opacity-50"
-                style={{ background: '#D3968C', color: '#0A3323' }}
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl font-body font-semibold text-base transition-all hover:shadow-lg active:scale-95 mt-2 disabled:opacity-50 cursor-pointer z-50 relative"
+                style={{ background: '#D3968C', color: '#0A3323', boxShadow: '0 4px 12px rgba(211,150,140,0.25)' }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 24px rgba(211,150,140,0.35)';
+                  (e.currentTarget as HTMLButtonElement).style.background = '#c9886e';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 12px rgba(211,150,140,0.25)';
+                  (e.currentTarget as HTMLButtonElement).style.background = '#D3968C';
+                }}
               >
                 {loading ? (
                   <span className="flex items-center gap-2">
