@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   CalendarDays, Bell, CheckSquare, Target, ArrowRight, Clock,
-  Sparkles, Moon, Zap, X, TrendingUp, TrendingDown, Loader
+  Sparkles, Moon, Zap, X, TrendingUp, TrendingDown
 } from 'lucide-react';
 import AppLayout from '../components/layout/AppLayout';
 import { PageLoader } from '../components/ui/LoadingSpinner';
 import DailyCheckin from '../components/ui/DailyCheckin';
-import ThinkingDots from '../components/ui/ThinkingDots';
 import { PlanIllustration, ReminderIllustration, ChecklistIllustration, HabitIllustration } from '../components/ui/Illustrations';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -140,6 +139,10 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
     }
   };
 
+  const getGreetingSubtext = () => {
+    return "Your AI life assistant is initializing.";
+  };
+
   if (loading) return <AppLayout><PageLoader /></AppLayout>;
 
   const firstName = (user?.user_metadata?.full_name as string || 'there').split(' ')[0];
@@ -174,24 +177,14 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
             <div className="relative z-10">
               <p className="text-xs sm:text-sm lg:text-base font-body font-medium mb-2 sm:mb-3 lg:mb-4" style={{ color: 'rgba(247,244,213,0.45)' }}>{getGreeting()} · {todayFormatted}</p>
               <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold mb-3 sm:mb-4 lg:mb-5" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>{firstName}</h2>
+              <p className="text-xs sm:text-sm font-body mb-4 sm:mb-5 lg:mb-6" style={{ color: 'rgba(247,244,213,0.60)' }}>{getGreetingSubtext()}</p>
 
               <div className="min-h-[2.5rem] mb-4 sm:mb-5 lg:mb-6">
-                {aiLoading ? (
-                  <div className="flex items-center gap-2">
-                    <Loader className="w-3.5 h-3.5 animate-spin" style={{ color: 'rgba(247,244,213,0.40)' }} />
-                    <ThinkingDots className="text-xs sm:text-sm lg:text-base font-body" color="rgba(247,244,213,0.40)" />
-                  </div>
-                ) : aiMessage ? (
-                  <p className="text-sm sm:text-base lg:text-lg font-body leading-relaxed" style={{ color: 'rgba(247,244,213,0.78)', fontStyle: 'italic' }}>
-                    "{aiMessage}"
-                  </p>
-                ) : (
-                  <p className="text-sm sm:text-base lg:text-lg font-body leading-relaxed" style={{ color: 'rgba(247,244,213,0.60)' }}>
-                    {stats.todayPlans > 0
-                      ? `${stats.completedPlans} of ${stats.todayPlans} plans done today. Let's keep going.`
-                      : 'A fresh start awaits. Let trykymi help you design your ideal day.'}
-                  </p>
-                )}
+                <p className="text-sm sm:text-base lg:text-lg font-body leading-relaxed" style={{ color: 'rgba(247,244,213,0.60)' }}>
+                  {stats.todayPlans > 0
+                    ? `${stats.completedPlans} of ${stats.todayPlans} plans done today. Let's keep going.`
+                    : 'A fresh start awaits. Let TryKymi help you design your ideal day.'}
+                </p>
               </div>
 
               <div className="flex flex-wrap gap-2">

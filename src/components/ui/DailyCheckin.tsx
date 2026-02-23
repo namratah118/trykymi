@@ -137,7 +137,7 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
       });
 
       const data = await res.json();
-      const aiMessage = data.message || 'Today is a new opportunity. Take it one step at a time.';
+      const aiMessage = data.message || 'Your AI life assistant is initializing.';
 
       await supabase.from('daily_checkins').upsert({
         user_id: user!.id,
@@ -151,7 +151,7 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
 
       setResult({ message: aiMessage, score });
     } catch {
-      setResult({ message: 'Today is yours. Make it count.', score });
+      setResult({ message: 'Your AI life assistant is initializing.', score });
     } finally {
       setLoading(false);
     }

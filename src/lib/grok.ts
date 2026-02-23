@@ -2,7 +2,7 @@ export async function askKimi(message: string) {
   const apiKey = import.meta.env.VITE_GROK_API_KEY;
 
   if (!apiKey) {
-    return "TryKymi brain not connected. Missing Grok API key.";
+    return "TryKymi AI is getting ready for you.";
   }
 
   try {
@@ -29,13 +29,13 @@ export async function askKimi(message: string) {
     });
 
     if (!response.ok) {
-      return "TryKymi connection failed.";
+      return "TryKymi AI is getting ready for you.";
     }
 
     const data = await response.json();
 
-    return data.choices?.[0]?.message?.content || "No response from TryKymi.";
+    return data.choices?.[0]?.message?.content || "TryKymi AI is getting ready for you.";
   } catch {
-    return "TryKymi is reconnecting. Please try again.";
+    return "TryKymi AI is getting ready for you.";
   }
 }

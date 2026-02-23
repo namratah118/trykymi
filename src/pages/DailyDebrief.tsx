@@ -68,13 +68,13 @@ export default function DailyDebrief() {
           setResult(data.debrief);
           setStep('result');
         } else {
-          setError('Could not parse your debrief. Please try again.');
+          setError('TryKymi AI is getting ready for you.');
         }
       } else {
-        setError('Something went wrong. Please try again.');
+        setError('TryKymi AI is getting ready for you.');
       }
     } catch {
-      setError('Could not connect to Kymi AI. Please try again.');
+      setError('TryKymi AI is getting ready for you.');
     }
 
     setLoading(false);

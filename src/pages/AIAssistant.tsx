@@ -101,10 +101,7 @@ export default function AIAssistant() {
           setMessages(prev => [...prev, assistantMessage.data!]);
         }
       } else {
-        const errorText = data?.error || `Request failed (${response.status})`;
-        console.error('AI error:', errorText);
-
-        const errorContent = 'Kimi is reconnecting. Please try again.';
+        const errorContent = 'TryKymi AI is getting ready for you.';
 
         const errRecord = await supabase.from('chat_messages').insert({
           user_id: user!.id,
@@ -114,12 +111,11 @@ export default function AIAssistant() {
 
         if (errRecord.data) setMessages(prev => [...prev, errRecord.data!]);
       }
-    } catch (err) {
-      console.error('Network error calling AI:', err);
+    } catch {
       const errRecord = await supabase.from('chat_messages').insert({
         user_id: user!.id,
         role: 'assistant',
-        content: 'Unable to reach the AI service. Please check your internet connection and try again.',
+        content: 'TryKymi AI is getting ready for you.',
       }).select().maybeSingle();
 
       if (errRecord.data) setMessages(prev => [...prev, errRecord.data!]);
