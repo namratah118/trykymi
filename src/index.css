@@ -1001,6 +1001,49 @@ main {
 /* ================================= */
 
 /* ================================= */
+/* CURSOR AND TEXT SELECTION FIXES */
+/* ================================= */
+
+* {
+  caret-color: transparent !important;
+  -webkit-user-modify: read-only;
+}
+
+input, textarea {
+  caret-color: auto !important;
+  -webkit-user-modify: read-write;
+}
+
+body {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+[contenteditable] {
+  display: none !important;
+}
+
+div[contenteditable],
+span[contenteditable],
+p[contenteditable] {
+  display: none !important;
+}
+
+:focus {
+  caret-color: transparent !important;
+}
+
+input:focus,
+textarea:focus {
+  caret-color: auto !important;
+}
+
+/* ================================= */
 /* PREMIUM SAAS ANIMATIONS */
 /* ================================= */
 

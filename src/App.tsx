@@ -4,6 +4,7 @@ import { PageTransition } from './components/PageTransition';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Homepage from './pages/Homepage';
+import LaunchPage from './pages/LaunchPage';
 import Onboarding from './pages/Onboarding';
 import Dashboard from './pages/Dashboard';
 import TodaysPlan from './pages/TodaysPlan';
@@ -51,7 +52,7 @@ function AppRoutes() {
   return (
     <PageTransition>
       <Routes>
-        <Route path="/" element={<PublicRoute><Homepage /></PublicRoute>} />
+        <Route path="/" element={<PublicRoute><LaunchPage /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/signup" element={<PublicRoute><Signup /></PublicRoute>} />
         <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
