@@ -5,8 +5,6 @@ import FloatingNav from './FloatingNav';
 
 interface AppLayoutProps {
   children: ReactNode;
-  title?: string;
-  subtitle?: string;
 }
 
 export default function AppLayout({ children }: AppLayoutProps) {

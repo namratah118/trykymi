@@ -131,10 +131,10 @@ export default function Insights() {
     return score + (day.timeWon / dayTotal) * 100;
   }, 0) / Math.max(1, weekData.filter(d => d.timeLost + d.timeWon > 0).length);
 
-  if (loading) return <AppLayout title="Insights"><PageLoader /></AppLayout>;
+  if (loading) return <AppLayout><PageLoader /></AppLayout>;
 
   return (
-    <AppLayout title="Time Analytics" subtitle="Your productivity at a glance">
+    <AppLayout>
       <div className="space-y-6">
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

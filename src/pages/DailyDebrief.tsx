@@ -110,7 +110,7 @@ export default function DailyDebrief() {
   const totalLost = result?.entries.filter(e => e.type === 'lost').reduce((s, e) => s + e.duration_minutes, 0) || 0;
 
   return (
-    <AppLayout title="Daily Debrief" subtitle={todayFormatted}>
+    <AppLayout>
       <div className="max-w-2xl mx-auto space-y-5">
 
         <div className="card relative overflow-hidden">

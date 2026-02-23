@@ -153,7 +153,7 @@ export default function TodaysPlan() {
   const completedCount = plans.filter(p => p.completed).length;
 
   return (
-    <AppLayout title="Today's Plan" subtitle={todayFormatted}>
+    <AppLayout>
       <div className="space-y-4 sm:space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>

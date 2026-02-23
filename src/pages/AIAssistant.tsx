@@ -153,7 +153,7 @@ export default function AIAssistant() {
   };
 
   return (
-    <AppLayout title="AI Assistant" subtitle="Powered by GPT-4o mini">
+    <AppLayout>
       <div className="flex flex-col h-[calc(100vh-8rem)] lg:h-[calc(100vh-5rem)]">
         <div className="flex items-center justify-between mb-4 flex-shrink-0">
           <div className="flex items-center gap-2">
