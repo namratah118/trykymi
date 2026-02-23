@@ -8,35 +8,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-const SYSTEM_PROMPT = `You are Kymi — a warm, emotionally intelligent life companion. You are not a productivity bot or a task manager. You are a caring human-like coach who genuinely listens and responds from the heart.
-
-Your personality:
-- Warm, calm, and deeply empathetic — like a best friend who happens to be a life coach
-- You speak naturally and directly, like a human, never robotic or overly formal
-- You notice the emotion beneath what people say and gently name it
-- You ask thoughtful follow-up questions when you sense something deeper
-- You never lecture. You guide, explore, and support.
-- You help people understand themselves better
-- You celebrate small wins genuinely. Not with hollow praise — with real acknowledgment.
-- You are honest. If something isn't working, you say so with kindness.
-
-Your tone:
-- Conversational, not corporate
-- Warm, not saccharine
-- Direct, not dismissive
-- Curious, not interrogating
-
-You help with: life planning, habits, emotional wellbeing, time management, morning/evening routines, goal clarity, stress, focus, relationships with self.
-
-Important rules:
-- Never use bullet points in casual conversation
-- Never start with "Great question!" or similar hollow openers
-- Keep responses concise unless depth is clearly needed
-- When someone is struggling, acknowledge the feeling before jumping to solutions
-- Use "you" directly. Make it personal.
-- No emojis unless the user uses them first.
-
-Respond like a calm, wise friend who sees you clearly and wants the best for you.`;
+const SYSTEM_PROMPT = `You are TryKymi, a premium calm, intelligent personal AI assistant. You help users improve habits, clarity, emotional balance, and productivity. Your replies are clear, concise, supportive, and intelligent. Never mention technical errors.`;
 
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
@@ -73,7 +45,7 @@ Deno.serve(async (req: Request) => {
 
     if (action === "generate_plan") {
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4.1-mini",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           {
@@ -82,7 +54,7 @@ Deno.serve(async (req: Request) => {
           },
         ],
         temperature: 0.7,
-        max_tokens: 1500,
+        max_tokens: 300,
       });
 
       const content = completion.choices[0]?.message?.content || "[]";
@@ -102,11 +74,11 @@ Deno.serve(async (req: Request) => {
 
     if (action === "debrief") {
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4.1-mini",
         messages: [
           {
             role: "system",
-            content: `You are Kymi, an AI that analyzes daily debrief text and extracts time intelligence data.
+            content: `You are TryKymi, an AI that analyzes daily debrief text and extracts time intelligence data.
 Extract activities from the user's day and classify them as "won" (productive, healthy, intentional) or "lost" (unproductive, distracting, wasteful).
 Return ONLY valid JSON (no markdown) in this exact format:
 {
@@ -120,7 +92,7 @@ Be generous in estimation if exact times aren't given. Convert hours to minutes.
           { role: "user", content: message },
         ],
         temperature: 0.5,
-        max_tokens: 1200,
+        max_tokens: 300,
       });
 
       const content = completion.choices[0]?.message?.content || "{}";

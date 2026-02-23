@@ -1358,3 +1358,98 @@ textarea:disabled {
 /* ================================= */
 /* END PREMIUM SAAS ANIMATIONS */
 /* ================================= */
+
+/* ================================= */
+/* MOBILE OPTIMIZATION */
+/* ================================= */
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    padding: 12px !important;
+  }
+
+  .card {
+    width: 100% !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+  }
+
+  header {
+    padding: 12px !important;
+  }
+
+  button {
+    font-size: 14px !important;
+    padding: 10px 14px !important;
+  }
+
+  .floating-chat {
+    position: fixed !important;
+    right: 12px !important;
+    bottom: 12px !important;
+  }
+
+  main {
+    padding: 8px !important;
+  }
+
+  .card-white,
+  .card-flat {
+    padding: 16px !important;
+  }
+
+  input, textarea, select {
+    font-size: 16px !important;
+    padding: 12px !important;
+  }
+
+  .badge {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+  }
+
+  section {
+    padding: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-grid {
+    gap: 10px !important;
+    padding: 8px !important;
+  }
+
+  .card {
+    padding: 12px !important;
+  }
+
+  button {
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+    width: 100% !important;
+  }
+
+  h1 {
+    font-size: 28px !important;
+  }
+
+  h2 {
+    font-size: 22px !important;
+  }
+
+  h3 {
+    font-size: 18px !important;
+  }
+
+  .floating-chat {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+/* ================================= */
+/* END MOBILE OPTIMIZATION */
+/* ================================= */
