@@ -73,10 +73,10 @@ Deno.serve(async (req: Request) => {
       }
 
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4.1-mini",
         messages,
-        temperature: 0.8,
-        max_tokens: 800,
+        temperature: 0.7,
+        max_tokens: 500,
       });
 
       const responseMessage = completion.choices[0]?.message?.content || "I couldn't generate a response. Please try again.";

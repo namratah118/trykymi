@@ -103,33 +103,9 @@ export default function AIAssistant() {
       } else {
         const errorText = data?.error || `Request failed (${response.status})`;
         console.error('AI error:', errorText);
-
-        let errorContent = '';
-        if (errorText.includes('API key') || errorText.includes('OPENAI') || errorText.includes('401') || errorText.includes('403')) {
-          errorContent = "trykymi is getting ready. Please check back in a moment.";
-        } else if (errorText.toLowerCase().includes('invalid') || errorText.toLowerCase().includes('jwt') || errorText.toLowerCase().includes('auth')) {
-          errorContent = "TryKymi is thinking…";
-        } else {
-          errorContent = "Let me think about that for a moment...";
-        }
-
-        const errRecord = await supabase.from('chat_messages').insert({
-          user_id: user!.id,
-          role: 'assistant',
-          content: errorContent,
-        }).select().maybeSingle();
-
-        if (errRecord.data) setMessages(prev => [...prev, errRecord.data!]);
       }
     } catch (err) {
       console.error('Network error calling AI:', err);
-      const errRecord = await supabase.from('chat_messages').insert({
-        user_id: user!.id,
-        role: 'assistant',
-        content: "I'm still thinking about that. Let me take another moment...",
-      }).select().maybeSingle();
-
-      if (errRecord.data) setMessages(prev => [...prev, errRecord.data!]);
     }
 
     setSending(false);
