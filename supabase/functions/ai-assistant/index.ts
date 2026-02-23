@@ -144,8 +144,15 @@ Be generous in estimation if exact times aren't given. Convert hours to minutes.
     );
   } catch (error) {
     console.error("Edge function error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Internal server error";
+    if (errorMessage.toLowerCase().includes("jwt") || errorMessage.toLowerCase().includes("unauthorized")) {
+      return new Response(
+        JSON.stringify({ error: "TryKymi is getting ready. Please try again." }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : "Internal server error" }),
+      JSON.stringify({ error: "TryKymi is getting ready. Please try again." }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
