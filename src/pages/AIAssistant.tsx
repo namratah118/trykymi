@@ -68,7 +68,6 @@ export default function AIAssistant() {
     try {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
       const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-      const { data: { session } } = await supabase.auth.getSession();
 
       const recentMessages = [...messages.slice(-8), userMessage].map(m => ({
         role: m.role,
@@ -78,7 +77,7 @@ export default function AIAssistant() {
       const response = await fetch(`${supabaseUrl}/functions/v1/ai-assistant`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${session?.access_token || supabaseAnonKey}`,
+          'Authorization': `Bearer ${supabaseAnonKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

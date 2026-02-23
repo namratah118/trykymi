@@ -116,8 +116,7 @@ export default function Dashboard() {
     setAiLoading(true);
     try {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const { data: { session } } = await supabase.auth.getSession();
-      const token = session?.access_token || import.meta.env.VITE_SUPABASE_ANON_KEY;
+      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
       const firstName = (user?.user_metadata?.full_name as string || 'there').split(' ')[0];
 
       const prompt = `Generate a single warm, personal, encouraging message for ${firstName}'s dashboard. ${getGreeting()} context.
@@ -127,7 +126,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
 
       const res = await fetch(`${supabaseUrl}/functions/v1/ai-assistant`, {
         method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+        headers: { 'Authorization': `Bearer ${supabaseAnonKey}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'chat', message: prompt, history: [] }),
       });
       const data = await res.json();
