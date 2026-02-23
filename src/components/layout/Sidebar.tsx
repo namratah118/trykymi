@@ -1,13 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, CalendarDays, Target, Bell, CheckSquare,
-  BarChart2, Moon, MessageSquare, User, Settings, LogOut, Clock
+  BarChart2, Moon, MessageSquare, User, Settings, LogOut
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
 const navItems = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/timeline', icon: Clock, label: 'Timeline' },
   { path: '/plan', icon: CalendarDays, label: "Today's Plan" },
   { path: '/habits', icon: Target, label: 'Habits' },
   { path: '/reminders', icon: Bell, label: 'Reminders' },
