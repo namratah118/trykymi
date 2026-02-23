@@ -1001,6 +1001,26 @@ main {
 /* ================================= */
 
 /* ================================= */
+/* CURSOR AND TEXT SELECTION FIXES */
+/* ================================= */
+
+* {
+  caret-color: transparent !important;
+}
+
+input, textarea {
+  caret-color: auto !important;
+}
+
+body {
+  user-select: none;
+}
+
+input, textarea {
+  user-select: text;
+}
+
+/* ================================= */
 /* PREMIUM SAAS ANIMATIONS */
 /* ================================= */
 
