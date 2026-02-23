@@ -38,26 +38,18 @@ select,
   pointer-events: auto !important;
 }
 
-/* Remove any blocking overlays with 100% width/height */
-div[style*="position: fixed"][style*="width: 100%"][style*="height: 100%"],
-div[style*="position: fixed"][style*="inset: 0"],
-.fixed-overlay,
-.blocking-overlay {
-  pointer-events: none !important;
-  z-index: -1 !important;
-}
-
-/* Remove z-index above 999 on non-functional elements */
-*[style*="z-index: 9999"] {
+/* Functional overlays must remain clickable - only block non-functional ones */
+.modal-overlay,
+[role="dialog"],
+.dropdown-overlay,
+.notification-overlay {
+  pointer-events: auto !important;
   z-index: auto !important;
 }
 
-*[style*="z-index: 10000"] {
-  z-index: auto !important;
-}
-
-/* Disable heavy performance killers */
-* {
+/* Performance optimizations - selective only */
+.heavy-animation,
+.large-blur {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
@@ -74,6 +66,33 @@ div[style*="position: fixed"][style*="inset: 0"],
 *[contenteditable="false"] {
   -webkit-user-modify: read-only !important;
   user-modify: read-only !important;
+}
+
+/* Clean focus styles - no flashing */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(211, 150, 140, 0.2) !important;
+}
+
+/* Remove pulsing and flashing animations */
+.animate-pulse,
+.animate-spin,
+.animate-bounce {
+  animation: none !important;
+}
+
+/* Remove all focus rings */
+*:focus-visible {
+  outline: none !important;
 }
 
 /* Global overflow fix */
@@ -109,6 +128,116 @@ button:disabled {
 main {
   -webkit-user-modify: read-only !important;
   user-modify: read-only !important;
+}
+
+/* ================================= */
+/* RESPONSIVE FIXES - MOBILE & TABLET */
+/* ================================= */
+
+/* Global responsive container */
+.max-w-7xl {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mobile first - fix stacking */
+@media (max-width: 768px) {
+  /* Cards stack vertically on mobile */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Reduce font sizes on mobile */
+  h1 {
+    font-size: 24px !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+  }
+
+  h3 {
+    font-size: 16px !important;
+  }
+
+  /* Chat button positioning on mobile */
+  [style*="bottom: 16px"][style*="right: 16px"] {
+    bottom: 12px !important;
+    right: 12px !important;
+  }
+
+  /* Ensure no horizontal scroll on mobile */
+  body,
+  html {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Fix padding on mobile */
+  main {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Navigation - ensure readable on mobile */
+  header {
+    font-size: 14px !important;
+  }
+
+  /* Modal on mobile - full screen with safe area */
+  [role="dialog"] {
+    width: 95vw !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Extra small devices */
+  h1 {
+    font-size: 20px !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  /* More aggressive chat button sizing on very small screens */
+  .fixed[style*="bottom"][style*="right"] {
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Desktop - ensure proper container max width */
+  .max-w-7xl {
+    max-width: 80rem !important;
+  }
+}
+
+/* ================================= */
+/* ENSURE ALL CONTAINERS RESPONSIVE */
+/* ================================= */
+
+/* No horizontal scroll anywhere */
+* {
+  max-width: 100% !important;
+}
+
+/* Prevent overflow on all screens */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Main content always responsive */
+main {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 @layer base {
@@ -928,12 +1057,6 @@ main {
 /* ULTRA CLEAN GLOBAL OVERRIDES */
 /* ================================= */
 
-/* Remove all backdrop blur globally */
-* {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
 /* Premium smooth background */
 html, body {
   background: linear-gradient(180deg, #0f3d2e 0%, #0b2e22 100%) !important;
@@ -941,13 +1064,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale !important;
 }
 
-/* Remove borders from all containers */
-div, section, main, aside, header, footer {
-  border: none !important;
-  outline: none !important;
-}
-
-/* Clean premium cards - no borders, subtle shadow */
+/* Clean premium cards - preserve shadows and styling */
 .card,
 .container,
 .panel,
@@ -959,25 +1076,24 @@ div, section, main, aside, header, footer {
 .card-white,
 .card-flat,
 .dashboard-card {
-  border: none !important;
-  outline: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  background: rgba(255, 255, 255, 0.03) !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
-  border-radius: 16px !important;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+}
+
+/* Modal overlays should have proper backdrop */
+.modal-overlay,
+[role="dialog"]::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
 }
 
 /* Clean text rendering */
 h1, h2, h3, h4, h5, h6, p, span, label {
-  color: rgba(255, 255, 255, 0.92) !important;
-  text-shadow: none !important;
-  backdrop-filter: none !important;
-}
-
-/* Remove box-shadow from all divs */
-div {
-  box-shadow: none !important;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: none;
 }
 
 /* Clean button styling */
@@ -1005,20 +1121,11 @@ input, textarea, select {
   outline: none !important;
 }
 
-/* Overlay - clean, no blur */
+/* Overlay - allow blur for modals */
 .overlay {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  background: rgba(0, 0, 0, 0.5) !important;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-/* Modal overlay - clean */
-.modal-overlay,
-[role="dialog"]::backdrop {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  background: rgba(0, 0, 0, 0.5) !important;
-}
 
 /* Glass effect removal */
 .glass {
