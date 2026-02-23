@@ -1,5 +1,6 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import OpenAI from "npm:openai@4";
+import { chatWithOpenAI } from "./openai.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -61,25 +62,7 @@ Deno.serve(async (req: Request) => {
     console.log("Received action:", action, "message:", message?.slice(0, 80));
 
     if (action === "chat") {
-      const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
-        { role: "system", content: SYSTEM_PROMPT },
-        ...((history || []).slice(-10) as { role: string; content: string }[]).map(
-          (m) => ({ role: m.role as "user" | "assistant", content: m.content })
-        ),
-      ];
-
-      if (!messages.some((m) => m.role === "user" && m.content === message)) {
-        messages.push({ role: "user", content: message });
-      }
-
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4.1-mini",
-        messages,
-        temperature: 0.7,
-        max_tokens: 500,
-      });
-
-      const responseMessage = completion.choices[0]?.message?.content || "I couldn't generate a response. Please try again.";
+      const responseMessage = await chatWithOpenAI(message, history);
       console.log("Chat response generated, length:", responseMessage.length);
 
       return new Response(
