@@ -1,14 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, CalendarDays, Target, Bell, CheckSquare,
-  BarChart2, Moon, MessageSquare, User, Settings, LogOut, Clock
+  BarChart2, Moon, MessageSquare, User, Settings, LogOut
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import Logo from '../ui/Logo';
 
 const navItems = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/timeline', icon: Clock, label: 'Timeline' },
   { path: '/plan', icon: CalendarDays, label: "Today's Plan" },
   { path: '/habits', icon: Target, label: 'Habits' },
   { path: '/reminders', icon: Bell, label: 'Reminders' },
@@ -36,7 +34,9 @@ export default function Sidebar({ onClose }: SidebarProps) {
   return (
     <aside className="w-60 min-h-screen flex flex-col" style={{ background: '#0A3323' }}>
       <div className="px-5 py-5" style={{ borderBottom: '1px solid rgba(247,244,213,0.08)' }}>
-        <Logo to="/dashboard" />
+        <div className="flex items-center">
+          <img src="/image.png" alt="kymi" style={{ height: '32px', objectFit: 'contain' }} />
+        </div>
       </div>
 
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">

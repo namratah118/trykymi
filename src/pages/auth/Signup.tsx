@@ -44,13 +44,8 @@ export default function Signup() {
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-12 relative z-10">
         <div className="w-full max-w-sm animate-slide-up">
           <div className="text-center mb-10">
-            <div className="inline-flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ background: 'rgba(247,244,213,0.08)', border: '2px solid rgba(247,244,213,0.15)' }}>
-                <div className="w-3 h-3 rounded-full" style={{ background: '#D3968C' }} />
-              </div>
-              <h1 className="font-heading text-3xl font-semibold mb-2" style={{ letterSpacing: '-0.03em', color: '#F7F4D5' }}>TryKymi</h1>
-              <p className="text-sm font-body" style={{ color: 'rgba(247,244,213,0.60)' }}>Your AI Lifestyle Manager</p>
-            </div>
+            <Logo to="/" />
+            <p className="text-sm font-body mt-2" style={{ color: 'rgba(247,244,213,0.50)' }}>Begin your journey</p>
           </div>
 
           <div

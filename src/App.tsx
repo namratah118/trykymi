@@ -1,16 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { PageTransition } from './components/PageTransition';
+import { AIAssistantBubble } from './components/AIAssistantBubble';
 import { CursorGlow } from './components/CursorGlow';
 import { FloatingParticles } from './components/FloatingParticles';
-import { AISidePanel } from './components/AISidePanel';
-import { AmbientLight } from './components/AmbientLight';
-import { WelcomeAnimation } from './components/WelcomeAnimation';
-import ReminderAlert from './components/ReminderAlert';
-import BrainSuggestion from './components/BrainSuggestion';
-import DailyReflection from './components/DailyReflection';
-import { useReminders } from './hooks/useReminders';
-import { useDailyBrain } from './hooks/useDailyBrain';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Homepage from './pages/Homepage';
@@ -25,7 +18,6 @@ import Insights from './pages/Insights';
 import Settings from './pages/Settings';
 import DailyDebrief from './pages/DailyDebrief';
 import Profile from './pages/Profile';
-import Timeline from './pages/Timeline';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -59,15 +51,8 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 }
 
 function AppRoutes() {
-  const { user } = useAuth();
-  useReminders(user?.id);
-  const { suggestion, setSuggestion, showReflection, setShowReflection } = useDailyBrain(user?.id);
-
   return (
-    <>
-      <BrainSuggestion suggestion={suggestion} onDismiss={() => setSuggestion(null)} />
-      <DailyReflection isOpen={showReflection} userId={user?.id || ''} onClose={() => setShowReflection(false)} />
-      <PageTransition>
+    <PageTransition>
       <Routes>
         <Route path="/" element={<PublicRoute><Homepage /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
@@ -83,11 +68,9 @@ function AppRoutes() {
         <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
         <Route path="/debrief" element={<ProtectedRoute><DailyDebrief /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/timeline" element={<ProtectedRoute><Timeline /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
-      </PageTransition>
-    </>
+    </PageTransition>
   );
 }
 
@@ -96,12 +79,9 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <FloatingParticles />
-        <AmbientLight />
         <CursorGlow />
         <AppRoutes />
-        <AISidePanel />
-        <WelcomeAnimation />
-        <ReminderAlert />
+        <AIAssistantBubble />
       </AuthProvider>
     </BrowserRouter>
   );

@@ -79,7 +79,6 @@ function WelcomePopup({ onClose, onStart }: { onClose: () => void; onStart: () =
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in"
       style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
-      onClick={onClose}
     >
       <div
         className="relative w-full max-w-md animate-scale-in overflow-hidden"
@@ -89,7 +88,6 @@ function WelcomePopup({ onClose, onStart }: { onClose: () => void; onStart: () =
           borderRadius: '14px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.20)',
         }}
-        onClick={e => e.stopPropagation()}
       >
         <div className="absolute top-0 left-0 right-0 h-1" style={{ background: '#D3968C' }} />
 

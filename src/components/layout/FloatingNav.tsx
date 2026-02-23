@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { LayoutDashboard, MessageSquare, User, LogOut, ChevronDown, CalendarDays, Target, Bell, CheckSquare, BarChart2, Moon } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import Logo from '../ui/Logo';
 
 const NAV_ITEMS = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -23,35 +24,29 @@ export default function FloatingNav() {
 
   return (
     <header
-      className="fixed top-2 sm:top-4 left-1/2 z-50 animate-slide-down w-full px-3 sm:px-4 md:px-6 lg:px-8 overflow-x-hidden"
-      style={{ transform: 'translateX(-50%)', maxWidth: '100vw' }}
+      className="fixed top-2 sm:top-4 left-1/2 z-50 animate-slide-down w-full px-4 sm:px-6 lg:px-8"
+      style={{ transform: 'translateX(-50%)' }}
     >
-      <div className="flex items-center h-14 sm:h-16 md:h-20 gap-2 sm:gap-3 md:gap-6 max-w-7xl mx-auto w-full overflow-x-hidden">
+      <div className="flex items-center h-16 sm:h-20 gap-3 sm:gap-6 max-w-7xl mx-auto">
+        <Logo to="/dashboard" />
+
         <div
-          className="w-full flex items-center justify-between px-3 sm:px-4 md:px-6 py-0 rounded-lg h-14 sm:h-16 md:h-20 overflow-x-hidden"
+          className="flex-1 flex items-center justify-between px-4 sm:px-6 py-0 rounded-lg h-16 sm:h-20"
           style={{
             background: 'rgba(10,51,35,0.4)',
             border: '1px solid rgba(247,244,213,0.05)',
             boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
           }}
         >
-          <div className="flex items-center gap-3 md:gap-4 h-full">
-            <div className="flex items-center gap-1.5 flex-shrink-0">
-              <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#D3968C' }} />
-              <span className="text-xs md:text-sm font-semibold flex-shrink-0" style={{ color: '#F7F4D5', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }}>trykymi</span>
-            </div>
-            <div className="w-px h-4 flex-shrink-0" style={{ background: 'rgba(247,244,213,0.15)' }} />
-          </div>
-
-          <nav className="hidden md:flex items-center gap-0.5 h-full overflow-x-auto">
+          <nav className="hidden md:flex items-center gap-1 h-full">
             {NAV_ITEMS.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
-                className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-0 rounded-lg font-medium transition-all duration-200 h-full flex-shrink-0"
+                className="flex items-center gap-2 px-4 py-0 rounded-lg font-medium transition-all duration-200 h-full"
                 style={({ isActive }) => isActive
-                  ? { background: '#D3968C', color: '#0A3323', fontSize: '14px', fontWeight: 500, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
-                  : { color: 'rgba(247,244,213,0.70)', fontSize: '14px', fontWeight: 500, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
+                  ? { background: '#D3968C', color: '#0A3323', fontSize: '16px', fontWeight: 500, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
+                  : { color: 'rgba(247,244,213,0.70)', fontSize: '16px', fontWeight: 500, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
                 }
                 onMouseEnter={(e) => {
                   const link = e.currentTarget;
@@ -142,18 +137,18 @@ export default function FloatingNav() {
         </div>
       </div>
 
-      <nav className="md:hidden mt-2 w-full px-3 sm:px-4 flex items-center gap-0.5 overflow-x-auto pb-1 scrollbar-thin max-w-7xl mx-auto overflow-x-hidden">
+      <nav className="md:hidden mt-2 w-full px-4 sm:px-6 lg:px-8 flex items-center gap-1 overflow-x-auto pb-1 scrollbar-thin max-w-7xl mx-auto">
         {NAV_ITEMS.map((item) => (
           <NavLink
             key={item.path}
             to={item.path}
-            className="flex-shrink-0 flex items-center gap-0.5 px-2 py-1 rounded-lg transition-all duration-200 text-xs"
+            className="flex-shrink-0 flex items-center gap-1 px-2.5 py-1.5 rounded-lg transition-all duration-200 text-xs"
             style={({ isActive }) => isActive
               ? { background: '#D3968C', color: '#0A3323', fontWeight: 500, fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
               : { color: 'rgba(247,244,213,0.60)', fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif" }
             }
           >
-            <item.icon style={{ width: '14px', height: '14px' }} />
+            <item.icon style={{ width: '12px', height: '12px' }} />
           </NavLink>
         ))}
       </nav>
