@@ -460,6 +460,7 @@
   }
 
   .animate-fade-in { animation: fadeOnly 0.15s ease-out; }
+  .animate-thinking-fade { animation: thinkingFade 0.4s ease-out forwards; }
   .animate-slide-up { animation: none; }
   .animate-slide-down { animation: none; }
   .animate-scale-in { animation: none; }
@@ -517,6 +518,15 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes thinkingFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.75;
   }
 }
 

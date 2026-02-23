@@ -104,9 +104,14 @@ export default function AIAssistant() {
         const errorText = data?.error || `Request failed (${response.status})`;
         console.error('AI error:', errorText);
 
-        const errorContent = errorText.includes('API key')
-          ? 'trykymi AI needs an OpenAI API key to work. Please configure the OPENAI_API_KEY secret in your Supabase edge function settings.'
-          : `Sorry, something went wrong: ${errorText}`;
+        let errorContent = '';
+        if (errorText.includes('API key') || errorText.includes('OPENAI') || errorText.includes('401') || errorText.includes('403')) {
+          errorContent = "trykymi is getting ready. Please check back in a moment.";
+        } else if (errorText.toLowerCase().includes('invalid') || errorText.toLowerCase().includes('jwt') || errorText.toLowerCase().includes('auth')) {
+          errorContent = "trykymi is thinking...";
+        } else {
+          errorContent = "Let me think about that for a moment...";
+        }
 
         const errRecord = await supabase.from('chat_messages').insert({
           user_id: user!.id,
@@ -121,7 +126,7 @@ export default function AIAssistant() {
       const errRecord = await supabase.from('chat_messages').insert({
         user_id: user!.id,
         role: 'assistant',
-        content: 'Unable to reach the AI service. Please check your internet connection and try again.',
+        content: "I'm still thinking about that. Let me take another moment...",
       }).select().maybeSingle();
 
       if (errRecord.data) setMessages(prev => [...prev, errRecord.data!]);
@@ -160,7 +165,13 @@ export default function AIAssistant() {
             </div>
             <div>
               <p className="text-sm font-body font-semibold" style={{ color: '#F7F4D5' }}>trykymi AI</p>
-              <p className="text-xs font-body" style={{ color: 'rgba(247,244,213,0.45)' }}>Your personal lifestyle assistant</p>
+              {sending ? (
+                <p className="text-xs font-body animate-thinking-fade" style={{ color: '#839958', opacity: 0.75, marginTop: '6px', letterSpacing: '0.2px', fontWeight: 500 }}>
+                  TryKymi thinking…
+                </p>
+              ) : (
+                <p className="text-xs font-body" style={{ color: 'rgba(247,244,213,0.45)' }}>Your personal lifestyle assistant</p>
+              )}
             </div>
           </div>
           {messages.length > 0 && (

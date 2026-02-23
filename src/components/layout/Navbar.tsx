@@ -15,7 +15,15 @@ export default function Navbar({ title, subtitle }: NavbarProps) {
   const displayName = (user?.user_metadata?.full_name as string) || user?.email?.split('@')[0] || 'User';
   const initials = displayName.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase();
 
-  const displaySubtitle = subtitle && typeof subtitle === "string" && !subtitle.toLowerCase().includes("invalid jwt") ? subtitle : "TryKymi is getting ready…";
+  const getDisplaySubtitle = () => {
+    if (!subtitle || typeof subtitle !== "string") return null;
+    const lowerSubtitle = subtitle.toLowerCase();
+    if (lowerSubtitle.includes("invalid jwt") || lowerSubtitle.includes("jwt") || lowerSubtitle.includes("error")) {
+      return null;
+    }
+    return subtitle;
+  };
+  const displaySubtitle = getDisplaySubtitle();
 
   return (
     <header className="h-16 sm:h-20 flex items-center justify-between px-4 sm:px-6 flex-shrink-0" style={{ backgroundColor: 'rgba(10,51,35,0.4)', border: '1px solid rgba(247,244,213,0.05)', borderRadius: '14px', margin: '12px', padding: '12px' }}>
