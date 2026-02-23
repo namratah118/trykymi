@@ -4,6 +4,7 @@ import {
   BarChart2, Moon, MessageSquare, User, Settings, LogOut, Clock
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import Logo from '../ui/Logo';
 
 const navItems = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -35,9 +36,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
   return (
     <aside className="w-60 min-h-screen flex flex-col" style={{ background: '#0A3323' }}>
       <div className="px-5 py-5" style={{ borderBottom: '1px solid rgba(247,244,213,0.08)' }}>
-        <div className="flex items-center">
-          <img src="/image.png" alt="kymi" style={{ height: '32px', objectFit: 'contain' }} />
-        </div>
+        <Logo to="/dashboard" />
       </div>
 
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">

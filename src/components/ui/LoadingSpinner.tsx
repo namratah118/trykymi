@@ -1,3 +1,5 @@
+import ThinkingDots from './ThinkingDots';
+
 interface LoadingSpinnerProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
@@ -30,7 +32,7 @@ export function PageLoader() {
     <div className="flex-1 flex items-center justify-center min-h-64">
       <div className="text-center">
         <LoadingSpinner size="lg" className="mx-auto mb-3" />
-        <p className="font-body" style={{ color: '#839958', fontSize: '16px' }}>Loading...</p>
+        <ThinkingDots className="font-body" color="#839958" />
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import {
 import AppLayout from '../components/layout/AppLayout';
 import { PageLoader } from '../components/ui/LoadingSpinner';
 import DailyCheckin from '../components/ui/DailyCheckin';
+import ThinkingDots from '../components/ui/ThinkingDots';
 import { PlanIllustration, ReminderIllustration, ChecklistIllustration, HabitIllustration } from '../components/ui/Illustrations';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -178,7 +179,7 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
                 {aiLoading ? (
                   <div className="flex items-center gap-2">
                     <Loader className="w-3.5 h-3.5 animate-spin" style={{ color: 'rgba(247,244,213,0.40)' }} />
-                    <span className="text-xs sm:text-sm lg:text-base font-body" style={{ color: 'rgba(247,244,213,0.40)' }}>trykymi is thinking...</span>
+                    <ThinkingDots className="text-xs sm:text-sm lg:text-base font-body" color="rgba(247,244,213,0.40)" />
                   </div>
                 ) : aiMessage ? (
                   <p className="text-sm sm:text-base lg:text-lg font-body leading-relaxed" style={{ color: 'rgba(247,244,213,0.78)', fontStyle: 'italic' }}>
