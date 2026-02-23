@@ -4,10 +4,116 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================================= */
+/* GLOBAL PRODUCTION FIXES */
+/* ================================= */
+
+/* Disable contenteditable globally */
+* {
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
+  user-select: auto !important;
+  pointer-events: auto !important;
+}
+
+/* Disable caret globally, enable only in inputs */
+* {
+  caret-color: transparent !important;
+}
+
+input,
+textarea {
+  caret-color: auto !important;
+}
+
+/* Force pointer-events on all interactive elements */
+button,
+a,
+input,
+textarea,
+select,
+[role="button"],
+[role="link"],
+.clickable {
+  pointer-events: auto !important;
+}
+
+/* Remove any blocking overlays with 100% width/height */
+div[style*="position: fixed"][style*="width: 100%"][style*="height: 100%"],
+div[style*="position: fixed"][style*="inset: 0"],
+.fixed-overlay,
+.blocking-overlay {
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+/* Remove z-index above 999 on non-functional elements */
+*[style*="z-index: 9999"] {
+  z-index: auto !important;
+}
+
+*[style*="z-index: 10000"] {
+  z-index: auto !important;
+}
+
+/* Disable heavy performance killers */
+* {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Remove unnecessary animations in production */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    animation-duration: 0.2s !important;
+  }
+}
+
+/* Force clean mode - no editor, no debug */
+*[contenteditable="true"],
+*[contenteditable="false"] {
+  -webkit-user-modify: read-only !important;
+  user-modify: read-only !important;
+}
+
+/* Global overflow fix */
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  scroll-behavior: smooth !important;
+}
+
+/* Production clean mode */
+body {
+  -webkit-app-region: no-drag !important;
+  overflow-x: hidden !important;
+}
+
+/* Remove any debug panels */
+[data-debug="true"],
+.debug-panel,
+.editor-panel,
+.console-panel {
+  display: none !important;
+}
+
+/* Ensure buttons are always clickable */
+button:disabled {
+  pointer-events: auto !important;
+  cursor: not-allowed !important;
+}
+
+/* Normal website mode - not editable canvas */
+#root,
+main {
+  -webkit-user-modify: read-only !important;
+  user-modify: read-only !important;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
-    transition: all 0.2s ease;
   }
 
   html {
@@ -619,9 +725,15 @@ body {
 /* CRISP FLAT PREMIUM SILICON VALLEY */
 /* ================================= */
 
-/* Global premium transitions - only color and opacity */
-* {
-  transition: all 0.2s ease;
+/* Global premium transitions - optimized for performance */
+button,
+a,
+.card,
+.card-white,
+.card-flat,
+header,
+nav {
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 /* Premium button style */
@@ -1214,14 +1326,12 @@ a:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Smooth transitions for all state changes */
-* {
-  transition: all 0.2s ease;
-}
-
-/* Disable transition for certain properties to prevent jank */
-*:not(button):not(a):not(.card):not(.widget):not(.panel) {
-  transition: opacity 0.2s ease, color 0.2s ease;
+/* Optimized transitions - no global transition on all elements */
+button,
+a,
+input:focus,
+textarea:focus {
+  transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
 /* Form animation */
