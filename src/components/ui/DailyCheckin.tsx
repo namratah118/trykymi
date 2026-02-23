@@ -163,8 +163,8 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
       <div
         className="absolute inset-0 bg-black/30 backdrop-blur-sm animate-fade-in"
-        style={{ cursor: result ? 'default' : 'pointer' }}
-        onClick={result ? undefined : onClose}
+        style={{ cursor: 'pointer' }}
+        onClick={onClose}
       />
 
       <div className="relative w-full sm:max-w-lg sm:mx-4 overflow-hidden animate-slide-up shadow-modal sm:rounded-3xl" style={{ maxHeight: '95vh', background: '#F7F4D5' }}>
