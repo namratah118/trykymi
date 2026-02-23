@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import Logo from '../components/ui/Logo';
 import HeroVisual from '../components/HeroVisual';
+import LandingPopup from '../components/LandingPopup';
 
 const FEATURES = [
   {
@@ -212,6 +213,7 @@ export default function Homepage() {
 
   return (
     <div style={{ background: '#0A3323', minHeight: '100vh' }}>
+      <LandingPopup />
 
       {showPopup && (
         <WelcomePopup
