@@ -21,6 +21,7 @@ import Insights from './pages/Insights';
 import Settings from './pages/Settings';
 import DailyDebrief from './pages/DailyDebrief';
 import Profile from './pages/Profile';
+import Timeline from './pages/Timeline';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -71,6 +72,7 @@ function AppRoutes() {
         <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
         <Route path="/debrief" element={<ProtectedRoute><DailyDebrief /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/timeline" element={<ProtectedRoute><Timeline /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </PageTransition>
