@@ -136,7 +136,7 @@ export default function DailyCheckin({
         style={{
           maxHeight: '95vh',
           background: '#F7F4D5',
-          color: '#24302B'
+          opacity: 1
         }}
 
       >
@@ -149,7 +149,7 @@ export default function DailyCheckin({
 
             style={{
 
-              color: '#24302B',
+              color: "#24302B",
 
               fontWeight: 600,
 
@@ -175,13 +175,13 @@ export default function DailyCheckin({
 
           <h2
 
+            className="font-heading text-2xl font-semibold mb-2 !text-[#24302B]"
+
             style={{
 
               fontSize: "22px",
 
               fontWeight: 600,
-
-              color: '#24302B'
 
             }}
 
@@ -195,7 +195,9 @@ export default function DailyCheckin({
 
             style={{
 
-              color: '#24302B',
+              color: "#24302B",
+
+              opacity: 0.7,
 
               marginTop: 4,
 
@@ -246,13 +248,13 @@ export default function DailyCheckin({
 
                 <span
 
-                  className={opt.icon ? 'text-xs' : 'text-sm'}
-
                   style={{
 
-                    color: '#24302B',
+                    color: isSelected ? '#839958' : '#1F2937',
 
-                    fontWeight: isSelected ? 600 : 500
+                    fontWeight: '600',
+
+                    WebkitTextFillColor: isSelected ? '#839958' : '#1F2937'
 
                   }}
 

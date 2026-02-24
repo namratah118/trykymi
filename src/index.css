@@ -1640,3 +1640,16 @@ z-index: 999 !important;
 
 }
 
+.daily-checkin-text,
+.daily-checkin-text *,
+.daily-checkin-text h1,
+.daily-checkin-text h2,
+.daily-checkin-text h3,
+.daily-checkin-text span,
+.daily-checkin-text p {
+color: #24302B !important;
+}
+
+.daily-checkin-text button:not([style*="background"]) {
+color: #24302B !important;
+}
