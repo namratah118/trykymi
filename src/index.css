@@ -1640,9 +1640,3 @@ z-index: 999 !important;
 
 }
 
-.daily-checkin-text h1,
-.daily-checkin-text h2,
-.daily-checkin-text h3,
-.daily-checkin-text p:not(button p) {
-color: #24302B !important;
-}
