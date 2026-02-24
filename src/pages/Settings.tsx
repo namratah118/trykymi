@@ -287,6 +287,16 @@ export default function Settings() {
             </div>
           </div>
         </div>
+
+        <div className="flex justify-center pt-4">
+          <a
+            href="mailto:kymi@trykymi.com?subject=Feedback%20for%20TryKymi"
+            className="text-sm font-body hover:opacity-75 transition-opacity"
+            style={{ color: 'rgba(247,244,213,0.55)' }}
+          >
+            Contact Kymi
+          </a>
+        </div>
       </div>
     </AppLayout>
   );
