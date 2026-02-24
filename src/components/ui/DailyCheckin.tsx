@@ -198,10 +198,10 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
           {!result ? (
             <div className="animate-fade-in">
               <div className="mb-7">
-                <h2 className="font-heading text-2xl font-semibold text-text-primary mb-2" style={{ letterSpacing: '-0.025em' }}>
+                <h2 className="font-heading text-2xl font-semibold mb-2" style={{ letterSpacing: '-0.025em', color: '#839958' }}>
                   {currentStep.question}
                 </h2>
-                <p className="text-sm font-body text-text-muted">{currentStep.subtext}</p>
+                <p className="text-sm font-body" style={{ color: '#839958' }}>{currentStep.subtext}</p>
               </div>
 
               <div className={`grid gap-2.5 mb-8 ${currentStep.options.length <= 3 ? 'grid-cols-3' : currentStep.options.length <= 4 ? 'grid-cols-2' : 'grid-cols-2'}`}>
@@ -232,7 +232,7 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
                   <button
                     onClick={() => setStep(s => s - 1)}
                     className="w-10 h-10 rounded-xl border flex items-center justify-center transition-colors flex-shrink-0"
-                    style={{ borderColor: 'rgba(131,153,88,0.20)', color: '#0A3323' }}
+                    style={{ borderColor: 'rgba(131,153,88,0.20)', color: '#839958' }}
                     onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(131,153,88,0.08)'}
                     onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}
                   >
@@ -243,6 +243,7 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
                   onClick={next}
                   disabled={!canAdvance || loading}
                   className="btn-primary flex-1 py-3"
+                  style={{ color: '#839958' }}
                 >
                   {loading ? (
                     <span className="flex items-center gap-2">
@@ -279,19 +280,19 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-heading text-xl font-semibold text-text-primary" style={{ letterSpacing: '-0.03em' }}>{result.score}</span>
+                    <span className="font-heading text-xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#839958' }}>{result.score}</span>
                   </div>
                 </div>
                 <div>
-                  <p className="section-label mb-1">Today's readiness score</p>
-                  <p className="font-heading text-2xl font-semibold text-text-primary" style={{ letterSpacing: '-0.025em' }}>
+                  <p className="section-label mb-1" style={{ color: '#839958' }}>Today's readiness score</p>
+                  <p className="font-heading text-2xl font-semibold" style={{ letterSpacing: '-0.025em', color: '#839958' }}>
                     {result.score >= 70 ? 'You\'re ready' : result.score >= 45 ? 'Steady start' : 'Be gentle today'}
                   </p>
                 </div>
               </div>
 
               <div className="rounded-2xl p-5 mb-6" style={{ background: 'rgba(131,153,88,0.10)', border: '1px solid rgba(131,153,88,0.20)' }}>
-                <p className="text-sm font-body leading-relaxed" style={{ fontStyle: 'italic', color: '#0A3323' }}>
+                <p className="text-sm font-body leading-relaxed" style={{ fontStyle: 'italic', color: '#839958' }}>
                   "{result.message}"
                 </p>
                 <p className="text-xs font-body mt-3 font-semibold" style={{ color: '#839958' }}>— Kymi</p>
@@ -306,12 +307,12 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
                 ].map((item, i) => (
                   <div key={i} className="rounded-xl px-4 py-3" style={{ background: 'rgba(131,153,88,0.08)', border: '1px solid rgba(131,153,88,0.15)' }}>
                     <p className="section-label mb-1" style={{ color: '#839958' }}>{item.label}</p>
-                    <p className="text-sm font-body font-semibold" style={{ color: '#0A3323' }}>{item.value}</p>
+                    <p className="text-sm font-body font-semibold" style={{ color: '#839958' }}>{item.value}</p>
                   </div>
                 ))}
               </div>
 
-              <button onClick={onComplete} className="btn-primary w-full py-3">
+              <button onClick={onComplete} className="btn-primary w-full py-3" style={{ color: '#839958' }}>
                 Start my day
               </button>
             </div>
