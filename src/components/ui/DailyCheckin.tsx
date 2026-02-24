@@ -149,7 +149,7 @@ export default function DailyCheckin({
 
             style={{
 
-              color: "#0A3323",
+              color: "#24302B",
 
               fontWeight: 600,
 
@@ -195,7 +195,9 @@ export default function DailyCheckin({
 
             style={{
 
-              color: "#6B7280",
+              color: "#24302B",
+
+              opacity: 0.7,
 
               marginTop: 4,
 
