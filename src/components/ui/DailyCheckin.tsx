@@ -288,7 +288,7 @@ export default function DailyCheckin({
 
               background: "#D3968C",
 
-              color: "#FFFFFF",
+              color: "#839958",
 
               padding: "14px",
 
