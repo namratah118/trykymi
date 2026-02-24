@@ -228,25 +228,17 @@ export default function DailyCheckin({
 
                 style={{
 
-                  backgroundColor: isSelected
+                  background: isSelected ? '#839958' : '#F7F4D5',
 
-                    ? "#839958"
+                  borderColor: isSelected ? '#839958' : 'rgba(131,153,88,0.20)',
 
-                    : "#F7F4D5",
-
-                  border:
-
-                    "2px solid " +
-
-                    (isSelected
-
-                      ? "#839958"
-
-                      : "rgba(131,153,88,0.20)"),
+                  border: "2px solid",
 
                   padding: "14px",
 
                   borderRadius: "16px",
+
+                  color: isSelected ? '#FFFFFF' : '#1F2937'
 
                 }}
 
@@ -258,9 +250,9 @@ export default function DailyCheckin({
 
                     color: isSelected ? '#FFFFFF' : '#1F2937',
 
-                    fontWeight: isSelected ? 600 : 500,
+                    fontWeight: '600',
 
-                    transition: 'color 0.2s ease'
+                    WebkitTextFillColor: isSelected ? '#FFFFFF' : '#1F2937'
 
                   }}
 
