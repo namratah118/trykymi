@@ -7,7 +7,6 @@ import Signup from './pages/auth/Signup';
 import Homepage from './pages/Homepage';
 import Onboarding from './pages/Onboarding';
 import Dashboard from './pages/Dashboard';
-import TodaysPlan from './pages/TodaysPlan';
 import Reminders from './pages/Reminders';
 import Tasks from './pages/Tasks';
 import Habits from './pages/Habits';
@@ -57,7 +56,6 @@ function AppRoutes() {
         <Route path="/signup" element={<PublicRoute><Signup /></PublicRoute>} />
         <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route path="/plan" element={<ProtectedRoute><TodaysPlan /></ProtectedRoute>} />
         <Route path="/reminders" element={<ProtectedRoute><Reminders /></ProtectedRoute>} />
         <Route path="/tasks" element={<ProtectedRoute><Tasks /></ProtectedRoute>} />
         <Route path="/habits" element={<ProtectedRoute><Habits /></ProtectedRoute>} />

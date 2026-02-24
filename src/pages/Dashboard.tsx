@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  CalendarDays, Bell, CheckSquare, Target, ArrowRight, Clock,
-  Sparkles, Moon, Zap, X, TrendingUp, TrendingDown, Loader
+  Bell, CheckSquare, Target, ArrowRight, Clock,
+  Sparkles, Moon, Zap, X, TrendingUp, TrendingDown, Loader, BarChart2
 } from 'lucide-react';
 import AppLayout from '../components/layout/AppLayout';
 import { PageLoader } from '../components/ui/LoadingSpinner';
 import DailyCheckin from '../components/ui/DailyCheckin';
-import { PlanIllustration, ReminderIllustration, ChecklistIllustration, HabitIllustration } from '../components/ui/Illustrations';
+import { ReminderIllustration, ChecklistIllustration, HabitIllustration } from '../components/ui/Illustrations';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import type { Plan, Reminder, Task, Habit, TimeEntry } from '../types/database';
@@ -243,10 +243,10 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
 
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
-            { icon: CalendarDays, label: "Today's Plans", value: `${stats.completedPlans}/${stats.todayPlans}`, link: '/plan' },
             { icon: Target, label: 'Habits Done', value: `${stats.completedHabitsToday}/${stats.totalHabits}`, link: '/habits' },
             { icon: CheckSquare, label: 'Tasks Done', value: `${stats.completedTasks}/${stats.totalTasks}`, link: '/tasks' },
             { icon: Bell, label: 'Reminders', value: String(stats.upcomingReminders), link: '/reminders' },
+            { icon: BarChart2, label: 'Time Analytics', value: stats.todayPlans.toString(), link: '/insights' },
           ].map((stat, i) => (
             <Link
               key={i}
@@ -289,29 +289,6 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <GlassSectionCard title="Today&apos;s Plan" linkTo="/plan" icon={<CalendarDays className="w-4 h-4" />}>
-            {plans.length === 0 ? (
-              <GlassEmptyState text="No plans yet. Start your day with intention." linkTo="/plan" linkText="Create a plan" illustration={<PlanIllustration className="w-12 h-12" opacity={0.4} />} />
-            ) : (
-              <div className="space-y-1.5">
-                {plans.slice(0, 5).map((plan) => (
-                  <div key={plan.id} className="flex items-start gap-3 px-3 py-2.5 rounded-xl" style={{ background: 'rgba(247,244,213,0.04)', opacity: plan.completed ? 0.45 : 1 }}>
-                    <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ background: '#D3968C' }} />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs sm:text-sm lg:text-base font-body font-medium" style={{ color: 'rgba(247,244,213,0.85)', textDecoration: plan.completed ? 'line-through' : 'none' }}>{plan.title}</p>
-                      {plan.start_time && (
-                        <p className="text-xs font-body flex items-center gap-1 mt-0.5" style={{ color: 'rgba(247,244,213,0.40)' }}>
-                          <Clock className="w-3 h-3" />
-                          {plan.start_time.slice(0, 5)}{plan.end_time ? ` – ${plan.end_time.slice(0, 5)}` : ''}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </GlassSectionCard>
-
           <GlassSectionCard title="Upcoming Reminders" linkTo="/reminders" icon={<Bell className="w-4 h-4" />}>
             {reminders.length === 0 ? (
               <GlassEmptyState text="No reminders set. Add what matters." linkTo="/reminders" linkText="Add reminder" illustration={<ReminderIllustration className="w-12 h-12" opacity={0.4} />} />

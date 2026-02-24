@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { LayoutDashboard, MessageSquare, User, LogOut, ChevronDown, CalendarDays, Target, Bell, CheckSquare, BarChart2, Moon } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, User, LogOut, ChevronDown, Target, Bell, CheckSquare, BarChart2, Moon } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import Logo from '../ui/Logo';
 
 const NAV_ITEMS = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/plan', icon: CalendarDays, label: 'Plan' },
   { path: '/habits', icon: Target, label: 'Habits' },
   { path: '/tasks', icon: CheckSquare, label: 'Tasks' },
   { path: '/reminders', icon: Bell, label: 'Reminders' },

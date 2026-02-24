@@ -7,7 +7,6 @@ import { useAuth } from '../../contexts/AuthContext';
 
 const navItems = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/plan', icon: CalendarDays, label: "Today's Plan" },
   { path: '/habits', icon: Target, label: 'Habits' },
   { path: '/reminders', icon: Bell, label: 'Reminders' },
   { path: '/tasks', icon: CheckSquare, label: 'Tasks' },
