@@ -19,50 +19,107 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
+    let mounted = true;
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
+    const initializeAuth = async () => {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) {
+          console.error('[Auth] Failed to get session:', error);
+        }
+        if (mounted) {
+          setSession(session);
+          setUser(session?.user ?? null);
+        }
+      } catch (error) {
+        console.error('[Auth] Session initialization error:', error);
+        if (mounted) {
+          setSession(null);
+          setUser(null);
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    };
 
-    return () => subscription.unsubscribe();
+    initializeAuth();
+
+    let subscription;
+    try {
+      const { data } = supabase.auth.onAuthStateChange((event, session) => {
+        if (mounted) {
+          setSession(session);
+          setUser(session?.user ?? null);
+          setLoading(false);
+        }
+      });
+      subscription = data.subscription;
+    } catch (error) {
+      console.error('[Auth] Failed to setup auth listener:', error);
+      if (mounted) {
+        setLoading(false);
+      }
+    }
+
+    return () => {
+      mounted = false;
+      subscription?.unsubscribe();
+    };
   }, []);
 
   const signUp = async (email: string, password: string, fullName: string) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { full_name: fullName },
-      },
-    });
-
-    if (!error && data.user) {
-      await supabase.from('users').upsert({
-        id: data.user.id,
-        full_name: fullName,
+    try {
+      const { data, error } = await supabase.auth.signUp({
         email,
+        password,
+        options: {
+          data: { full_name: fullName },
+        },
       });
 
-      await supabase.from('profiles').upsert({
-        id: data.user.id,
-        name: fullName,
-        email,
-      });
+      if (error) {
+        console.error('[Auth] Signup error:', error);
+        return { error };
+      }
+
+      if (data.user) {
+        try {
+          await supabase.from('users').upsert({
+            id: data.user.id,
+            full_name: fullName,
+            email,
+          });
+
+          await supabase.from('profiles').upsert({
+            id: data.user.id,
+            name: fullName,
+            email,
+          });
+        } catch (dbError) {
+          console.error('[Auth] Database sync error:', dbError);
+        }
+      }
+
+      return { error: null };
+    } catch (error) {
+      console.error('[Auth] Signup exception:', error);
+      return { error: error instanceof Error ? error : new Error('Signup failed') };
     }
-
-    return { error };
   };
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    return { error };
+    try {
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        console.error('[Auth] Signin error:', error);
+      }
+      return { error };
+    } catch (error) {
+      console.error('[Auth] Signin exception:', error);
+      return { error: error instanceof Error ? error : new Error('Signin failed') };
+    }
   };
 
   const signOut = async () => {
