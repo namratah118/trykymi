@@ -211,11 +211,12 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
                     <button
                       key={opt.value}
                       onClick={() => toggle(opt.value)}
-                      className="relative flex flex-col items-center justify-center gap-2 px-4 py-4 rounded-2xl border-2 text-sm font-body font-medium transition-all duration-150 active:scale-95"
+                      className="relative flex flex-col items-center justify-center gap-2 px-4 py-4 rounded-2xl border-2 text-sm font-body transition-all duration-150 active:scale-95"
                       style={{
                         background: isSelected ? '#839958' : '#F7F4D5',
                         borderColor: isSelected ? '#839958' : 'rgba(131,153,88,0.20)',
-                        color: isSelected ? '#FFFFFF' : '#374151',
+                        color: isSelected ? '#FFFFFF' : '#1F2933',
+                        fontWeight: isSelected ? 600 : 500,
                         transition: 'color 0.2s ease',
                       }}
                     >
