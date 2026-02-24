@@ -21,22 +21,23 @@ import LoadingSpinner from './components/ui/LoadingSpinner';
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
 
-  if (loading) {
-    return <LoadingFallback />;
+  if (!user) {
+    if (loading) {
+      return <LoadingFallback />;
+    }
+    return <Navigate to="/login" replace />;
   }
 
-  if (!user) return <Navigate to="/login" replace />;
   return <>{children}</>;
 }
 
 function PublicRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
 
-  if (loading) {
-    return <LoadingFallback />;
+  if (user) {
+    return <Navigate to="/dashboard" replace />;
   }
 
-  if (user) return <Navigate to="/dashboard" replace />;
   return <>{children}</>;
 }
 

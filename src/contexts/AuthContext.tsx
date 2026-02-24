@@ -20,6 +20,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let mounted = true;
+    let timeoutId: NodeJS.Timeout | null = null;
+
+    const forceLoadingComplete = () => {
+      if (mounted && timeoutId) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+      if (mounted) {
+        setLoading(false);
+      }
+    };
 
     const initializeAuth = async () => {
       try {
@@ -30,21 +41,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (mounted) {
           setSession(session);
           setUser(session?.user ?? null);
+          forceLoadingComplete();
         }
       } catch (error) {
         console.error('[Auth] Session initialization error:', error);
         if (mounted) {
           setSession(null);
           setUser(null);
-        }
-      } finally {
-        if (mounted) {
-          setLoading(false);
+          forceLoadingComplete();
         }
       }
     };
 
     initializeAuth();
+
+    timeoutId = setTimeout(() => {
+      if (mounted) {
+        console.warn('[Auth] Loading timeout - forcing completion after 2 seconds');
+        setLoading(false);
+      }
+    }, 2000);
 
     let subscription;
     try {
@@ -52,19 +68,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (mounted) {
           setSession(session);
           setUser(session?.user ?? null);
-          setLoading(false);
+          forceLoadingComplete();
         }
       });
       subscription = data.subscription;
     } catch (error) {
       console.error('[Auth] Failed to setup auth listener:', error);
-      if (mounted) {
-        setLoading(false);
-      }
+      forceLoadingComplete();
     }
 
     return () => {
       mounted = false;
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
       subscription?.unsubscribe();
     };
   }, []);
