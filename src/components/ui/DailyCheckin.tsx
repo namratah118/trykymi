@@ -199,6 +199,8 @@ export default function DailyCheckin({
 
               marginTop: 4,
 
+              opacity: 0.8,
+
             }}
 
           >
