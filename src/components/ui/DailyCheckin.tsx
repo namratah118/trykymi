@@ -133,7 +133,11 @@ export default function DailyCheckin({
 
         className="relative w-full max-w-lg rounded-3xl shadow-xl"
 
-        style={{ background: "#F7F4D5" }}
+        style={{
+          maxHeight: '95vh',
+          background: '#F7F4D5',
+          opacity: 1
+        }}
 
       >
 
@@ -252,19 +256,11 @@ export default function DailyCheckin({
 
                   style={{
 
-                    color: isSelected
+                    color: isSelected ? '#FFFFFF' : '#1A2E22',
 
-                      ? "#FFFFFF"
+                    fontWeight: 600,
 
-                      : "#24302B",
-
-                    fontWeight: isSelected
-
-                      ? 600
-
-                      : 500,
-
-                    fontSize: "15px",
+                    opacity: 1
 
                   }}
 
