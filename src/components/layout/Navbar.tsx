@@ -26,7 +26,17 @@ export default function Navbar({ title }: NavbarProps) {
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3 ml-2">
-        <button className="relative w-8 sm:w-9 h-8 sm:h-9 rounded-lg flex items-center justify-center transition-colors flex-shrink-0" style={{ color: 'rgba(247,244,213,0.60)' }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F7F4D5'} onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(247,244,213,0.60)'}>
+<span
+  className={`
+    transition-colors duration-200
+    ${selected === option.value
+      ? "text-white font-semibold"
+      : "text-[#24302B] font-medium"
+    }
+  `}
+>
+  {option.label}
+</span>
           <Bell style={{ width: '16px', height: '16px' }} />
         </button>
 
