@@ -288,7 +288,14 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-heading text-xl font-semibold" style={{ letterSpacing: '-0.03em', color: '#839958' }}>{result.score}</span>
+                   <span
+  className="font-heading text-xl font-semibold"
+  style={{
+    color: selected === opt.value ? "#FFFFFF" : "#24302B"
+  }}
+>
+  {opt.label}
+</span>
                   </div>
                 </div>
                 <div>
