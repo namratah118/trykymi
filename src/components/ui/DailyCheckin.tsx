@@ -240,7 +240,7 @@ export default function DailyCheckin({
 
                   borderRadius: "16px",
 
-                  color: isSelected ? '#FFFFFF' : '#1F2937'
+                  color: isSelected ? '#839958' : '#1F2937'
 
                 }}
 
@@ -250,11 +250,11 @@ export default function DailyCheckin({
 
                   style={{
 
-                    color: isSelected ? '#FFFFFF' : '#1F2937',
+                    color: isSelected ? '#839958' : '#1F2937',
 
                     fontWeight: '600',
 
-                    WebkitTextFillColor: isSelected ? '#FFFFFF' : '#1F2937'
+                    WebkitTextFillColor: isSelected ? '#839958' : '#1F2937'
 
                   }}
 
