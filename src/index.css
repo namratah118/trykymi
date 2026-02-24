@@ -1640,3 +1640,11 @@ z-index: 999 !important;
 
 }
 
+.daily-checkin *,
+.daily-checkin h2,
+.daily-checkin p,
+.daily-checkin span,
+.daily-checkin button {
+  color: #24302B !important;
+}
+

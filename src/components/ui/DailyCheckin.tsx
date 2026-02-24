@@ -131,7 +131,7 @@ export default function DailyCheckin({
 
       <div
 
-        className="relative w-full max-w-lg rounded-3xl shadow-xl"
+        className="relative w-full max-w-lg rounded-3xl shadow-xl daily-checkin"
 
         style={{
           maxHeight: '95vh',
