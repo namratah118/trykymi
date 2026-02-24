@@ -149,7 +149,7 @@ export default function DailyCheckin({
 
             style={{
 
-              color: '#24302B',
+              color: '#24302B !important',
 
               fontWeight: 600,
 
@@ -181,7 +181,7 @@ export default function DailyCheckin({
 
               fontWeight: 600,
 
-              color: '#24302B'
+              color: '#24302B !important'
 
             }}
 
@@ -195,7 +195,7 @@ export default function DailyCheckin({
 
             style={{
 
-              color: '#24302B',
+              color: '#24302B !important',
 
               marginTop: 4,
 
@@ -252,7 +252,7 @@ export default function DailyCheckin({
 
                   style={{
 
-                    color: '#24302B',
+                    color: '#24302B !important',
 
                     fontWeight: isSelected ? 600 : 500
 
