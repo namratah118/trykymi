@@ -198,10 +198,10 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
           {!result ? (
             <div className="animate-fade-in">
               <div className="mb-7">
-                <h2 className="font-heading text-2xl font-semibold mb-2" style={{ letterSpacing: '-0.025em', color: '#839958' }}>
+                <h2 className="font-heading text-2xl font-semibold mb-2" style={{ letterSpacing: '-0.025em', color: '#111827' }}>
                   {currentStep.question}
                 </h2>
-                <p className="text-sm font-body" style={{ color: '#839958' }}>{currentStep.subtext}</p>
+                <p className="text-sm font-body" style={{ color: '#6B7280' }}>{currentStep.subtext}</p>
               </div>
 
               <div className={`grid gap-2.5 mb-8 ${currentStep.options.length <= 3 ? 'grid-cols-3' : currentStep.options.length <= 4 ? 'grid-cols-2' : 'grid-cols-2'}`}>
@@ -215,7 +215,8 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
                       style={{
                         background: isSelected ? '#839958' : '#F7F4D5',
                         borderColor: isSelected ? '#839958' : 'rgba(131,153,88,0.20)',
-                        color: isSelected ? '#F7F4D5' : '#0A3323',
+                        color: isSelected ? '#FFFFFF' : '#374151',
+                        transition: 'color 0.2s ease',
                       }}
                     >
                       {opt.icon && (
