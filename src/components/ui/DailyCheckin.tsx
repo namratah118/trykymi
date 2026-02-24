@@ -175,9 +175,9 @@ export default function DailyCheckin({
 
           <h2
 
-            style={{
+            className="font-heading text-2xl font-semibold mb-2 !text-[#24302B]"
 
-              color: "#111827",
+            style={{
 
               fontSize: "22px",
 
