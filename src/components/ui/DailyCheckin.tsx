@@ -254,15 +254,13 @@ export default function DailyCheckin({
 
                 <span
 
-                  className={opt.icon ? 'text-xs' : 'text-sm'}
-
                   style={{
 
-                    color: isSelected ? '#FFFFFF' : '#5B6B5C',
+                    color: isSelected ? '#FFFFFF' : '#1F2937',
 
                     fontWeight: isSelected ? 600 : 500,
 
-                    opacity: isSelected ? 1 : 0.95
+                    transition: 'color 0.2s ease'
 
                   }}
 
