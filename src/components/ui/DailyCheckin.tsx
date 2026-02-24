@@ -215,15 +215,21 @@ Write a warm 2-sentence personal message: first acknowledge how they feel, then 
                       style={{
                         background: isSelected ? '#839958' : '#F7F4D5',
                         borderColor: isSelected ? '#839958' : 'rgba(131,153,88,0.20)',
-                        color: isSelected ? '#FFFFFF' : '#1F2933',
-                        fontWeight: isSelected ? 600 : 500,
                         transition: 'color 0.2s ease',
                       }}
                     >
                       {opt.icon && (
                         <span className="text-xl leading-none">{opt.icon}</span>
                       )}
-                      <span className={opt.icon ? 'text-xs' : 'text-sm'}>{opt.label}</span>
+                      <span
+                        className={opt.icon ? 'text-xs' : 'text-sm'}
+                        style={{
+                          color: isSelected ? '#FFFFFF' : '#24302B',
+                          fontWeight: isSelected ? 600 : 500,
+                        }}
+                      >
+                        {opt.label}
+                      </span>
                     </button>
                   );
                 })}
