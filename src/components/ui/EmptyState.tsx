@@ -27,7 +27,15 @@ export default function EmptyState({ icon, illustration, title, description, act
           {icon}
         </div>
       ) : null}
-      <h3 className="font-heading text-xl font-semibold mb-3" style={{ color: '#F7F4D5' }}>{title}</h3>
+    <p  
+  className="text-sm font-body"  
+  style={{  
+    color: '#24302B',  
+    opacity: 0.7  
+  }}  
+>  
+  {currentStep.subtext}  
+</p>
       <p className="font-body max-w-xs leading-relaxed mb-6" style={{ color: '#839958', fontSize: '16px' }}>{description}</p>
       {action}
     </div>
