@@ -62,17 +62,18 @@ export default function DailyCheckin({
 
   const [loading, setLoading] = useState(false);
 
-  const currentStep = STEPS[step];
+  const currentStep = STEPS[step] || STEPS[0];
 
-  const isMulti = !!currentStep.multi;
+  const isMulti = !!currentStep?.multi;
 
   const selected: string[] = isMulti
-    ? (answers[currentStep.id] as string[]) || []
-    : answers[currentStep.id]
-    ? [answers[currentStep.id] as string]
+    ? (answers[currentStep?.id] as string[]) || []
+    : answers[currentStep?.id]
+    ? [answers[currentStep?.id] as string]
     : [];
 
   const toggle = (value: string) => {
+    if (!currentStep?.id) return;
 
     if (isMulti) {
 
@@ -187,7 +188,7 @@ export default function DailyCheckin({
 
           >
 
-            {currentStep.question}
+            {currentStep?.question || 'Loading...'}
 
           </h2>
 
@@ -205,7 +206,7 @@ export default function DailyCheckin({
 
           >
 
-            {currentStep.subtext}
+            {currentStep?.subtext || ''}
 
           </p>
 
@@ -215,7 +216,7 @@ export default function DailyCheckin({
 
         <div className="grid grid-cols-2 gap-3 p-6">
 
-          {currentStep.options.map((opt) => {
+          {currentStep?.options?.map((opt) => {
 
             const isSelected =
               selected.includes(opt.value);
