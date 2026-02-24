@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, CalendarDays, Target, Bell, CheckSquare,
   BarChart2, Moon, MessageSquare, User, Settings, LogOut
@@ -27,6 +27,7 @@ interface SidebarProps {
 
 export default function Sidebar({ onClose }: SidebarProps) {
   const { signOut, user } = useAuth();
+  const navigate = useNavigate();
 
   const displayName = (user?.user_metadata?.full_name as string) || user?.email?.split('@')[0] || 'User';
   const initials = displayName.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase();
@@ -95,7 +96,10 @@ export default function Sidebar({ onClose }: SidebarProps) {
           </div>
         </div>
         <button
-          onClick={() => signOut()}
+          onClick={async () => {
+            await signOut();
+            navigate('/login', { replace: true });
+          }}
           className="w-full flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-xl transition-all duration-200"
           style={{ color: '#D3968C', fontWeight: 500 }}
           onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(211,150,140,0.12)'; }}
