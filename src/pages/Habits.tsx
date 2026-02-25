@@ -37,26 +37,14 @@ export default function Habits() {
   }, [user]);
 
   const fetchData = async () => {
-    try {
-      const [habitsRes, completionsRes] = await Promise.all([
-        supabase.from('habits').select('*').eq('user_id', user!.id).order('created_at'),
-        supabase.from('habit_completions').select('habit_id').eq('user_id', user!.id).eq('completed_date', today),
-      ]);
+    const [habitsRes, completionsRes] = await Promise.all([
+      supabase.from('habits').select('*').eq('user_id', user!.id).order('created_at'),
+      supabase.from('habit_completions').select('habit_id').eq('user_id', user!.id).eq('completed_date', today),
+    ]);
 
-      if (habitsRes.error) {
-        console.error('[Habits] Failed to fetch habits:', habitsRes.error);
-      }
-      if (completionsRes.error) {
-        console.error('[Habits] Failed to fetch completions:', completionsRes.error);
-      }
-
-      setHabits(habitsRes.data || []);
-      setCompletions(new Set((completionsRes.data || []).map(c => c.habit_id)));
-    } catch (error) {
-      console.error('[Habits] Fetch error:', error);
-    } finally {
-      setLoading(false);
-    }
+    setHabits(habitsRes.data || []);
+    setCompletions(new Set((completionsRes.data || []).map(c => c.habit_id)));
+    setLoading(false);
   };
 
   const toggleHabit = async (habit: Habit) => {

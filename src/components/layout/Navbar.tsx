@@ -26,7 +26,17 @@ export default function Navbar({ title }: NavbarProps) {
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3 ml-2">
-        <button className="p-1.5 rounded-lg transition-colors hover:bg-opacity-80" style={{ color: 'rgba(247,244,213,0.70)' }}>
+<span
+  className={`
+    transition-colors duration-200
+    ${selected === option.value
+      ? "text-white font-semibold"
+      : "text-[#24302B] font-medium"
+    }
+  `}
+>
+  {option.label}
+</span>
           <Bell style={{ width: '16px', height: '16px' }} />
         </button>
 

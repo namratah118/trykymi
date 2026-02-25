@@ -73,55 +73,43 @@ export default function Dashboard() {
   };
 
   const fetchData = async () => {
-    try {
-      setLoading(true);
-      const [plansRes, remindersRes, tasksRes, habitsRes, completionsRes, timeRes] = await Promise.all([
-        supabase.from('plans').select('*').eq('user_id', user!.id).eq('plan_date', today).order('start_time'),
-        supabase.from('reminders').select('*').eq('user_id', user!.id).eq('completed', false).gte('reminder_date', today).order('reminder_date').limit(5),
-        supabase.from('tasks').select('*').eq('user_id', user!.id).order('created_at', { ascending: false }),
-        supabase.from('habits').select('*').eq('user_id', user!.id).order('created_at'),
-        supabase.from('habit_completions').select('habit_id').eq('user_id', user!.id).eq('completed_date', today),
-        supabase.from('time_entries').select('*').eq('user_id', user!.id).eq('entry_date', today),
-      ]);
+    setLoading(true);
+    const [plansRes, remindersRes, tasksRes, habitsRes, completionsRes, timeRes] = await Promise.all([
+      supabase.from('plans').select('*').eq('user_id', user!.id).eq('plan_date', today).order('start_time'),
+      supabase.from('reminders').select('*').eq('user_id', user!.id).eq('completed', false).gte('reminder_date', today).order('reminder_date').limit(5),
+      supabase.from('tasks').select('*').eq('user_id', user!.id).order('created_at', { ascending: false }),
+      supabase.from('habits').select('*').eq('user_id', user!.id).order('created_at'),
+      supabase.from('habit_completions').select('habit_id').eq('user_id', user!.id).eq('completed_date', today),
+      supabase.from('time_entries').select('*').eq('user_id', user!.id).eq('entry_date', today),
+    ]);
 
-      if (plansRes.error) console.error('[Dashboard] Plans error:', plansRes.error);
-      if (remindersRes.error) console.error('[Dashboard] Reminders error:', remindersRes.error);
-      if (tasksRes.error) console.error('[Dashboard] Tasks error:', tasksRes.error);
-      if (habitsRes.error) console.error('[Dashboard] Habits error:', habitsRes.error);
-      if (completionsRes.error) console.error('[Dashboard] Completions error:', completionsRes.error);
-      if (timeRes.error) console.error('[Dashboard] Time entries error:', timeRes.error);
+    const todayPlansData = plansRes.data || [];
+    const remindersData = remindersRes.data || [];
+    const tasksData = tasksRes.data || [];
+    const habitsData = habitsRes.data || [];
+    const completionsData = completionsRes.data || [];
+    const timeData = timeRes.data || [];
 
-      const todayPlansData = plansRes.data || [];
-      const remindersData = remindersRes.data || [];
-      const tasksData = tasksRes.data || [];
-      const habitsData = habitsRes.data || [];
-      const completionsData = completionsRes.data || [];
-      const timeData = timeRes.data || [];
+    setPlans(todayPlansData);
+    setReminders(remindersData);
+    setTasks(tasksData.slice(0, 5));
+    setHabits(habitsData);
+    setTodayCompletions(new Set(completionsData.map(c => c.habit_id)));
+    setTimeEntries(timeData);
 
-      setPlans(todayPlansData);
-      setReminders(remindersData);
-      setTasks(tasksData.slice(0, 5));
-      setHabits(habitsData);
-      setTodayCompletions(new Set(completionsData.map(c => c.habit_id)));
-      setTimeEntries(timeData);
-
-      const completionSet = new Set(completionsData.map(c => c.habit_id));
-      const newStats = {
-        totalTasks: tasksData.length,
-        completedTasks: tasksData.filter(t => t.completed).length,
-        totalHabits: habitsData.length,
-        completedHabitsToday: habitsData.filter(h => completionSet.has(h.id)).length,
-        upcomingReminders: remindersData.length,
-        todayPlans: todayPlansData.length,
-        completedPlans: todayPlansData.filter(p => p.completed).length,
-      };
-      setStats(newStats);
-      fetchAiMessage(newStats, habitsData);
-    } catch (error) {
-      console.error('[Dashboard] Fetch error:', error);
-    } finally {
-      setLoading(false);
-    }
+    const completionSet = new Set(completionsData.map(c => c.habit_id));
+    const newStats = {
+      totalTasks: tasksData.length,
+      completedTasks: tasksData.filter(t => t.completed).length,
+      totalHabits: habitsData.length,
+      completedHabitsToday: habitsData.filter(h => completionSet.has(h.id)).length,
+      upcomingReminders: remindersData.length,
+      todayPlans: todayPlansData.length,
+      completedPlans: todayPlansData.filter(p => p.completed).length,
+    };
+    setStats(newStats);
+    setLoading(false);
+    fetchAiMessage(newStats, habitsData);
   };
 
   const fetchAiMessage = async (s: Stats, habitsData: Habit[]) => {
@@ -130,12 +118,6 @@ export default function Dashboard() {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
       const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
       const firstName = (user?.user_metadata?.full_name as string || 'there').split(' ')[0];
-
-      if (!supabaseUrl || !supabaseAnonKey) {
-        console.warn('[Dashboard] Missing Supabase environment variables');
-        setAiMessage('');
-        return;
-      }
 
       const prompt = `Generate a single warm, personal, encouraging message for ${firstName}'s dashboard. ${getGreeting()} context.
 Stats: ${s.completedHabitsToday}/${s.totalHabits} habits done, ${s.completedTasks}/${s.totalTasks} tasks done, ${s.completedPlans}/${s.todayPlans} plans done.
@@ -147,17 +129,9 @@ Write 1-2 sentences. Be warm, human, calm, encouraging. No emojis. Speak directl
         headers: { 'Authorization': `Bearer ${supabaseAnonKey}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'chat', message: prompt, history: [] }),
       });
-
-      if (!res.ok) {
-        console.warn('[Dashboard] AI service error:', res.status);
-        setAiMessage('');
-        return;
-      }
-
       const data = await res.json();
       if (data.message) setAiMessage(data.message);
-    } catch (error) {
-      console.warn('[Dashboard] AI message fetch error:', error);
+    } catch {
       setAiMessage('');
     } finally {
       setAiLoading(false);
