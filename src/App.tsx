@@ -1,3 +1,12 @@
+<div style={{
+background:"#D3968C",
+color:"#0A3323",
+padding:"8px",
+textAlign:"center",
+fontWeight:"500"
+}}>
+Beta Version • TryKymi is improving daily
+</div>
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
