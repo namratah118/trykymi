@@ -550,7 +550,6 @@ export default function Homepage() {
             © {new Date().getFullYear()} trykymi · Your AI lifestyle companion
           </p>
           <div className="flex gap-5">
-            <a href="mailto:kymi@trykymi.com?subject=Feedback%20for%20TryKymi" className="text-xs font-body transition-colors" style={{ color: 'rgba(247,244,213,0.40)' }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F7F4D5'} onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(247,244,213,0.40)'}>Contact</a>
             <Link to="/login" className="text-xs font-body transition-colors" style={{ color: 'rgba(247,244,213,0.40)' }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F7F4D5'} onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(247,244,213,0.40)'}>Sign in</Link>
             <Link to="/signup" className="text-xs font-body transition-colors" style={{ color: 'rgba(247,244,213,0.40)' }} onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F7F4D5'} onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(247,244,213,0.40)'}>Get started</Link>
           </div>

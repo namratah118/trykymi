@@ -23,105 +23,68 @@ const EMPTY_FORM = {
 const today = new Date().toISOString().split('T')[0];
 
 export default function Habits() {
-  const { user, loading: authLoading } = useAuth();
+  const { user } = useAuth();
   const [habits, setHabits] = useState<Habit[]>([]);
   const [completions, setCompletions] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [form, setForm] = useState(EMPTY_FORM);
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (authLoading) return;
-    if (!user) {
-      setLoading(false);
-      return;
-    }
+    if (!user) return;
     fetchData();
-  }, [user, authLoading]);
+  }, [user]);
 
   const fetchData = async () => {
-    if (!user?.id) {
-      setError(true);
-      setLoading(false);
-      return;
-    }
-    try {
-      setError(false);
-      const [habitsRes, completionsRes] = await Promise.all([
-        supabase.from('habits').select('*').eq('user_id', user.id).order('created_at'),
-        supabase.from('habit_completions').select('habit_id').eq('user_id', user.id).eq('completed_date', today),
-      ]);
+    const [habitsRes, completionsRes] = await Promise.all([
+      supabase.from('habits').select('*').eq('user_id', user!.id).order('created_at'),
+      supabase.from('habit_completions').select('habit_id').eq('user_id', user!.id).eq('completed_date', today),
+    ]);
 
-      if (habitsRes.error) throw habitsRes.error;
-      if (completionsRes.error) throw completionsRes.error;
-
-      setHabits(habitsRes.data || []);
-      setCompletions(new Set((completionsRes.data || []).map(c => c.habit_id)));
-    } catch (err) {
-      console.error('Failed to fetch habits:', err);
-      setError(true);
-      setHabits([]);
-      setCompletions(new Set());
-    } finally {
-      setLoading(false);
-    }
+    setHabits(habitsRes.data || []);
+    setCompletions(new Set((completionsRes.data || []).map(c => c.habit_id)));
+    setLoading(false);
   };
 
   const toggleHabit = async (habit: Habit) => {
-    if (!user?.id) return;
-    try {
-      const isDone = completions.has(habit.id);
+    const isDone = completions.has(habit.id);
 
-      if (isDone) {
-        await supabase.from('habit_completions').delete().eq('habit_id', habit.id).eq('completed_date', today);
-        const newStreak = Math.max(0, habit.current_streak - 1);
-        await supabase.from('habits').update({ current_streak: newStreak, updated_at: new Date().toISOString() }).eq('id', habit.id);
-      } else {
-        await supabase.from('habit_completions').upsert({ habit_id: habit.id, user_id: user.id, completed_date: today });
-        const newStreak = habit.current_streak + 1;
-        const longestStreak = Math.max(newStreak, habit.longest_streak);
-        await supabase.from('habits').update({ current_streak: newStreak, longest_streak: longestStreak, updated_at: new Date().toISOString() }).eq('id', habit.id);
-      }
-
-      fetchData();
-    } catch (err) {
-      console.error('Failed to toggle habit:', err);
+    if (isDone) {
+      await supabase.from('habit_completions').delete().eq('habit_id', habit.id).eq('completed_date', today);
+      const newStreak = Math.max(0, habit.current_streak - 1);
+      await supabase.from('habits').update({ current_streak: newStreak, updated_at: new Date().toISOString() }).eq('id', habit.id);
+    } else {
+      await supabase.from('habit_completions').upsert({ habit_id: habit.id, user_id: user!.id, completed_date: today });
+      const newStreak = habit.current_streak + 1;
+      const longestStreak = Math.max(newStreak, habit.longest_streak);
+      await supabase.from('habits').update({ current_streak: newStreak, longest_streak: longestStreak, updated_at: new Date().toISOString() }).eq('id', habit.id);
     }
+
+    fetchData();
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!user?.id) return;
     setSaving(true);
 
-    try {
-      await supabase.from('habits').insert({
-        user_id: user.id,
-        name: form.name,
-        description: form.description,
-        color: form.color,
-        frequency: form.frequency,
-      });
+    await supabase.from('habits').insert({
+      user_id: user!.id,
+      name: form.name,
+      description: form.description,
+      color: form.color,
+      frequency: form.frequency,
+    });
 
-      setModalOpen(false);
-      setForm(EMPTY_FORM);
-      fetchData();
-    } catch (err) {
-      console.error('Failed to create habit:', err);
-    } finally {
-      setSaving(false);
-    }
+    setSaving(false);
+    setModalOpen(false);
+    setForm(EMPTY_FORM);
+    fetchData();
   };
 
   const deleteHabit = async (id: string) => {
-    try {
-      await supabase.from('habits').delete().eq('id', id);
-      fetchData();
-    } catch (err) {
-      console.error('Failed to delete habit:', err);
-    }
+    await supabase.from('habits').delete().eq('id', id);
+    fetchData();
   };
 
   const completedToday = habits.filter(h => completions.has(h.id)).length;
@@ -168,17 +131,6 @@ export default function Habits() {
 
         {loading ? (
           <PageLoader />
-        ) : error ? (
-          <EmptyState
-            illustration={<HabitIllustration className="w-20 h-20" opacity={0.5} />}
-            title="Unable to load habits"
-            description="Something went wrong. Please try refreshing the page."
-            action={
-              <button onClick={fetchData} className="btn-primary">
-                Try again
-              </button>
-            }
-          />
         ) : habits.length === 0 ? (
           <EmptyState
             illustration={<HabitIllustration className="w-20 h-20" opacity={0.5} />}
