@@ -21,18 +21,14 @@ type Step = {
 const STEPS: Step[] = [
   {
     id: 'priority',
-    question: 'What matters most today?',
+    question: 'Where would you like gentle support today?',
     subtext: 'Choose everything that feels true right now.',
     multi: true,
     options: [
       { value: 'career', label: 'Career' },
       { value: 'health', label: 'Health' },
-      { value: 'peace', label: 'Peace' },
-      { value: 'growth', label: 'Growth' },
       { value: 'relationships', label: 'Relationships' },
-      { value: 'creativity', label: 'Creativity' },
-      { value: 'finances', label: 'Finances' },
-      { value: 'family', label: 'Family' },
+      { value: 'Not sure', label: 'Not Sure' },
     ],
   },
   {
