@@ -1,3 +1,4 @@
+import BetaPopup from "./components/BetaPopup";
 <div style={{
 background:"#D3968C",
 color:"#0A3323",
@@ -53,6 +54,25 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 function AppRoutes() {
   return (
     <PageTransition>
+      import BetaPopup from "./components/BetaPopup";
+
+function App() {
+
+  return (
+
+    <Router>
+
+      <BetaPopup />
+
+      <AppRoutes />
+
+    </Router>
+
+  );
+
+}
+
+export default App;
       <Routes>
         <Route path="/" element={<PublicRoute><Homepage /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
