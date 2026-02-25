@@ -19,7 +19,21 @@ export default function Navbar({ title }: NavbarProps) {
   return (
     <header className="header h-16 sm:h-20 flex items-center justify-between px-4 sm:px-6 flex-shrink-0" style={{ backgroundColor: 'rgba(10,51,35,0.4)', border: '1px solid rgba(247,244,213,0.05)', borderRadius: '14px', margin: '12px', padding: '12px' }}>
       <div className="flex flex-col justify-center min-w-0">
-        <h1 className="font-heading text-base sm:text-lg lg:text-xl font-semibold leading-tight truncate" style={{ color: '#F7F4D5', fontWeight: 600 }}>{title}</h1>
+       <h1 className="font-heading text-base sm:text-lg lg:text-xl font-semibold leading-tight truncate">
+  trykymi
+  <span style={{
+    fontSize: "10px",
+    marginLeft: "6px",
+    color: "#D3968C",
+    fontWeight: "500"
+  }}>
+    beta
+  </span>
+</h1>
+
+<p className="opacity-70 text-sm mt-1">
+  Trykymi is thinking…
+</p>
         <p className="opacity-70 text-sm mt-1">
           TryKymi is thinking…
         </p>
