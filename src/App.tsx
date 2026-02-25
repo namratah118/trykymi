@@ -1,41 +1,37 @@
 import BetaPopup from "./components/BetaPopup";
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { ErrorBoundary } from './components/ErrorBoundary';
-import { PageTransition } from './components/PageTransition';
-import { LoadingFallback } from './components/ui/LoadingFallback';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Login from './pages/auth/Login';
-import Signup from './pages/auth/Signup';
-import Homepage from './pages/Homepage';
-import Onboarding from './pages/Onboarding';
-import Dashboard from './pages/Dashboard';
-import Reminders from './pages/Reminders';
-import Tasks from './pages/Tasks';
-import Habits from './pages/Habits';
-import AIAssistant from './pages/AIAssistant';
-import Insights from './pages/Insights';
-import Settings from './pages/Settings';
-import DailyDebrief from './pages/DailyDebrief';
-import Profile from './pages/Profile';
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+
+import { ErrorBoundary } from "./components/ErrorBoundary";
+
+import { PageTransition } from "./components/PageTransition";
+
+import { LoadingFallback } from "./components/ui/LoadingFallback";
+
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
+import Homepage from "./pages/Homepage";
+import Onboarding from "./pages/Onboarding";
+import Dashboard from "./pages/Dashboard";
+import Reminders from "./pages/Reminders";
+import Tasks from "./pages/Tasks";
+import Habits from "./pages/Habits";
+import AIAssistant from "./pages/AIAssistant";
+import Insights from "./pages/Insights";
+import Settings from "./pages/Settings";
+import DailyDebrief from "./pages/DailyDebrief";
+import Profile from "./pages/Profile";
 
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   const { user, loading } = useAuth();
 
-  if (!user) {
+  if (loading) return <LoadingFallback />;
 
-    if (loading) {
-
-      return <LoadingFallback />;
-
-    }
-
-    return <Navigate to="/login" replace />;
-
-  }
+  if (!user) return <Navigate to="/login" replace />;
 
   return <>{children}</>;
 
@@ -46,11 +42,7 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 
   const { user } = useAuth();
 
-  if (user) {
-
-    return <Navigate to="/dashboard" replace />;
-
-  }
+  if (user) return <Navigate to="/dashboard" replace />;
 
   return <>{children}</>;
 
@@ -100,7 +92,6 @@ function AppRoutes() {
   );
 
 }
-
 
 
 export default function App() {
