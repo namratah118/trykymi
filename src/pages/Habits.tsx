@@ -23,7 +23,7 @@ const EMPTY_FORM = {
 const today = new Date().toISOString().split('T')[0];
 
 export default function Habits() {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const [habits, setHabits] = useState<Habit[]>([]);
   const [completions, setCompletions] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
@@ -33,16 +33,25 @@ export default function Habits() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (!user) return;
+    if (authLoading) return;
+    if (!user) {
+      setLoading(false);
+      return;
+    }
     fetchData();
-  }, [user]);
+  }, [user, authLoading]);
 
   const fetchData = async () => {
+    if (!user?.id) {
+      setError(true);
+      setLoading(false);
+      return;
+    }
     try {
       setError(false);
       const [habitsRes, completionsRes] = await Promise.all([
-        supabase.from('habits').select('*').eq('user_id', user!.id).order('created_at'),
-        supabase.from('habit_completions').select('habit_id').eq('user_id', user!.id).eq('completed_date', today),
+        supabase.from('habits').select('*').eq('user_id', user.id).order('created_at'),
+        supabase.from('habit_completions').select('habit_id').eq('user_id', user.id).eq('completed_date', today),
       ]);
 
       if (habitsRes.error) throw habitsRes.error;
@@ -61,6 +70,7 @@ export default function Habits() {
   };
 
   const toggleHabit = async (habit: Habit) => {
+    if (!user?.id) return;
     try {
       const isDone = completions.has(habit.id);
 
@@ -69,7 +79,7 @@ export default function Habits() {
         const newStreak = Math.max(0, habit.current_streak - 1);
         await supabase.from('habits').update({ current_streak: newStreak, updated_at: new Date().toISOString() }).eq('id', habit.id);
       } else {
-        await supabase.from('habit_completions').upsert({ habit_id: habit.id, user_id: user!.id, completed_date: today });
+        await supabase.from('habit_completions').upsert({ habit_id: habit.id, user_id: user.id, completed_date: today });
         const newStreak = habit.current_streak + 1;
         const longestStreak = Math.max(newStreak, habit.longest_streak);
         await supabase.from('habits').update({ current_streak: newStreak, longest_streak: longestStreak, updated_at: new Date().toISOString() }).eq('id', habit.id);
@@ -83,11 +93,12 @@ export default function Habits() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!user?.id) return;
     setSaving(true);
 
     try {
       await supabase.from('habits').insert({
-        user_id: user!.id,
+        user_id: user.id,
         name: form.name,
         description: form.description,
         color: form.color,

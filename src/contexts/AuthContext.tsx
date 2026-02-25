@@ -88,7 +88,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signUp = async (email: string, password: string, fullName: string) => {
     try {
-      const { data, error } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -99,24 +99,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (error) {
         console.error('[Auth] Signup error:', error);
         return { error };
-      }
-
-      if (data.user) {
-        try {
-          await supabase.from('users').upsert({
-            id: data.user.id,
-            full_name: fullName,
-            email,
-          });
-
-          await supabase.from('profiles').upsert({
-            id: data.user.id,
-            name: fullName,
-            email,
-          });
-        } catch (dbError) {
-          console.error('[Auth] Database sync error:', dbError);
-        }
       }
 
       return { error: null };
