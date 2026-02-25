@@ -108,14 +108,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             full_name: fullName,
             email,
           });
-
-          await supabase.from('profiles').upsert({
-            id: data.user.id,
-            name: fullName,
-            email,
-          });
         } catch (dbError) {
-          console.error('[Auth] Database sync error:', dbError);
+          console.error('[Auth] Users table sync error:', dbError);
         }
       }
 

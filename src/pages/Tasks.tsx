@@ -42,13 +42,22 @@ export default function Tasks() {
   }, [user]);
 
   const fetchTasks = async () => {
-    const { data } = await supabase
-      .from('tasks')
-      .select('*')
-      .eq('user_id', user!.id)
-      .order('created_at', { ascending: false });
-    setTasks(data || []);
-    setLoading(false);
+    try {
+      const { data, error } = await supabase
+        .from('tasks')
+        .select('*')
+        .eq('user_id', user!.id)
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('[Tasks] Fetch error:', error);
+      }
+      setTasks(data || []);
+    } catch (error) {
+      console.error('[Tasks] Exception:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const filtered = tasks.filter(t => {
